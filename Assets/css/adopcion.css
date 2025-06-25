@@ -1,0 +1,199 @@
+:root {
+  --primario: #5D4FC4;
+  --gris: #888;
+  --fondo: #F4F4F4;
+  --gris-divider: #CCC;
+  --relleno-barra: #D5D1F0;
+  --verde: #0A453A;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegura que el body ocupe toda la pantalla y use la fuente */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+}
+
+.adopcion-container {
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+    margin-top: 40px; 
+}
+
+/* Filtros (Izquierda) */
+.filtro-section {
+  width: 300px;
+  background: #fff;
+}
+
+.filtro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-buttons {
+  display: flex;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--primario);
+  color: var(--primario);
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.toggle-btn:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.toggle-btn:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.toggle-btn.active {
+  background: var(--primario);
+  color: white;
+}
+
+.reset-btn {
+  background: none;
+  border: none;
+  color: var(--gris);
+  cursor: pointer;
+}
+
+.divider {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px solid var(--gris-divider);
+}
+
+/* CONTENIDO DE FILTROS */
+
+.filtro-group {
+  margin-bottom: 20px;
+}
+
+.filtro-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.select-box, .checkbox-row, .progress-group {
+  width: 100%;
+}
+
+.select-box select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.location-btn {
+  background: none;
+  border: none;
+  color: var(--verde);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--relleno-barra);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primario);
+  width: 60%;
+}
+
+.progress-label {
+  position: absolute;
+  top: -28px;
+  left: 60%;
+  transform: translateX(-50%);
+  color: var(--primario);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-label i {
+  color: var(--primario);
+}
+
+.checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.checkbox-row label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.checkbox-row input[type="radio"] {
+  display: none;
+}
+
+.checkbox-row span {
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}
+
+.checkbox-row input[type="radio"]:checked + span {
+  border-color: var(--primario);
+  color: var(--primario);
+  font-weight: bold;
+}
+
+.btn-aplicar {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--primario);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--primario);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Mascotas (Derecha) */
+.mascotas-section {
+  flex: 1;
+}
+
+.mascotas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.mascota-card img {
+  width: 100%;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}

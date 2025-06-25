@@ -1,0 +1,189 @@
+/* style.css */
+
+/* Variables de color (puedes usar :root si usas custom properties) */
+:root {
+  --principal: #675BC8;
+  --decoracion: #9990DA;
+  --blanco: #ffffff;
+}
+/* Fuente principal para todo el sitio */
+/* Reset básico para quitar márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegura que el body ocupe toda la pantalla y use la fuente */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+}
+
+/* Estilos del header principal */
+.main-header {
+  background-color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+}
+
+/* Navegación */
+.main-nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav .nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Botón login/register */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-register {
+  border: 2px solid var(--principal);
+  border-radius: 25px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--principal);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.login-register .divider {
+  margin: 0 4px;
+  color: var(--principal);
+}
+
+.heart-icon {
+  font-size: 20px;
+  color: var(--principal);
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.perfil-btn {
+  border: 2px solid var(--principal);
+  border-radius: 25px;
+  padding: 6px 16px;
+  text-decoration: none;
+  color: var(--principal);
+  font-weight: 500;
+}
+
+/* Franja morada decorativa */
+.header-deco {
+  height: 20px;
+  background-color: var(--decoracion);
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+/* Footer General */
+footer {
+  margin-top: 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Sección superior del footer */
+.footer-top {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 30px;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px;
+  margin: 10px 20px;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  color: #0A453A;
+  margin-bottom: 12px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: var(--principal);
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: var(--decoracion);
+}
+
+.contact-info i {
+  margin-right: 8px;
+  color: var(--principal);
+}
+
+/* Iconos sociales */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: var(--principal);
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--decoracion);
+}
+
+/* Parte inferior */
+.footer-bottom {
+  background-color: var(--principal);
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 16px;
+}

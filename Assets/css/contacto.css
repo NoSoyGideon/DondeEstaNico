@@ -1,0 +1,130 @@
+:root {
+  --primario: #5D4FC4;
+  --verde: #0A453A;
+  --gris: #ccc;
+  --gris-fondo: #f9f9f9;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 80px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* LADO IZQUIERDO */
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+  padding-left: 20px;
+}
+
+.contact-title {
+  color: var(--verde);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.contact-img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.contact-info-box {
+  border: 1px solid var(--gris);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.contact-info-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info-box li {
+  font-size: 16px;
+  color: var(--primario);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.contact-info-box i {
+  margin-right: 10px;
+}
+
+/* LADO DERECHO */
+.contact-right {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 40px;
+}
+
+.contact-form {
+  background-color: var(--gris-fondo);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.06);
+}
+
+.form-title {
+  font-size: 22px;
+  color: var(--verde);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.paw-icon {
+  color: var(--primario);
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  color: #444;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.btn-send {
+  margin-top: 20px;
+  background-color: var(--primario);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-send:hover {
+  background-color: #4b3ab1;
+}

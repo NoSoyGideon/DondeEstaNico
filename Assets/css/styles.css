@@ -1,0 +1,99 @@
+/* style.css */
+
+/* Variables de color (puedes usar :root si usas custom properties) */
+:root {
+  --principal: #675BC8;
+  --decoracion: #9990DA;
+  --blanco: #ffffff;
+}
+/* Fuente principal para todo el sitio */
+/* Reset básico para quitar márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegura que el body ocupe toda la pantalla y use la fuente */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+}
+
+/* Sección de landing */
+.landing-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* pantalla completa */
+  overflow: hidden;
+}
+
+.landing-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Caja de contenido encima de la imagen */
+.landing-box {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 350px;
+}
+
+.landing-box h2 {
+  font-size: 26px;
+  color: var(--principal);
+  margin-bottom: 12px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.landing-box p {
+  color: #0A453A;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary {
+  background-color: var(--principal);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline {
+  border: 2px solid var(--principal);
+  color: var(--principal);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  transition: background 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: var(--decoracion);
+  color: white;
+  border-color: var(--decoracion);
+}
