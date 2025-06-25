@@ -31,6 +31,8 @@
     <!-- Incluimos el componente de la barra de navegación -->
     <?php include_once '../inc/navbar.php'; ?>
     
+    <!-- Incluimos el componente del modal de autenticación -->
+    <?php include_once '../inc/components/auth-modal.php'; ?>
 
     <!-- Hero Section -->
     <section class="flex items-center justify-center w-full min-h-screen pt-16 pb-8 overflow-hidden">
@@ -442,22 +444,22 @@
         </div>
     </section>
 
-    <!-- sección de x-->
+    <!-- sección de informacion-->
      <section class="py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- lado izquierdo -->
             <div class="text-center lg:text-left">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-                    <span class="text-purple-600">Coexistencia Pacífica</span><br>
-                    <span class="text-purple-600">Humanos y Animales</span>
+                    <span class="text-purple-main">Coexistencia Pacífica</span><br>
+                    <span class="text-purple-main">Humanos y Animales</span>
                 </h2>
                 
-                <!-- Illustration Placeholder -->
+                <!-- Ilustración -->
                 <div class="relative bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 h-80 flex items-center justify-center">
                     <div class="text-center">
                         <div class="w-64 h-48 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                            <img src="../assets/Pet adoption illustration.svg" alt="Woman with cat & Man with dog illustration">
+                            <img src="../assets/Pet adoption illustration.svg" alt="Mujer con gato y hombre con perro ilustración">
                         </div>
                     </div>
                 </div>
@@ -468,7 +470,7 @@
                 <!--relacion emocional -->
                 <div class="bg-gray-50 rounded-xl p-6 relative">
                     <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="w-12 h-12 bg-purple-main rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                             </svg>
@@ -478,7 +480,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        The emotional bond between cats and humans is deeply rooted in felines' unconditional love and companionship.
+                        El vínculo emocional entre gatos y humanos está profundamente arraigado en el amor incondicional y la compañía que ofrecen los felinos.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -490,7 +492,7 @@
                 <!-- Comunicacion -->
                 <div class="bg-gray-50 rounded-xl p-6 relative">
                     <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="w-12 h-12 bg-purple-main rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                             </svg>
@@ -500,7 +502,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Animals can communicate better with people in such conditions, as verbal communication is replaced by non-verbal.
+                        Los animales pueden comunicarse mejor con las personas en estas condiciones, ya que la comunicación verbal es reemplazada por la no verbal.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -512,7 +514,7 @@
                 <!-- Niños y mascotas -->
                 <div class="bg-gray-50 rounded-xl p-6 relative">
                     <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="w-12 h-12 bg-purple-main rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                             </svg>
@@ -522,7 +524,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Pets establish emotional attachments to children, and the relationship turns out positive in terms of affective aspects, in reinforcement of the child's personality.
+                        Las mascotas establecen vínculos emocionales con los niños, y la relación resulta positiva en términos afectivos, reforzando la personalidad del niño.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -534,7 +536,7 @@
                 <!-- salud -->
                 <div class="bg-gray-50 rounded-xl p-6 relative">
                     <div class="flex items-start mb-4">
-                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                        <div class="w-12 h-12 bg-purple-main rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/>
@@ -545,7 +547,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Some studies suggest that owning a pet can lower blood pressure and improve heart health.
+                        Algunos estudios sugieren que tener una mascota puede reducir la presión arterial y mejorar la salud del corazón.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
