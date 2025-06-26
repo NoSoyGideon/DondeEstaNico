@@ -1,0 +1,131 @@
+:root {
+  --primario: #5D4FC4;
+  --gris: #888;
+  --fondo: #F4F4F4;
+  --gris-divider: #CCC;
+  --relleno-barra: #D5D1F0;
+  --verde: #0A453A;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--fondo);
+}
+
+.pet-profile {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pet-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pet-header h1 {
+  font-size: 32px;
+  color: var(--primario);
+}
+
+.pet-header h2 {
+  font-size: 24px;
+  color: var(--gris);
+}
+
+.pet-images {
+  display: flex;
+  gap: 10px;
+}
+
+.main-image {
+  width: 70%;
+  border-radius: 10px;
+}
+
+.thumbnail-images img {
+  width: 20%;
+  border-radius: 300px;
+}
+
+.pet-story h3 {
+  font-size: 18px;
+  color: var(--primario);
+}
+
+.pet-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  background: var(--relleno-barra);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.pet-details .detail {
+  flex: 1 1 calc(50% - 10px);
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pet-details .detail span:first-child {
+  font-weight: bold;
+  color: var(--primario);
+}
+
+.pet-details .detail span:last-child {
+  color: var(--gris);
+}
+
+.similar-pets {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.similar-pets .pet-card {
+  width: 23%;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.similar-pets .pet-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.similar-pets .pet-card button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: var(--primario);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .pet-details .detail {
+    flex: 1 1 100%;
+  }
+
+  .similar-pets {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .similar-pets .pet-card {
+    width: 100%;
+  }
+}
