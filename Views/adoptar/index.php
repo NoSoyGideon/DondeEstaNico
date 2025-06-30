@@ -1,7 +1,4 @@
-<?php
 
-require_once '../../Config/Config.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +12,7 @@ require_once '../../Config/Config.php';
 </head>
 <body>
 
-  <?php include_once '../Templates/header.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
 
 <main class="adopcion-container">
 

@@ -7,7 +7,7 @@
 ?>
 
 <!-- Formulario de registro -->
-<form class="space-y-4">
+<form class="space-y-4" action="<?= BASE_URL ?>login/guardar"  method="post">
   <!-- Nombre Completo -->
   <div class="relative">
     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -15,7 +15,8 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
       </svg>
     </div>
-    <input type="text" placeholder="Nombre completo" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    <input type="text" name="nombre" placeholder="Nombre completo" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    
   </div>
 
   <!-- Correo electrónico -->
@@ -25,7 +26,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
       </svg>
     </div>
-    <input type="email" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    <input type="email" name="correo" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
   </div>
 
   <!-- Contraseña -->
@@ -35,7 +36,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
       </svg>
     </div>
-    <input type="password" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
+    <input type="password" name="clave" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
     <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
       <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

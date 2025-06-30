@@ -1,8 +1,3 @@
-<?php
-
-require_once '../../Config/Config.php';
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +9,7 @@ require_once '../../Config/Config.php';
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <?php include_once '../Templates/header.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
 
 <main class="contact-container">
   <div class="contact-left">
@@ -57,7 +52,7 @@ require_once '../../Config/Config.php';
   </div>
 </main>
 
- <?php include_once '../Templates/footer.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
 
 
 

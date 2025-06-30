@@ -1,7 +1,3 @@
-<?php
-
-require_once '../../Config/Config.php';
-?>
 
 
 <!DOCTYPE html>
@@ -16,13 +12,13 @@ require_once '../../Config/Config.php';
       
     </head>
 <body>
-  <?php include_once '../Templates/header.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
    <div class="admin-panel">
   <div class="sidebar">
-  <?php include_once 'menu.php'; ?>
+  <?php include_once(__DIR__ . '/menu.php'); ?>
 
 
-
+  
 </div>
   <div class="content">
     <!-- Sección 1: Perfil empresa -->

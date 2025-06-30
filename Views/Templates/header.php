@@ -22,7 +22,7 @@
         }
       }
     </script>
-        <?php include_once 'components/auth-modal.php'; ?>
+      <?php include_once(__DIR__ . '/../Login/index.php'); ?>
 
 
 <nav class="flex items-center justify-between py-2 px-8 bg-white border-b border-gray-100">
@@ -41,11 +41,11 @@
         </div>
     </div>
     <div class="flex gap-8 ml-8">
-        <a href="#" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Inicio</a>
-        <a href="<?php echo BASE_URL; ?>views/adoptar/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Adoptar</a>
-        <a href="<?php echo BASE_URL; ?>views/donar/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Donar</a>
-        <a href="<?php echo BASE_URL; ?>views/contacto/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Contact us</a>
-        <a href="<?php echo BASE_URL; ?>views/admin_overview/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Overview</a>
+        <a href="<?php echo BASE_URL; ?>home" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Inicio</a>
+        <a href="<?php echo BASE_URL; ?>adoptar" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Adoptar</a>
+        <a href="<?php echo BASE_URL; ?>donar" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Donar</a>
+        <a href="<?php echo BASE_URL; ?>contacto" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Contact us</a>
+        <a href="<?php echo BASE_URL; ?>admin_overview" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Overview</a>
     </div>
     <div class="flex items-center gap-4">
         <button class="border-[1.5px] border-purple-main rounded-lg py-[0.3rem] px-[0.6rem] bg-white text-purple-main text-lg flex items-center cursor-pointer hover:bg-purple-light transition-colors duration-200" title="Notifications">
