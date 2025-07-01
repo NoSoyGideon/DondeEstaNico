@@ -1,14 +1,19 @@
 <?php
+class Adoptar extends Controller {
+  protected $model;
 
-class adoptar extends Controller
-{
-    public function __construct() {
-        parent::__construct();
+  public function __construct() {
+    parent::__construct();
+    session_start();
+    // Carga tu modelo
+    require_once "Models/AdoptarModel.php";
+    $this->model = new AdoptarModel();
+  }
 
-    }
-    public function index()
-    {
-        $data['title'] = 'Pagina Principal';
-        $this->views->getView('adoptar', "index", $data);
-    }
+  public function index() {
+    $mascotas = $this->model->getMascotas();
+    $data['mascotas'] = $mascotas;
+    $data['title'] = 'Adoptar una mascota';
+    $this->views->getView('adoptar', 'index', $data);
+  }
 }

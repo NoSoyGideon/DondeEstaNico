@@ -1,5 +1,5 @@
 <?php
-class LoginModel extends Query {
+class RealojarModel extends Query {
     public function getUsuario($usuario) {
         $sql = "SELECT * FROM usuario WHERE usuario = ?";
         return $this->select($sql, [$usuario]);

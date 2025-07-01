@@ -282,11 +282,11 @@
         </div>
 
         <!-- Ver mas boton -->
-        <div class="text-center">
-            <button class="bg-white border border-purple-main text-purple-main px-6 py-2 rounded hover:bg-purple-light transition-colors">
-                Ver más mascotas
-            </button>
-        </div>
+<div class="text-center">
+        <a href="<?php echo BASE_URL; ?>adoptar" class="bg-white border border-purple-main text-purple-main px-6 py-2 rounded hover:bg-purple-light transition-colors inline-block">
+        Ver más mascotas
+    </a>
+</div>
     </div>
     </section>
 
@@ -429,9 +429,9 @@
                             <p class="text-black">Programas de vacunación y esterilización</p>
                         </div>
                     </div>
-                    <button class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark">
+                    <a href="<?php echo BASE_URL; ?>donar" class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark">
                         Donar ahora
-                    </button>
+                    </a>
                 </div>
                 
                 <!-- Imagen -->
