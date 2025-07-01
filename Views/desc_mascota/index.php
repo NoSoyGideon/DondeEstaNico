@@ -18,7 +18,7 @@ require_once '../../Config/Config.php';
     <!-- Header -->
     <div class="header-section">
       <div class="pet-header">
-        <img class="pet-avatar" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Magie">
+        <img class="pet-avatar" src="<?php echo BASE_URL; ?>assets/images/shibalogo.png" alt="Magie">
         <div class="pet-data">
           <h1>Hi Human!</h1>
           <h2>Magie</h2>
