@@ -31,12 +31,12 @@ require_once '../../Config/Config.php';
     <!-- Gallery + Story -->
     <div class="gallery-story">
       <div class="gallery">
-        <img id="mainImage" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Main image">
-        <div class="thumbnails">
+        <img id="mainImage" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Main image" style="width: 1000px; height: 400px;">
+        <div class="thumbnails">  
           <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
+          <img src="<?php echo BASE_URL; ?>assets/images/shiba3.jpg" onclick="changeImage(this)">
+          <img src="<?php echo BASE_URL; ?>assets/images/shiba4.jpg" onclick="changeImage(this)">
+          <img src="<?php echo BASE_URL; ?>assets/images/shiba5.jpg" onclick="changeImage(this)">
         </div>
         <div class="pet-tags">
           <div class="tag">Female</div>
