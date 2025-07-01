@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="flex gap-8 ml-8">
-        <a href="#" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Inicio</a>
+        <a href="<?php echo BASE_URL; ?>index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Inicio</a>
         <a href="<?php echo BASE_URL; ?>views/adoptar/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Adoptar</a>
         <a href="<?php echo BASE_URL; ?>views/donar/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Donar</a>
         <a href="<?php echo BASE_URL; ?>views/contacto/index.php" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Contact us</a>
