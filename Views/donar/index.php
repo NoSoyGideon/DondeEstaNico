@@ -19,7 +19,7 @@
       font-family: Arial, sans-serif;
       background: var(--light);
       color: #333;
-      padding:20px;
+      
     }
     .container {
       display: flex;
