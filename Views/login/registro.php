@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          alert("✅ Cuenta creada exitosamente");
+           window.location.reload();
         } else {
           errorDiv.innerHTML = `
             <ul class="list-disc pl-5 space-y-1">

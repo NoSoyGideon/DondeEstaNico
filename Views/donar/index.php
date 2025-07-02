@@ -142,9 +142,10 @@
   </style>
 
 </head>
+<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
 <body>
 
-<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
+
   <div class="container">
     <!-- Bloque izquierdo -->
     <div class="block left">

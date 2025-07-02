@@ -1,5 +1,7 @@
 <?php
 require_once 'Config/Config.php';
+require_once 'Config/Helpers.php';
+
 
 class login extends Controller {
     public function __construct() {
@@ -21,19 +23,34 @@ class login extends Controller {
     }
 
     public function validar() {
-        $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
-        $user = $this->model->getUsuario($usuario);
+        header('Content-Type: application/json');
+        $correo = $_POST['correo'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $errores = [];
 
-        if ($user && password_verify($password, $user['clave'])) {
-            $_SESSION['id_usuario'] = $user['id'];
-            $_SESSION['nombre'] = $user['nombre'];
-            header('Location: ' . BASE_URL . 'home');
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL))
+            $errores[] = "Correo no válido.";
+        if (empty($password))
+            $errores[] = "Ingresa tu contraseña.";
+
+        if ($user = $this->model->getUsuarioPorCorreo($correo)) {
+            if (!password_verify($password, $user['clave'])) {
+                $errores[] = "Contraseña incorrecta.";
+            }
         } else {
-            $data['error'] = "Credenciales inválidas";
-            $this->views->getView('login', 'error', $data);
+            $errores[] = "El usuario no existe.";
         }
+
+        if ($errores) {
+            echo json_encode(['success' => false, 'errores' => $errores]);
+            return;
+        }
+
+        iniciarSesion($user);
+
+        echo json_encode(['success' => true]);
     }
+
 
     public function guardar()
 {   
@@ -56,27 +73,37 @@ class login extends Controller {
     if (strlen($clave) < 8 || !preg_match('/[A-Z]/', $clave) || !preg_match('/[0-9]/', $clave)) {
         $errores[] = "Contraseña insegura";
     }
+// Verificar si el usuario ya existe
+$existe = $this->model->getUsuarioPorCorreo($correo);
+if ($existe) {
+    $errores[] = "Este correo ya está registrado";
+}
 
-    // Verificar si el usuario ya existe
-    $existe = $this->model->getUsuarioPorCorreo($correo);
-    if ($existe) {
-        $errores[] = "Este correo ya está registrado";
-    }
+if (!empty($errores)) {
+    echo json_encode(["success" => false, "errores" => $errores]);
+    return;
+}
 
-    if (!empty($errores)) {
-        echo json_encode(["success" => false, "errores" => $errores]);
-        return;
-    }
+// Guardar si todo está bien
+$claveHash = password_hash($clave, PASSWORD_DEFAULT);
+$this->model->crearUsuario($nombre, $claveHash, $correo);
 
-    // Guardar si todo está bien
-    $claveHash = password_hash($clave, PASSWORD_DEFAULT);
-    $this->model->crearUsuario($nombre, $claveHash, $correo);
-    echo json_encode(["success" => true]);
+// Obtener al nuevo usuario
+$user = $this->model->getUsuarioPorCorreo($correo);
+
+
+    iniciarSesion($user);
+
+echo json_encode(["success" => true]);
+
 }
 
 
     public function logout() {
-        session_destroy();
-        header('Location: ' . BASE_URL . 'login');
+        
+    cerrarSesion();
+    // Volver a la página anterior
+    $back = $_SERVER['HTTP_REFERER'] ?? BASE_URL . 'home';
+    header("Location: $back");
     }
 }
