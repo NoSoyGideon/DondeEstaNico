@@ -15,9 +15,9 @@ class Adoptar extends Controller {
   public function index() {
     $mascotas = $this->model->getMascotas();
     $data['mascotas'] = $mascotas;
-
-    $data['razasPerros'] = RazaHelper::getRazasPerros();
-    $data['razasGatos'] = RazaHelper::getRazasGatos();
+    // Carga las razas con colores al inicio
+    $data['razasConColor'] = obtenerRazasConColor();
+    
 
     $data['title'] = 'Adoptar una mascota';
     $this->views->getView('adoptar', 'index', $data);

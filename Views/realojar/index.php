@@ -15,114 +15,50 @@ $states = ['Distrito Capital','Miranda','Caracas','Zulia','Carabobo'];
 </head>
 <body>
 <?php include_once(__DIR__ . '/../Templates/header.php'); ?>
-<div class="container">
-  
-  <!-- Section 1 -->
-  <div class="section">
-    <div class="progress-bar">
-      <div class="progress"></div>
-      <div class="marker"><svg viewBox="0 0 24 24"><path d="M12 2L15 8H9l3-6z"/></svg></div>
-    </div>
-    <p>Paso <strong>1</strong> de <strong>4</strong>: Información inicial</p>
+
+<form action="<?php echo BASE_URL; ?>realojar/cargarIMG" method="POST" enctype="multipart/form-data">
+
+
+
+ <div class="upload-container">
+    <label for="file-upload" class="custom-upload-button">
+      <span class="upload-label">Sube tu imagen</span>
+      <svg class="camera-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <img id="preview-image" alt="Preview" />
+    </label>
+    <input type="file" id="fileInput" accept="image/*" hidden>
   </div>
 
-  <!-- Section 2 -->
-  <div class="section" id="section-2">
-    <?php if(isset($_SESSION['nombre'])): ?>
-      <div class="auth-view" id="auth-view">
-        <h2>Hola, <?= htmlspecialchars($_SESSION['nombre']) ?>!</h2>
-        <p class="sub"><?= htmlspecialchars($_SESSION['correo']) ?></p>
-        <p class="sub">¡Gracias por rehomear con nosotros!</p>
-        <label><input type="checkbox" id="agree"> Acepto los<a href="#">Términos & Privacidad</a><span class="required">*</span></label>
-        <button class="btn btn-primary" id="startBtn" disabled>Start</button>
-      </div>
-
-      <form id="petForm" method="POST" enctype="multipart/form-data" action="<?= BASE_URL ?>realojar/guardar">
 
 
-        <?php
-        foreach (['nombre'=>'Nombre de la mascota','edad'=>'Edad (años)'] as $name=>$label): ?>
-          <div class="form-field">
-            <label><?= $label ?><span class="required">*</span></label>
-            <input type="text" name="<?= $name ?>" required>
-          </div>
-        <?php endforeach; ?>
-        <?php foreach (['Altura (cm)'=>'height','Peso (kg)'=>'weight'] as $label=>$name): ?>
-          <div class="form-field">
-            <label><?= $label ?><span class="required">*</span></label>
-            <input type="number" name="<?= $name ?>" required>
-          </div>
-        <?php endforeach; ?>
 
-        <div class="form-field"><label>Género<span class="required">*</span></label><select name="gender" required><option value="">Seleccionar</option><option>Hombre</option><option>Mujer</option></select></div>
-        <div class="form-field"><label>Raza<span class="required">*</span></label><select name="breed" required><option value="">Seleccionar</option><?php foreach($breeds as $b): ?><option><?= htmlspecialchars($b)?></option><?php endforeach; ?></select></div>
-        <div class="form-field"><label>Color<span class="required">*</span></label><select name="color" required><option value="">Seleccionar</option><?php foreach($colors as $c): ?><option><?= htmlspecialchars($c)?></option><?php endforeach; ?></select></div>
-        <div class="form-field"><label>Estado (Venezuela)<span class="required">*</span></label><select name="state" required><option value="">Seleccionar</option><?php foreach($states as $s): ?><option><?= htmlspecialchars($s)?></option><?php endforeach; ?></select></div>
-        <div class="form-field"><label>Dirección</label><input type="text" name="address"></div>
+  <button type="submit">Subir Foto</button>
+</form>
 
-        <div class="form-field">
-          <label>Comparte sobre tu mascota</label>
-          <textarea name="notes" placeholder="Tu mascota será visible al público..."></textarea>
-        </div>
 
-        <div class="form-field">
-          <label>Fotos (una obligatoria)</label>
-          <div class="upload-grid">
-            <?php for($i=1;$i<=4;$i++): ?>
-              <div class="upload-box">
-                <input type="file" name="photo<?= $i ?>" <?= $i===1?'required':''?> accept="image/*">
-                <div><p><?= $i===1?'Main':'Foto '.$i?></p><svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2..."/></svg></div>
-              </div>
-            <?php endfor; ?>
-          </div>
-        </div>
 
-        <div class="footer">
-          <button type="button" class="btn btn-back" id="backBtn">Back</button>
-          <button type="submit" class="btn btn-secondary">Continue</button>
-        </div>
-      </form>
+<?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
 
-    <?php else: ?>
-      <div class="auth-view">
-        <img src="https://via.placeholder.com/120" alt="Registrarse">
-        <p class="sub">Debes registrarte para rehomear una mascota</p>
-        <button class="btn btn-primary" disabled>Start</button>
-      </div>
-    <?php endif; ?>
-  </div>
-</div>
-
+</body>
 <script>
-  const agree = document.getElementById('agree');
-  const startBtn = document.getElementById('startBtn');
-  const authView = document.getElementById('auth-view');
-  const form = document.getElementById('petForm');
-  agree?.addEventListener('change', () => startBtn.disabled = !agree.checked);
-  startBtn?.addEventListener('click', () => {
-    authView.style.display = 'none';
-    form.style.display = 'block';
-    window.scrollTo({top: form.offsetTop, behavior:'smooth'});
-  });
+const fileInput = document.getElementById("fileInput");
+const previewImg = document.getElementById("preview-image");
 
-  document.querySelectorAll('.upload-box input[type="file"]').forEach(input => {
-  input.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        const parent = input.parentElement;
-        parent.innerHTML = `<img src="${ev.target.result}" alt="preview">`;
-        parent.appendChild(input); // volvemos a añadir el input invisible para seguir funcionando
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+fileInput.addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    previewImg.src = e.target.result;
+    previewImg.style.display = "block";
+  };
+  reader.readAsDataURL(file);
 });
+
 </script>
 
-
-
-    
-</body>
 </html>

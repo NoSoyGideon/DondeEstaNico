@@ -45,7 +45,7 @@ class Realojar extends Controller {
     
 
     // Subir fotos
-   for ($i = 1; $i <= 4; $i++) {
+    for ($i = 1; $i <= 4; $i++) {
   if (!empty($_FILES["photo$i"]["name"])) {
     $nombreOriginal = basename($_FILES["photo$i"]["name"]);
     $nombreFinal = uniqid("mascota_") . "_" . $nombreOriginal;
@@ -67,5 +67,34 @@ class Realojar extends Controller {
 
 
     header("Location: " . BASE_URL . "adoptar");
+  }
+
+
+
+
+
+  public function cargarIMG() {
+     $archivo = $_FILES['foto'];
+         if ($archivo['error'] === UPLOAD_ERR_OK) {
+        $nombreTmp = $archivo['tmp_name'];
+        $nombreOriginal = basename($archivo['name']);
+        
+        // Carpeta donde guardar las imágenes (debe existir y tener permisos de escritura)
+        $carpetaDestino = __DIR__ . "/../Assets/images/mascotas/";
+
+        // Puedes crear un nombre único para evitar sobreescritura
+        $nombreNuevo = uniqid() . '-' . $nombreOriginal;
+
+        // Mover el archivo desde temporal a la carpeta destino
+        if (move_uploaded_file($nombreTmp, $carpetaDestino . $nombreNuevo)) {
+            echo "La imagen se ha subido correctamente.";
+            // Aquí puedes guardar $nombreNuevo en base de datos para asociarlo al usuario
+        } else {
+            echo "Error al mover la imagen.";
+        }
+    } else {
+        echo "Error en la subida del archivo.";
+    }
+  
   }
 }
