@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__ . '/../Config/RazaHelper.php'; 
 class Adoptar extends Controller {
   protected $model;
 
@@ -13,6 +15,10 @@ class Adoptar extends Controller {
   public function index() {
     $mascotas = $this->model->getMascotas();
     $data['mascotas'] = $mascotas;
+
+    $data['razasPerros'] = RazaHelper::getRazasPerros();
+    $data['razasGatos'] = RazaHelper::getRazasGatos();
+
     $data['title'] = 'Adoptar una mascota';
     $this->views->getView('adoptar', 'index', $data);
   }

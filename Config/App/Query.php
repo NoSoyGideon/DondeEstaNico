@@ -15,11 +15,11 @@ public function select(string $sql, array $datos = [])
     return $data;
 }
 
-    public function selectAll(string $sql)
+    public function selectAll(string $sql,array $datos = [])
     {
         $this->sql = $sql;
         $resul = $this->con->prepare($this->sql);
-        $resul->execute();
+        $resul->execute($this->datos);
         $data = $resul->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
@@ -49,5 +49,8 @@ public function select(string $sql, array $datos = [])
         }
         return $res;
     }
+    public function lastInsertId() {
+    return $this->con->lastInsertId();
+}
 }
 ?>

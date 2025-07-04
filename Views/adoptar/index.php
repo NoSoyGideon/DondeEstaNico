@@ -65,8 +65,13 @@
     ];
     return $map[$type][$value] ?? "bg-gray-100 text-gray-600";
 }
-      foreach ($data['mascotas'] as $m): ?>
+      foreach ($data['mascotas'] as $m): 
 
+      $claseColorParaMostrar = RazaHelper::getColorPorRaza($m['nombre_raza'], $m['especie']);
+
+    
+      ?>
+    
 <div class="bg-white rounded-lg shadow-md overflow-hidden">
     <div class="relative">
         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
@@ -96,7 +101,7 @@
             </div>
             <div class="flex justify-between">
                 <span class="text-sm text-gray-600">Breed:</span>
-                <span class="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded"><?= $m['nombre_raza'] ?></span>
+                <span class="text-sm <?= $claseColorParaMostrar ?> px-2 py-1 rounded"><?= $m['nombre_raza'] ?></span>
             </div>
             <div class="flex justify-between">
                 <span class="text-sm text-gray-600">Age:</span>

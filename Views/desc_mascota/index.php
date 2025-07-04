@@ -14,11 +14,10 @@
     // 1. Get the pet ID from the URL
     $petId = isset($_GET['id']) ? (int)$_GET['id'] : null;
     $mascota = $data['mascotas'] ?? null;
-    
- 
- 
- include_once(__DIR__ . '/../Templates/header.php');
- 
+    $foto = $data['fotos'][0]['url_foto'] ?? null;
+
+    include_once(__DIR__ . '/../Templates/header.php');
+
  
  ?>
   <div class="pet-profile">
@@ -38,7 +37,7 @@
     <!-- Gallery + Story -->
     <div class="gallery-story">
       <div class="gallery">
-        <img id="mainImage" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Main image">
+        <img id="mainImage" src="<?= BASE_URL . $foto ?>" alt="Main image">
         <div class="thumbnails">
           <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
           <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">

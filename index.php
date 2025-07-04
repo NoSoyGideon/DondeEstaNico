@@ -20,6 +20,7 @@ if (!empty($array[2])) {
 }
 require_once 'Config/App/Autoload.php';
 require_once 'Config/Helpers.php';
+require_once 'Config/RazaHelper.php';
 $dirControllers = "Controllers/" . $controller . ".php";
 if (file_exists($dirControllers)) {
     require_once $dirControllers;

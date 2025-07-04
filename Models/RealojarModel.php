@@ -13,5 +13,10 @@ class RealojarModel extends Query {
     $sql = "SELECT * FROM usuario WHERE correo = ?";
     return $this->select($sql, [$correo]);
 }
+ public function getRazaIdByNombre($nombre) {
+    $sql = "SELECT id FROM razas WHERE nombre_raza = ?";
+    $raza = $this->select($sql, [$nombre]);
+    return $raza ? $raza['id'] : null;
+  }
 
 }
