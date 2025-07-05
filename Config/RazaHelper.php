@@ -25,10 +25,7 @@ function obtenerRazasDePerros(): array {
     $perros = [];
     foreach ($razasConColor as $raza) {
         if (strtolower($raza['especie']) === 'perro') {
-            $perros[] = [
-                'nombre_raza' => $raza['nombre_raza'],
-                'color' => $raza['color']
-            ];
+            $perros[] = $raza['nombre_raza'];
         }
     }
     return $perros;
@@ -39,10 +36,7 @@ function obtenerRazasDeGatos(): array {
     $razasConColor = obtenerRazasConColor();
     foreach ($razasConColor as $raza) {
         if (strtolower($raza['especie']) === 'gato') {
-            $gatos[] = [
-                'nombre_raza' => $raza['nombre_raza'],
-                'color' => $raza['color']
-            ];
+            $gatos[] = $raza['nombre_raza'];
         }
     }
     return $gatos;

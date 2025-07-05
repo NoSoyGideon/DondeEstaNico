@@ -19,4 +19,11 @@ class RealojarModel extends Query {
     return $raza ? $raza['id'] : null;
   }
 
+
+ public function getEtiquetas() {
+    $sql = "SELECT * FROM etiquetas order by id;";
+    return $this->selectAll($sql);
+  }
+
+
 }
