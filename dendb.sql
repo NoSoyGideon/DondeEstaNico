@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2025 at 09:48 PM
+-- Generation Time: Jul 05, 2025 at 11:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,6 +51,38 @@ CREATE TABLE `donacion` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `etiquetas`
+--
+
+CREATE TABLE `etiquetas` (
+  `id` int(11) NOT NULL,
+  `etiqueta` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `etiquetas`
+--
+
+INSERT INTO `etiquetas` (`id`, `etiqueta`) VALUES
+(5, 'activo'),
+(11, 'adapta a espacios pequeños'),
+(10, 'amigable con niños'),
+(7, 'cariñoso'),
+(15, 'fácil de entrenar'),
+(8, 'guardian'),
+(9, 'independiente'),
+(14, 'inteligente'),
+(1, 'juguetón'),
+(12, 'necesita mucho ejercicio'),
+(13, 'no ladra mucho'),
+(6, 'obediente'),
+(3, 'peludo'),
+(2, 'sociable'),
+(4, 'tranquilo');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mascota`
 --
 
@@ -71,24 +103,34 @@ CREATE TABLE `mascota` (
   `peso` decimal(5,2) NOT NULL,
   `color` varchar(20) NOT NULL,
   `usuario_origen_id` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
-  `raza_id` int(11) DEFAULT NULL
+  `raza_id` int(11) DEFAULT NULL,
+  `direccion` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `mascota`
 --
 
-INSERT INTO `mascota` (`id`, `nombre`, `especie`, `genero`, `fecha_nacimiento`, `edad_minima`, `edad_maxima`, `descripcion`, `estatus`, `fecha_ingreso`, `rescatada`, `estado`, `altura`, `peso`, `color`, `usuario_origen_id`, `raza_id`) VALUES
-(00001, 'Max', 'perro', 1, '2022-03-15', 1, 2, 'Juguetón y amigable', 'adopcion', '2024-06-01 00:00:00', 1, 'Distrito Cap', 60.00, 25.00, 'Marrón', 00001, 2),
-(00002, 'Luna', 'gato', 1, '2021-08-10', 2, 4, 'Muy cariñosa', 'adoptada', '2024-05-12 00:00:00', 0, 'Lara', 30.00, 5.00, 'Blanco', 00002, 6),
-(00003, 'Rocky', 'perro', 1, '2023-01-20', 0, 1, 'Cachorro activo', 'adopcion', '2024-06-15 00:00:00', 1, 'Zulia', 40.00, 10.00, 'Negro', 00001, 1),
-(00004, 'Milo', 'gato', 1, '2020-05-25', 3, 5, 'Tranquilo y observador', 'rescatada', '2024-04-20 00:00:00', 1, 'Miranda', 35.00, 6.00, 'Gris', 00001, 7),
-(00005, 'Nala', 'perro', 1, '2022-12-01', 1, 2, 'Muy juguetona', 'adopcion', '2024-06-10 00:00:00', 0, 'Carabobo', 50.00, 20.00, 'Dorado', 00001, 3),
-(00006, 'Simba', 'gato', 1, '2023-03-05', 0, 1, 'Curioso y sociable', 'adopcion', '2024-06-18 00:00:00', 1, 'Anzoátegui', 32.00, 4.00, 'Naranja', 00001, 8),
-(00007, 'Toby', 'perro', 1, '2021-09-14', 2, 3, 'Le encanta correr', 'adoptada', '2024-05-22 00:00:00', 0, 'Táchira', 55.00, 18.00, 'Negro y blanco', 00001, 4),
-(00008, 'Mía', 'gato', 1, '2022-07-30', 1, 2, 'Muy tranquila', 'adopcion', '2024-06-05 00:00:00', 1, 'Mérida', 28.00, 3.00, 'Blanco y gris', 00001, 11),
-(00009, 'Thor', 'perro', 1, '2020-11-22', 3, 5, 'Fuerte y protector', 'adopcion', '2024-05-30 00:00:00', 1, 'Aragua', 65.00, 30.00, 'Marrón oscuro', 00001, 5),
-(00010, 'Cleo', 'gato', 1, '2023-02-14', 0, 1, 'Pequeña y juguetona', 'rescatada', '2024-06-20 00:00:00', 0, 'Bolívar', 29.00, 4.00, 'Negro', 00001, 9);
+INSERT INTO `mascota` (`id`, `nombre`, `especie`, `genero`, `fecha_nacimiento`, `edad_minima`, `edad_maxima`, `descripcion`, `estatus`, `fecha_ingreso`, `rescatada`, `estado`, `altura`, `peso`, `color`, `usuario_origen_id`, `raza_id`, `direccion`) VALUES
+(00001, 'Luna', 'perro', 1, '2021-04-15', NULL, NULL, 'We have had Luna since she was a puppy. She currently lives with a family and is very loving with children. Luna gets along well with other dogs and doesn’t react negatively to cats or birds. She enjoys outdoor play and is fully house-trained.', 'adopcion', '2024-06-10 00:00:00', 1, 'Zulia', 45.00, 15.20, 'Negro con blanco', 00001, 1, 'Calle 67 con Av 15, Maracaibo'),
+(00002, 'Michi', 'gato', 0, NULL, 2, 3, 'Michi is a young and energetic male cat. He loves to chase feather toys and sleep near sunny windows. He is used to people, including children, and enjoys both company and independence. Ideal for someone looking for a playful companion.', 'adopcion', '2024-05-20 00:00:00', 0, 'Carabobo', 22.00, 3.80, 'Gris', 00002, 24, 'Calle Comercio, Valencia'),
+(00003, 'Rocky', 'perro', 0, '2019-11-10', NULL, NULL, 'Rocky was rescued from the streets in bad shape, but he recovered wonderfully. He is calm, obedient, and protective. He’s used to living in a house with a yard and is a great companion for adults. He was recently adopted by a loving family.', 'adoptada', '2023-12-01 00:00:00', 1, 'Miranda', 60.50, 23.40, 'Marrón oscuro', 00003, 15, 'Av. Principal de Guatire'),
+(00004, 'Nieve', 'gato', 1, '2023-03-01', NULL, NULL, 'Nieve is a gentle Persian cat with a calm temperament. She enjoys lounging on soft surfaces and is not a fan of loud noises. Perfect for a quiet home or apartment. Gets along with adults and older children.', 'adopcion', '2024-07-01 00:00:00', 0, 'Distrito Cap', 28.00, 4.20, 'Blanco', 00001, 26, 'Av Urdaneta, Caracas'),
+(00005, 'Max', 'perro', 0, NULL, 0, 1, 'Max was found abandoned near a park. Despite a rough start, he is very playful and curious. He is currently learning basic obedience and adapting well to home life. He will need regular checkups and a loving family to continue thriving.', 'rescatada', '2024-06-22 00:00:00', 1, 'Lara', 30.00, 7.00, 'Beige', 00002, 22, 'Sector el Cuji, Barquisimeto'),
+(00006, 'Tigre', 'gato', 0, NULL, 1, 2, 'Tigre has a strong personality and loves to climb and jump. He needs space to play and loves exploring high places. Not ideal for very young kids, but great with teens and adults. Fully litter-trained and independent.', 'adopcion', '2024-06-15 00:00:00', 1, 'Anzoátegui', 26.00, 3.50, 'Atigrado', 00003, 24, 'Calle principal de Puerto La Cruz'),
+(00007, 'Coco', 'perro', 0, '2020-09-30', NULL, NULL, 'Coco is an affectionate labrador who thrives on human interaction. He enjoys long walks, fetching balls, and being brushed. Gets along with other dogs and is perfect for a family with children or an active individual.', 'adopcion', '2024-06-28 00:00:00', 0, 'Aragua', 58.00, 26.00, 'Amarillo', 00002, 18, 'La Victoria, calle Bolívar'),
+(00008, 'Shadow', 'gato', 0, NULL, 2, 4, 'Shadow is a reserved cat who takes time to warm up to new people, but once he does, he’s extremely loyal. He’s perfect for someone patient looking for a calm indoor companion. Best in a home without other pets.', 'adopcion', '2024-05-10 00:00:00', 0, 'Mérida', 27.50, 4.00, 'Gris azulado', 00001, 30, 'Urbanización Los Sauzales, Mérida');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mascota_etiquetas`
+--
+
+CREATE TABLE `mascota_etiquetas` (
+  `mascota_id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `etiqueta_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -108,26 +150,22 @@ CREATE TABLE `mascota_fotos` (
 --
 
 INSERT INTO `mascota_fotos` (`id`, `mascota_id`, `url_foto`, `orden`) VALUES
-(1, 00001, 'https://ejemplo.com/fotos/max_1.jpg', 1),
-(2, 00001, 'https://ejemplo.com/fotos/max_2.jpg', 2),
-(3, 00002, 'https://ejemplo.com/fotos/luna_1.jpg', 1),
-(4, 00002, 'https://ejemplo.com/fotos/luna_2.jpg', 2),
-(5, 00003, 'https://ejemplo.com/fotos/rocky_1.jpg', 1),
-(6, 00003, 'https://ejemplo.com/fotos/rocky_2.jpg', 2),
-(7, 00004, 'https://ejemplo.com/fotos/milo_1.jpg', 1),
-(8, 00004, 'https://ejemplo.com/fotos/milo_2.jpg', 2),
-(9, 00005, 'https://ejemplo.com/fotos/nala_1.jpg', 1),
-(10, 00005, 'https://ejemplo.com/fotos/nala_2.jpg', 2),
-(11, 00006, 'https://ejemplo.com/fotos/simba_1.jpg', 1),
-(12, 00006, 'https://ejemplo.com/fotos/simba_2.jpg', 2),
-(13, 00007, 'https://ejemplo.com/fotos/toby_1.jpg', 1),
-(14, 00007, 'https://ejemplo.com/fotos/toby_2.jpg', 2),
-(15, 00008, 'https://ejemplo.com/fotos/mia_1.jpg', 1),
-(16, 00008, 'https://ejemplo.com/fotos/mia_2.jpg', 2),
-(17, 00009, 'https://ejemplo.com/fotos/thor_1.jpg', 1),
-(18, 00009, 'https://ejemplo.com/fotos/thor_2.jpg', 2),
-(19, 00010, 'https://ejemplo.com/fotos/cleo_1.jpg', 1),
-(20, 00010, 'https://ejemplo.com/fotos/cleo_2.jpg', 2);
+(1, 00001, 'assets/img/mascotas/luna_1.jpg', 1),
+(2, 00001, 'assets/img/mascotas/luna_2.jpg', 2),
+(3, 00002, 'assets/img/mascotas/michi_1.jpg', 1),
+(4, 00002, 'assets/img/mascotas/michi_2.jpg', 2),
+(5, 00003, 'assets/img/mascotas/rocky_1.jpg', 1),
+(6, 00003, 'assets/img/mascotas/rocky_2.jpg', 2),
+(7, 00004, 'assets/img/mascotas/nieve_1.jpg', 1),
+(8, 00004, 'assets/img/mascotas/nieve_2.jpg', 2),
+(9, 00005, 'assets/img/mascotas/max_1.jpg', 1),
+(10, 00005, 'assets/img/mascotas/max_2.jpg', 2),
+(11, 00006, 'assets/img/mascotas/tigre_1.jpg', 1),
+(12, 00006, 'assets/img/mascotas/tigre_2.jpg', 2),
+(13, 00007, 'assets/img/mascotas/coco_1.jpg', 1),
+(14, 00007, 'assets/img/mascotas/coco_2.jpg', 2),
+(15, 00008, 'assets/img/mascotas/shadow_1.jpg', 1),
+(16, 00008, 'assets/img/mascotas/shadow_2.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -146,17 +184,40 @@ CREATE TABLE `razas` (
 --
 
 INSERT INTO `razas` (`id`, `nombre_raza`, `especie`) VALUES
-(1, 'Pastor Alemán', 'perro'),
-(2, 'Labrador Retriever', 'perro'),
-(3, 'Golden Retriever', 'perro'),
-(4, 'Pug', 'perro'),
-(5, 'Bulldog Francés', 'perro'),
-(6, 'Siamés', 'gato'),
-(7, 'Persa', 'gato'),
-(8, 'Maine Coon', 'gato'),
-(9, 'Bengalí', 'gato'),
-(10, 'Mestizo', 'perro'),
-(11, 'Mestizo', 'gato');
+(1, 'Poodle mini toy', 'perro'),
+(2, 'Chihuahua', 'perro'),
+(3, 'Schnauzer miniatura', 'perro'),
+(4, 'Pomerania', 'perro'),
+(5, 'Yorkshire Terrier', 'perro'),
+(6, 'Shih Tzu', 'perro'),
+(7, 'Maltés', 'perro'),
+(8, 'Poodle mediano', 'perro'),
+(9, 'Cocker Spaniel', 'perro'),
+(10, 'Beagle', 'perro'),
+(11, 'French Bulldog', 'perro'),
+(12, 'Fox Terrier', 'perro'),
+(13, 'Border Collie', 'perro'),
+(14, 'Dachshund (Salchicha)', 'perro'),
+(15, 'Pastor Alemán', 'perro'),
+(16, 'Rottweiler', 'perro'),
+(17, 'Golden Retriever', 'perro'),
+(18, 'Labrador Retriever', 'perro'),
+(19, 'Dóberman', 'perro'),
+(20, 'Husky Siberiano', 'perro'),
+(21, 'Boxer', 'perro'),
+(22, 'Mestizo pequeño', 'perro'),
+(23, 'Mestizo mediano', 'perro'),
+(24, 'Mestizo grande', 'perro'),
+(25, 'Criollo', 'gato'),
+(26, 'Siamés', 'gato'),
+(27, 'Persa', 'gato'),
+(28, 'Angora Turco', 'gato'),
+(29, 'Maine Coon', 'gato'),
+(30, 'Ragdoll', 'gato'),
+(31, 'British Shorthair', 'gato'),
+(32, 'Azul Ruso', 'gato'),
+(33, 'Mestizo de pelo corto', 'gato'),
+(34, 'Mestizo de pelo largo', 'gato');
 
 -- --------------------------------------------------------
 
@@ -198,8 +259,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `telefono`, `correo`, `clave`, `admin`, `redes`, `fecha_registro`, `estado`, `descripcion`, `direccion`) VALUES
-(00001, 'pingo', NULL, 'd@gmail.com', '$2y$10$xoshdLXOYkunPDL2y/mbuOPcNjjEuppxuBPHSfiBAY0fQn1fee8va', 0, NULL, '2025-06-30 12:15:59', NULL, NULL, NULL),
-(00002, 'Orlando Marcano', NULL, 'ds@gmail.com', '$2y$10$uMAebTqBzFoJBNKZy4mel.IZfZTkovphVUDkJcuFukbvFvJGemaDC', 0, NULL, '2025-07-01 09:44:41', NULL, NULL, NULL);
+(00001, 'Orlando Marcano', NULL, 'GedeonP2312@gmail.com', '$2y$10$ysze3eSAwztDrvv6WFzvsu.kVCFEusZI7Abbc7N1J5k49ZpbpGMiS', 0, NULL, '2025-07-04 12:51:57', NULL, NULL, NULL),
+(00002, 'Paola Reyes', NULL, 'pvrs400@gmail.com', '$2y$10$yyWFl9kPmEXOVu70k1zINevQM17WDjNteVbtPZrjZVmW2Cg89i1Je', 0, NULL, '2025-07-04 12:52:17', NULL, NULL, NULL),
+(00003, 'Gasperini', NULL, 'qwertyuiop@gmail.com', '$2y$10$gLWz6dKYcG9YdZ9olc6rWu6xgGysLxMWodvB8W2q3b6Bp9ssaQKBq', 0, NULL, '2025-07-04 12:52:38', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -222,12 +284,26 @@ ALTER TABLE `donacion`
   ADD KEY `fk_donacion_usuario` (`usuario_id`);
 
 --
+-- Indexes for table `etiquetas`
+--
+ALTER TABLE `etiquetas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `etiqueta` (`etiqueta`);
+
+--
 -- Indexes for table `mascota`
 --
 ALTER TABLE `mascota`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_mascota_usuario_origen` (`usuario_origen_id`),
   ADD KEY `fk_mascota_raza` (`raza_id`);
+
+--
+-- Indexes for table `mascota_etiquetas`
+--
+ALTER TABLE `mascota_etiquetas`
+  ADD PRIMARY KEY (`mascota_id`,`etiqueta_id`),
+  ADD KEY `etiqueta_id` (`etiqueta_id`);
 
 --
 -- Indexes for table `mascota_fotos`
@@ -273,22 +349,28 @@ ALTER TABLE `donacion`
   MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `etiquetas`
+--
+ALTER TABLE `etiquetas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `mascota_fotos`
 --
 ALTER TABLE `mascota_fotos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `razas`
 --
 ALTER TABLE `razas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `rehome`
@@ -300,7 +382,7 @@ ALTER TABLE `rehome`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -325,6 +407,13 @@ ALTER TABLE `donacion`
 ALTER TABLE `mascota`
   ADD CONSTRAINT `fk_mascota_raza` FOREIGN KEY (`raza_id`) REFERENCES `razas` (`id`),
   ADD CONSTRAINT `fk_mascota_usuario_origen` FOREIGN KEY (`usuario_origen_id`) REFERENCES `usuario` (`id`);
+
+--
+-- Constraints for table `mascota_etiquetas`
+--
+ALTER TABLE `mascota_etiquetas`
+  ADD CONSTRAINT `mascota_etiquetas_ibfk_1` FOREIGN KEY (`mascota_id`) REFERENCES `mascota` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `mascota_etiquetas_ibfk_2` FOREIGN KEY (`etiqueta_id`) REFERENCES `etiquetas` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `mascota_fotos`
