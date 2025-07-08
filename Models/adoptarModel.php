@@ -6,11 +6,7 @@ class adoptarModel extends Query{
         parent::__construct();
     }
 
-<<<<<<< Updated upstream
-}
- 
-?>
-=======
+
     public function getMascotas() {
         $sql = "WITH fotos_ordenadas AS (
   SELECT *,
@@ -40,4 +36,4 @@ WHERE m.estatus != 'adoptada';";
         return $this->selectAll($sql);
     }
 }?>
->>>>>>> Stashed changes
+

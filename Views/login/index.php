@@ -44,7 +44,7 @@
         </div>
 
         <!-- Formulario de registro -->
-        <?php include_once 'modals/register-modal.php'; ?>
+        <?php include_once 'registro.php'; ?>
         
         <!-- Enlace para iniciar sesión -->
         <p class="text-center text-sm text-gray-600 mt-6">
@@ -67,7 +67,7 @@
         </div>
         
         <!-- Formulario de login -->
-        <?php include_once 'modals/login-modal.php'; ?>
+        <?php include_once 'login.php'; ?>
         
         <!-- Enlace para registrarse -->
         <p class="text-center text-sm text-gray-600 mt-6">

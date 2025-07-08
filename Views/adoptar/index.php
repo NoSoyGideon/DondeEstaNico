@@ -1,7 +1,3 @@
-<?php
-
-require_once '../../Config/Config.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +11,9 @@ require_once '../../Config/Config.php';
 </head>
 <body>
 
-<<<<<<< Updated upstream
-  <?php include_once '../Templates/header.php'; ?>
-=======
 
 
 <?php include_once(__DIR__ . '/../Templates/header.php'); ?>
->>>>>>> Stashed changes
 
 <main >
   <section class="hero">
@@ -39,19 +31,6 @@ require_once '../../Config/Config.php';
 
 
 
-<<<<<<< Updated upstream
-  <!-- RESULTADOS DE MASCOTAS -->
-  <section class="mascotas-section">
-    <div class="mascotas-grid">
-      <!-- Temporal: mascotas de ejemplo -->
-      <?php for ($i = 1; $i <= 9; $i++): ?>
-         <div class="mascota-card">
-          <img src="<?php echo BASE_URL; ?>assets/images/dieta.jpg" alt="Mascota <?= $i ?>">
-        </div>
-      <?php endfor; ?>
-    </div>
-  </section>
-=======
 
  
   <section class="seccion-chat">
@@ -76,7 +55,7 @@ require_once '../../Config/Config.php';
 <section class="max-w-7xl mx-auto mt-20 px-4">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 " id="lista-mascotas">
          <?php 
-      foreach ($data['mascotas'] as $m): 
+       foreach ($data['mascotas'] as $m): 
 
       
 
@@ -186,10 +165,9 @@ require_once '../../Config/Config.php';
       <?php endforeach; ?>
 </section>
 
->>>>>>> Stashed changes
 </main>
 
- <?php include_once '../Templates/footer.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
 
 
 

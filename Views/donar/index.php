@@ -1,19 +1,10 @@
 <?php
-<<<<<<< Updated upstream
-
-require_once '../../Config/Config.php';
-// paginación simulada
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-$totalPages = 3;
-?>
-=======
 // index.php - Página principal de donaciones
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/database.php';
 
 // Inicializar la base de datos
 $db = new DonationDatabase();
->>>>>>> Stashed changes
 
 // Obtener estadísticas para mostrar en la página
 $stats = $db->getDonationStats();
@@ -23,42 +14,6 @@ $stats = $db->getDonationStats();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< Updated upstream
-    <title>Document</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/donar.css">
-    <script defer src="<?php echo BASE_URL; ?>Assets/js/adopcion.js"></script>
-
-</head>
-<body>
-
-  <?php include_once '../Templates/header.php'; ?>
-<div class="donation-container">
-  <h1>RESCUES</h1>
-  <p class="subtitle">Find out more about the rescues and shelters using PetMatch and the amazing work they do.</p>
-  <div class="divider"></div>
-
-  <div class="filters">
-    <select name="state">
-      <option value="">Todos los estados</option>
-      <option value="tx">Texas</option>
-      <option value="ca">California</option>
-    </select>
-    <button>Filtrar</button>
-  </div>
-
-  <?php include 'rescue_list.php'; ?>
-
-  <div class="pagination">
-    <?php for($i=1; $i<= $totalPages; $i++): ?>
-      <button class="<?= $i==$page?'active':'' ?>"><?= $i ?></button>
-    <?php endfor; ?>
-    <button>Last</button>
-  </div>
-  </div>
-
- <?php include_once '../Templates/footer.php'; ?>
-
-=======
     <title>Donaciones - AdoptBuddies</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

@@ -1,13 +1,8 @@
-<?php
-/**
- * Componente de Modal de Registro
- * 
- * Este archivo contiene el formulario de registro que se muestra en el modal de autenticación.
- */
-?>
+<div id="form-errors" class="hidden bg-red-100 text-red-700 p-4 rounded mb-4 text-sm"></div>
 
 <!-- Formulario de registro -->
-<form class="space-y-4">
+<form id="formRegistro" class="space-y-4">
+
   <!-- Nombre Completo -->
   <div class="relative">
     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -15,7 +10,8 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
       </svg>
     </div>
-    <input type="text" placeholder="Nombre completo" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    <input type="text" name="nombre" placeholder="Nombre completo" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    
   </div>
 
   <!-- Correo electrónico -->
@@ -25,7 +21,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
       </svg>
     </div>
-    <input type="email" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    <input type="email" name="correo" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
   </div>
 
   <!-- Contraseña -->
@@ -35,7 +31,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
       </svg>
     </div>
-    <input type="password" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
+    <input type="password" name="clave" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
     <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
       <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,16 +92,83 @@
 
 <!-- Script para mostrar/ocultar campos de organización -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const rescueCenterToggle = document.getElementById('rescueCenterToggle');
   const rescueCenterFields = document.getElementById('rescueCenterFields');
 
-  rescueCenterToggle.addEventListener('change', function() {
-    if(this.checked) {
+  rescueCenterToggle.addEventListener('change', function () {
+    if (this.checked) {
       rescueCenterFields.classList.remove('hidden');
     } else {
       rescueCenterFields.classList.add('hidden');
     }
   });
+
+  document.getElementById('formRegistro').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nombre = document.querySelector('input[name="nombre"]').value.trim();
+    const correo = document.querySelector('input[name="correo"]').value.trim();
+    const clave = document.querySelector('input[name="clave"]').value.trim();
+    const errorDiv = document.getElementById('form-errors');
+
+    let errores = [];
+
+    if (!/^[a-zA-Z\s]+$/.test(nombre)) {
+      errores.push("El nombre solo puede contener letras y espacios.");
+    }
+
+    if (!/\S+@\S+\.\S+/.test(correo)) {
+      errores.push("El correo electrónico no es válido.");
+    }
+
+    if (clave.length < 8 || clave.length > 20) {
+      errores.push("La contraseña debe tener entre 8 y 20 caracteres.");
+    }
+    if (!/[A-Z]/.test(clave)) {
+      errores.push("Debe contener al menos una letra mayúscula.");
+    }
+    if (!/[0-9]/.test(clave)) {
+      errores.push("Debe contener al menos un número.");
+    }
+
+    if (errores.length > 0) {
+      errorDiv.innerHTML = `
+        <ul class="list-disc pl-5 space-y-1">
+          ${errores.map(err => `<li>${err}</li>`).join('')}
+        </ul>
+      `;
+      errorDiv.classList.remove('hidden');
+      return;
+    }
+
+    errorDiv.classList.add('hidden');
+
+    const formData = new FormData(e.target);
+
+    fetch('<?= BASE_URL ?>login/guardar', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+           window.location.reload();
+        } else {
+          errorDiv.innerHTML = `
+            <ul class="list-disc pl-5 space-y-1">
+              ${data.errores.map(err => `<li>${err}</li>`).join('')}
+            </ul>
+          `;
+          errorDiv.classList.remove('hidden');
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        errorDiv.innerHTML = "❌ Error al comunicarse con el servidor.";
+        errorDiv.classList.remove('hidden');
+      });
+  });
 });
 </script>
+

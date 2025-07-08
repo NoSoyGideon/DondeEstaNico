@@ -7,7 +7,9 @@
 ?>
 
 <!-- Formulario de inicio de sesión -->
-<form class="space-y-4">
+<form  id="formLogin" class="space-y-4">
+
+  <div id="login-errors" class="hidden bg-red-100 text-red-700 p-4 rounded mb-4 text-sm"></div>
   <!-- Correo electrónico -->
   <div class="relative">
     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -15,7 +17,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
       </svg>
     </div>
-    <input type="email" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
+    <input type="email" name="correo" placeholder="Correo electrónico" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none">
   </div>
 
   <!-- Contraseña -->
@@ -25,7 +27,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
       </svg>
     </div>
-    <input type="password" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
+    <input type="password" name="password" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
     <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
       <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,3 +81,45 @@
     </button>
   </div>
 </form>
+
+<script>
+document.getElementById('formLogin').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const correo = form.correo.value.trim();
+  const password = form.password.value;
+  const errorsDiv = document.getElementById('login-errors');
+
+  let errores = [];
+  if (!/\S+@\S+\.\S+/.test(correo)) errores.push("Correo no válido.");
+  if (password.length === 0) errores.push("Ingresa tu contraseña.");
+
+  if (errores.length) {
+    errorsDiv.innerHTML = `<ul class="list-disc pl-5">${errores.map(e => `<li>${e}</li>`).join('')}</ul>`;
+    errorsDiv.classList.remove('hidden');
+    return;
+  }
+  errorsDiv.classList.add('hidden');
+
+  fetch('<?= BASE_URL ?>login/validar', {
+    method: 'POST',
+    headers: {'Accept': 'application/json'},
+    body: new FormData(form)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      window.location.reload(); // recarga para actualizar header en la misma página
+    } else {
+      errorsDiv.innerHTML = `<ul class="list-disc pl-5">${data.errores.map(e => `<li>${e}</li>`).join('')}</ul>`;
+      errorsDiv.classList.remove('hidden');
+    }
+  })
+  .catch(() => {
+    errorsDiv.innerHTML = "❌ Error al comunicarse con el servidor.";
+    errorsDiv.classList.remove('hidden');
+  });
+});
+</script>
+
