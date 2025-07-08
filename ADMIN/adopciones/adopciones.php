@@ -1,0 +1,90 @@
+<?php
+// index.php - Listar Usuarios
+include_once '../../Config/Config.php';
+
+?><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'purple-main': '#675BC8',
+              'purple-dark': '#2E256F',
+              'purple-light': '#f3f0ff',
+              'purple-text': '#3d3477',
+              'black': '#0C0C0C',
+              'green-main': '#0A453A'
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="font-['Inter','Arial','Helvetica',sans-serif'] bg-purple-light min-h-screen flex">
+
+<?php include_once '../template/sidebar.php'; ?>
+
+<?php
+$conexion = new mysqli('localhost', 'root', '', 'DENDB');
+
+if ($conexion->connect_error) {
+    die("Connection failed: " . $conexion->connect_error);
+}
+
+$query = $conexion->query("SELECT id, nombre, correo, admin, fecha_registro FROM usuario ORDER BY fecha_registro DESC");
+
+if (!$query) {
+    die("Error en la consulta: " . $conexion->error);
+}
+?>
+
+<div class="flex-1 p-8">
+    <h2 class="text-3xl font-bold text-purple-main mb-6">Listado de Usuarios</h2>
+
+    <a href="crear.php" class="inline-block bg-green-main text-white px-4 py-2 rounded hover:bg-green-700 mb-6">+ Nuevo Usuario</a>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white rounded-lg shadow">
+            <thead class="bg-purple-main text-white">
+                <tr>
+                    <th class="py-3 px-4">ID</th>
+                    <th class="py-3 px-4">Nombre</th>
+                    <th class="py-3 px-4">Correo</th>
+                    <th class="py-3 px-4">Rol</th>
+                    <th class="py-3 px-4">Fecha Registro</th>
+                    <th class="py-3 px-4">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                <?php while($row = $query->fetch_assoc()): ?>
+                <tr class="border-t hover:bg-purple-light">
+                    <td class="py-2 px-4">#<?= str_pad($row['id'], 4, '0', STR_PAD_LEFT) ?></td>
+                    <td class="py-2 px-4"><?= htmlspecialchars($row['nombre']) ?></td>
+                    <td class="py-2 px-4"><?= htmlspecialchars($row['correo']) ?></td>
+                    <td class="py-2 px-4 capitalize">
+                        <?= $row['admin'] == 1 ? 'Administrador' : 'Usuario' ?>
+                    </td>
+                    <td class="py-2 px-4"><?= htmlspecialchars($row['fecha_registro']) ?></td>
+                    <td class="py-2 px-4">
+                        <a href="editar.php?id=<?= $row['id'] ?>" class="text-blue-500 hover:underline mr-2">Editar</a>
+                        <a href="eliminar.php?id=<?= $row['id'] ?>" class="text-red-500 hover:underline" onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php $conexion->close(); ?>
+
+</body>
+</html>
