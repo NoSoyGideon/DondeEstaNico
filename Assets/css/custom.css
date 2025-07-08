@@ -1,0 +1,125 @@
+/* AdoptBuddies Custom Styles */
+
+/* Additional animations and transitions */
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pulse-heart {
+    animation: pulseHeart 2s infinite;
+}
+
+@keyframes pulseHeart {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Custom button hover effects */
+.donation-amount:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+}
+
+/* Loading spinner for donate button */
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid white;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8B5CF6;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7C3AED;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+    .donation-amount {
+        padding: 1rem;
+    }
+    
+    .donation-amount .text-2xl {
+        font-size: 1.5rem;
+    }
+}
+
+/* Focus styles for accessibility */
+.donation-amount:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #8B5CF6;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none;
+    }
+    
+    body {
+        background: white !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .bg-purple-lightest {
+        background-color: #f3f4f6 !important;
+    }
+    
+    .text-gray-600 {
+        color: #1f2937 !important;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
