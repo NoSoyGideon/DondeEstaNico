@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2025 at 04:57 PM
+-- Generation Time: Jul 08, 2025 at 10:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -74,9 +74,9 @@ INSERT INTO `etiquetas` (`id`, `etiqueta`) VALUES
 (14, 'inteligente'),
 (1, 'juguetón'),
 (12, 'necesita mucho ejercicio'),
-(13, 'no ladra mucho'),
 (6, 'obediente'),
 (3, 'peludo'),
+(13, 'sifrino'),
 (2, 'sociable'),
 (4, 'tranquilo');
 
@@ -112,14 +112,12 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`id`, `nombre`, `especie`, `genero`, `fecha_nacimiento`, `edad_minima`, `edad_maxima`, `descripcion`, `estatus`, `fecha_ingreso`, `rescatada`, `estado`, `altura`, `peso`, `color`, `usuario_origen_id`, `raza_id`, `direccion`) VALUES
-(00001, 'Luna', 'perro', 1, '2021-04-15', NULL, NULL, 'We have had Luna since she was a puppy. She currently lives with a family and is very loving with children. Luna gets along well with other dogs and doesn’t react negatively to cats or birds. She enjoys outdoor play and is fully house-trained.', 'adopcion', '2024-06-10 00:00:00', 1, 'Zulia', 45.00, 15.20, 'Negro con blanco', 00001, 1, 'Calle 67 con Av 15, Maracaibo'),
-(00002, 'Michi', 'gato', 0, NULL, 2, 3, 'Michi is a young and energetic male cat. He loves to chase feather toys and sleep near sunny windows. He is used to people, including children, and enjoys both company and independence. Ideal for someone looking for a playful companion.', 'adopcion', '2024-05-20 00:00:00', 0, 'Carabobo', 22.00, 3.80, 'Gris', 00002, 24, 'Calle Comercio, Valencia'),
-(00003, 'Rocky', 'perro', 0, '2019-11-10', NULL, NULL, 'Rocky was rescued from the streets in bad shape, but he recovered wonderfully. He is calm, obedient, and protective. He’s used to living in a house with a yard and is a great companion for adults. He was recently adopted by a loving family.', 'adoptada', '2023-12-01 00:00:00', 1, 'Miranda', 60.50, 23.40, 'Marrón oscuro', 00003, 15, 'Av. Principal de Guatire'),
-(00004, 'Nieve', 'gato', 1, '2023-03-01', NULL, NULL, 'Nieve is a gentle Persian cat with a calm temperament. She enjoys lounging on soft surfaces and is not a fan of loud noises. Perfect for a quiet home or apartment. Gets along with adults and older children.', 'adopcion', '2024-07-01 00:00:00', 0, 'Distrito Cap', 28.00, 4.20, 'Blanco', 00001, 26, 'Av Urdaneta, Caracas'),
-(00005, 'Max', 'perro', 0, NULL, 0, 1, 'Max was found abandoned near a park. Despite a rough start, he is very playful and curious. He is currently learning basic obedience and adapting well to home life. He will need regular checkups and a loving family to continue thriving.', 'rescatada', '2024-06-22 00:00:00', 1, 'Lara', 30.00, 7.00, 'Beige', 00002, 22, 'Sector el Cuji, Barquisimeto'),
-(00006, 'Tigre', 'gato', 0, NULL, 1, 2, 'Tigre has a strong personality and loves to climb and jump. He needs space to play and loves exploring high places. Not ideal for very young kids, but great with teens and adults. Fully litter-trained and independent.', 'adopcion', '2024-06-15 00:00:00', 1, 'Anzoátegui', 26.00, 3.50, 'Atigrado', 00003, 24, 'Calle principal de Puerto La Cruz'),
-(00007, 'Coco', 'perro', 0, '2020-09-30', NULL, NULL, 'Coco is an affectionate labrador who thrives on human interaction. He enjoys long walks, fetching balls, and being brushed. Gets along with other dogs and is perfect for a family with children or an active individual.', 'adopcion', '2024-06-28 00:00:00', 0, 'Aragua', 58.00, 26.00, 'Amarillo', 00002, 18, 'La Victoria, calle Bolívar'),
-(00008, 'Shadow', 'gato', 0, NULL, 2, 4, 'Shadow is a reserved cat who takes time to warm up to new people, but once he does, he’s extremely loyal. He’s perfect for someone patient looking for a calm indoor companion. Best in a home without other pets.', 'adopcion', '2024-05-10 00:00:00', 0, 'Mérida', 27.50, 4.00, 'Gris azulado', 00001, 30, 'Urbanización Los Sauzales, Mérida');
+(00117, 'Kawasaki', 'perro', 1, NULL, 3, 4, 'Conoce a Kawasaki, el bulldog que ha conquistado corazones con su ternura y ese carácter tan especial de los suyos. Este pequeño gigante es la definición de cariñoso. No hay un día en el que no te regale un gesto de amor, ya sea con sus suaves empujones buscando caricias, sus ronquidos apacibles mientras se acurruca a tu lado, o esas lengüetadas inesperadas que te sacan una sonrisa.', 'adopcion', '2025-07-08 16:19:06', 0, 'Guárico', 20.00, 20.00, 'marron', 00001, 11, 'cerca del rincon de las nenas'),
+(00118, 'Eduardo', 'perro', 1, '2023-02-08', NULL, NULL, 'Permítanme presentarles a Eduardo, un chihuahua que encarna perfectamente la frase \"el tamaño no lo es todo\". Eduardo es el tipo de perro que, a pesar de su diminuto tamaño, tiene una personalidad que llena cualquier habitación... y a veces, un poco más. Digamos que es un \"pequeño tirano encantador\".', 'adopcion', '2025-07-08 16:23:18', 0, 'Zulia', 10.00, 5.00, 'marron', 00001, 2, 'Bella vista vo sabeis'),
+(00119, 'Ken', 'gato', 1, '2023-09-10', NULL, NULL, 'Permítanme presentarles a Ken, el felino que domina el arte de la distinción. Con su pelaje siempre impecable y ese aire de \"aquí mando yo\" que solo un gato puede poseer, Ken es el epítome de la elegancia. Es el \"sifrino\" por excelencia del hogar: se pasea con una gracia innata, elige los lugares más altos y cómodos para sus siestas de realeza, y no te regalará afecto a la primera de cambio. Él decide cuándo y cómo, y rara vez es con efusividad ruidosa.', 'adopcion', '2025-07-08 16:25:41', 0, 'Zulia', 20.00, 10.00, 'blanco', 00001, 27, 'AV.40'),
+(00120, 'Sifrina', 'gato', 0, NULL, 5, 6, 'Permítanme presentarles a Sifrina, la gatita que lleva su nombre con total distinción y que ha perfeccionado el arte de la vida de lujo y la alta exigencia. Ella no camina; desfila. Cada movimiento de Sifrina es una declaración de su nobleza, y su mirada, a menudo un poco altiva, te hace saber que el mundo entero gira en torno a sus necesidades y deseos. Es la \"sifrina\" por excelencia, la que espera que su comida sea servida en el momento justo, que su cama esté siempre impecable y que las caricias se le ofrezcan solo cuando ella lo decida.', 'adopcion', '2025-07-08 16:28:18', 0, 'Miranda', 20.00, 20.00, 'gris', 00001, 27, 'Alola'),
+(00121, 'Luna', 'perro', 0, NULL, 3, 4, 'Permítanme presentarles a Luna, una perrita de tamaño mediano, con un pelaje suave que invita a las caricias y unos ojos grandes y expresivos que parecen guardar mil historias. Luna es una perrita con un alma un poco soñadora y un espíritu aventurero, pero siempre en su propio ritmo.', 'adopcion', '2025-07-08 16:32:04', 0, 'Amazonas', 45.00, 31.00, 'marron', 00001, 17, 'Valle colocolo'),
+(00122, 'Tumbarranchos', 'gato', 1, '2025-01-20', NULL, NULL, 'Tumbarranchos, un gato que personifica la intriga sin esfuerzo. Es el tipo de felino que tiene una curiosidad insaciable por todo lo que sucede a su alrededor; sus ojos grandes y expresivos siguen cada movimiento, cada sonido, y cada sombra, absorbiendo el mundo con una concentración asombrosa. Si hay una puerta entreabierta, un nuevo paquete en la mesa o un insecto zumbando, puedes apostar que Tumbarranchos será el primero en notarlo y analizar la situación.', 'adopcion', '2025-07-08 16:35:15', 0, 'Monagas', 30.00, 7.00, 'gris', 00001, 34, 'en la casa del profesor Escalona');
 
 -- --------------------------------------------------------
 
@@ -131,6 +129,53 @@ CREATE TABLE `mascota_etiquetas` (
   `mascota_id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `etiqueta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mascota_etiquetas`
+--
+
+INSERT INTO `mascota_etiquetas` (`mascota_id`, `etiqueta_id`) VALUES
+(0000000117, 1),
+(0000000117, 6),
+(0000000117, 7),
+(0000000117, 8),
+(0000000117, 10),
+(0000000118, 1),
+(0000000118, 5),
+(0000000118, 9),
+(0000000118, 13),
+(0000000118, 14),
+(0000000119, 1),
+(0000000119, 3),
+(0000000119, 4),
+(0000000119, 7),
+(0000000119, 8),
+(0000000119, 9),
+(0000000119, 11),
+(0000000119, 13),
+(0000000120, 2),
+(0000000120, 3),
+(0000000120, 4),
+(0000000120, 7),
+(0000000120, 8),
+(0000000120, 9),
+(0000000120, 12),
+(0000000120, 13),
+(0000000120, 14),
+(0000000121, 1),
+(0000000121, 2),
+(0000000121, 3),
+(0000000121, 5),
+(0000000121, 6),
+(0000000121, 7),
+(0000000121, 10),
+(0000000121, 14),
+(0000000122, 2),
+(0000000122, 3),
+(0000000122, 4),
+(0000000122, 7),
+(0000000122, 13),
+(0000000122, 14);
 
 -- --------------------------------------------------------
 
@@ -150,22 +195,17 @@ CREATE TABLE `mascota_fotos` (
 --
 
 INSERT INTO `mascota_fotos` (`id`, `mascota_id`, `url_foto`, `orden`) VALUES
-(1, 00001, 'assets/img/mascotas/luna_1.jpg', 1),
-(2, 00001, 'assets/img/mascotas/luna_2.jpg', 2),
-(3, 00002, 'assets/img/mascotas/michi_1.jpg', 1),
-(4, 00002, 'assets/img/mascotas/michi_2.jpg', 2),
-(5, 00003, 'assets/img/mascotas/rocky_1.jpg', 1),
-(6, 00003, 'assets/img/mascotas/rocky_2.jpg', 2),
-(7, 00004, 'assets/img/mascotas/nieve_1.jpg', 1),
-(8, 00004, 'assets/img/mascotas/nieve_2.jpg', 2),
-(9, 00005, 'assets/img/mascotas/max_1.jpg', 1),
-(10, 00005, 'assets/img/mascotas/max_2.jpg', 2),
-(11, 00006, 'assets/img/mascotas/tigre_1.jpg', 1),
-(12, 00006, 'assets/img/mascotas/tigre_2.jpg', 2),
-(13, 00007, 'assets/img/mascotas/coco_1.jpg', 1),
-(14, 00007, 'assets/img/mascotas/coco_2.jpg', 2),
-(15, 00008, 'assets/img/mascotas/shadow_1.jpg', 1),
-(16, 00008, 'assets/img/mascotas/shadow_2.jpg', 2);
+(1026, 00117, 'Assets/images/mascotas/686d7d3a8ad30-Bulldog_inglese.jpg', 1),
+(1027, 00118, 'Assets/images/mascotas/686d7e36d15a8-chihuahua1.jpg', 1),
+(1028, 00118, 'Assets/images/mascotas/686d7e36d1990-chihuahuas.jpg', 2),
+(1029, 00119, 'Assets/images/mascotas/686d7ec59ac93-WhatsApp Image 2025-07-08 at 10.33.44_741867d9.jpg', 1),
+(1030, 00119, 'Assets/images/mascotas/686d7ec59b06b-WhatsApp Image 2025-07-08 at 10.34.07_eefec6b1.jpg', 2),
+(1031, 00119, 'Assets/images/mascotas/686d7ec59b40a-WhatsApp Image 2025-07-08 at 10.33.17_5983cac2.jpg', 3),
+(1032, 00120, 'Assets/images/mascotas/686d7f62b8e40-a8dc00d41c2a6882d693721e8c5ccfe7.jpg', 1),
+(1033, 00120, 'Assets/images/mascotas/686d7f62b9304-800px-Persian_de_Alola.png', 2),
+(1034, 00120, 'Assets/images/mascotas/686d7f62b97ef-EP1020_Persian_de_Denio.png', 3),
+(1035, 00121, 'Assets/images/mascotas/686d804443523-Georgie-web.jpg', 1),
+(1036, 00122, 'Assets/images/mascotas/686d810313675-photo-1689871404673-cc43adec4ae8.jpeg', 1);
 
 -- --------------------------------------------------------
 
@@ -358,13 +398,13 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT for table `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `mascota_fotos`
 --
 ALTER TABLE `mascota_fotos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1037;
 
 --
 -- AUTO_INCREMENT for table `razas`
