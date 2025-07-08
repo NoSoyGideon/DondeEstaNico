@@ -1,8 +1,17 @@
+*{
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: #FFFFFF;
   color: #0A453A;
+    background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
 }
 
 .hero {
@@ -14,6 +23,8 @@ body {
   background-color: #F4F4FB;
   position: relative;
   overflow: hidden;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
 }
 
 .hero::after {
@@ -23,14 +34,18 @@ body {
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top, #F4F4FB 0%, transparent 100%);
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
   border-radius: 50% 50% 0 0;
   z-index: 0;
+  
 }
 
 .hero-content {
   max-width: 600px;
   z-index: 1;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
 }
 
 .hero-title {
@@ -96,7 +111,8 @@ body {
 }
 
 .uno {
-  background: #F4F4FB url('../images/huellitas-bg.svg') no-repeat bottom left;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
   border-radius: 20px;
   position: relative;
 }
@@ -141,12 +157,16 @@ body {
 }
 
 .dos {
-  background: #ffffff url('../images/maletita.svg') no-repeat bottom right;
+ 
   position: relative;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
 }
 
 .formulario-container {
   background-color: #F4F4FB;
+  background-image: url('../images/adoptar/fondo_adoptar.jpg');
+      background-repeat: repeat;
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -545,9 +565,6 @@ textarea {
   background-color: #5747b0;
 }
 
-.input-group input:invalid {
-  border: 1px solid red;
-}
 .input-group input:focus {
   outline: 2px solid #007BFF;
 }

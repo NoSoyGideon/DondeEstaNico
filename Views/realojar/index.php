@@ -38,7 +38,7 @@
 function formatRazasForJs($razasArray) {
     $formattedRazas = [];
     foreach ($razasArray as $raza) {
-      echo $raza;
+     
         $formattedRazas[] = [
             'value' => strtolower(str_replace(' ', '_', $raza)), // Convierte "Pastor Alemán" a "pastor_aleman"
             'text' => $raza
