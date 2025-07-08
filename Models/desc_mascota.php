@@ -11,6 +11,14 @@ JOIN razas AS r ON m.raza_id = r.id WHERE m.id = ?";
                 ORDER BY orden ASC";
         return $this->selectAll($sql, [$id_mascota]);
     }
+     public function getEtiquetasMascota($id_mascota) {
+        $sql = "SELECT e.etiqueta FROM mascota_etiquetas AS me
+                JOIN etiquetas AS e ON me.etiqueta_id = e.id 
+                WHERE mascota_id = ? 
+               ";
+        return $this->selectAll($sql, [$id_mascota]);
+    }
+   
 
 
 

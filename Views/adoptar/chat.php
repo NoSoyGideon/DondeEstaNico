@@ -226,6 +226,7 @@ if ($_SESSION['paso'] === 4) {
     if (!empty($etiqueta)) {
         $_SESSION['etiquetas'] = $etiqueta;
     }
+    
 
     $_SESSION['paso'] = 5;
     responder(
@@ -249,7 +250,7 @@ if ($_SESSION['paso'] === 5) {
             [],
             ["Mostrar resultados"]
         );
-    echo json_encode(["respuesta" => "¡Gracias! Estoy buscando mascotas para ti..."]);
+
     exit;
     
 }

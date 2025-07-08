@@ -29,9 +29,7 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
         $condiciones[] = "m.especie = ?";
         $tipos .= "s";
         $parametros[] = $filtros['especie'];
-        print_r($parametros);
-    }else{
-        echo "No se ha especificado especie";
+
     }
 
     if (!empty($filtros['tamaño'])) {
@@ -83,7 +81,7 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
     } else {
         $sql .= " ORDER BY m.id DESC";
     }
-    echo $sql;
+    
 
     $stmt = $mysqli->prepare($sql);
     if (!$stmt) return [];
