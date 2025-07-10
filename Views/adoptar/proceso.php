@@ -49,17 +49,17 @@
             <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <i class="fas fa-heart text-white text-2xl"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">Start Your Adoption Journey</h2>
-            <p class="text-gray-600">Please login or create an account to continue with adopting <strong><?= htmlspecialchars($mascota['nombre']) ?></strong></p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Inicia tu Proceso de Adopción</h2>
+            <p class="text-gray-600">Por favor inicia sesión o crea una cuenta para continuar adoptando a <strong><?= htmlspecialchars($mascota['nombre']) ?></strong></p>
         </div>
 
         <!-- Login/Register Tabs -->
         <div class="flex border-b border-gray-200 mb-6">
             <button class="flex-1 py-2 px-4 text-center font-medium text-primary border-b-2 border-primary" id="loginTab" onclick="showLoginForm()">
-                Login
+                Iniciar Sesión
             </button>
             <button class="flex-1 py-2 px-4 text-center font-medium text-gray-500" id="registerTab" onclick="showRegisterForm()">
-                Register
+                Registrarse
             </button>
         </div>
 
@@ -67,19 +67,19 @@
         <div id="loginForm" class="space-y-4">
             <form action="<?= BASE_URL ?>login/authenticate" method="POST" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Correo Electrónico</label>
                     <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Contraseña</label>
                     <input type="password" name="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <input type="hidden" name="redirect_url" value="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota_id ?>&step=<?= $step ?>">
                 
                 <button type="submit" class="w-full bg-primary hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
-                    Login & Continue Adoption
+                    Iniciar Sesión y Continuar Adopción
                 </button>
             </form>
         </div>
@@ -88,36 +88,36 @@
         <div id="registerForm" class="space-y-4 hidden">
             <form action="<?= BASE_URL ?>login/register" method="POST" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre Completo</label>
                     <input type="text" name="nombre" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Correo Electrónico</label>
                     <input type="email" name="correo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Contraseña</label>
                     <input type="password" name="clave" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Confirmar Contraseña</label>
                     <input type="password" name="confirm_password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
                 </div>
                 
                 <input type="hidden" name="redirect_url" value="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota_id ?>&step=<?= $step ?>">
                 
                 <button type="submit" class="w-full bg-success hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
-                    Create Account & Start Adoption
+                    Crear Cuenta e Iniciar Adopción
                 </button>
             </form>
         </div>
 
         <div class="mt-6 text-center">
             <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-sm font-medium">
-                Close and go back
+                Cerrar y regresar
             </button>
         </div>
     </div>
@@ -128,58 +128,92 @@
 <div class="max-w-4xl mx-auto p-6">
     <!-- Progress Steps -->
     <div class="mb-12 p-4">
-        <div class="flex items-center justify-between max-w-4xl mx-auto">
+        <div class="flex items-center justify-between max-w-5xl mx-auto">
             <!-- Start Step -->
             <div class="flex flex-col items-center text-center relative">
-                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 <?= $step == 'start' ? 'text-primary' : (in_array($step, ['address', 'household', 'experience', 'review']) ? 'text-success' : 'text-gray-400') ?>">
-                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mb-2 transition-all duration-300 relative <?= $step == 'start' ? 'bg-primary' : (in_array($step, ['address', 'household', 'experience', 'review']) ? 'bg-success' : 'bg-gray-300') ?>">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'start' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-start">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'start' ? 'bg-green-500' : (in_array($step, ['address', 'household', 'roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-300') ?>">
                     <i class="fas fa-play text-sm text-white"></i>
                 </div>
-                <span class="text-xs font-medium <?= $step == 'start' ? 'text-primary' : (in_array($step, ['address', 'household', 'experience', 'review']) ? 'text-success' : 'text-gray-500') ?>">Start</span>
+                <span class="text-xs font-medium <?= $step == 'start' ? 'text-green-600' : (in_array($step, ['address', 'household', 'roommate', 'other_animals', 'review']) ? 'text-purple-600' : 'text-gray-500') ?>">Inicio</span>
             </div>
             
             <!-- Progress Line -->
-            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['address', 'household', 'experience', 'review']) ? 'bg-success' : 'bg-gray-200' ?> rounded"></div>
+            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['address', 'household', 'roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-200' ?> rounded"></div>
             
             <!-- Address Step -->
             <div class="flex flex-col items-center text-center relative">
-                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mb-2 transition-all duration-300 relative <?= $step == 'address' ? 'bg-primary' : (in_array($step, ['household', 'experience', 'review']) ? 'bg-success' : 'bg-gray-300') ?>">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'address' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-address">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'address' ? 'bg-green-500' : (in_array($step, ['household', 'roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-300') ?>">
                     <i class="fas fa-map-marker-alt text-sm text-white"></i>
                 </div>
-                <span class="text-xs font-medium <?= $step == 'address' ? 'text-primary' : (in_array($step, ['household', 'experience', 'review']) ? 'text-success' : 'text-gray-500') ?>">Address</span>
+                <span class="text-xs font-medium <?= $step == 'address' ? 'text-green-600' : (in_array($step, ['household', 'roommate', 'other_animals', 'review']) ? 'text-purple-600' : 'text-gray-500') ?>">Dirección</span>
             </div>
             
             <!-- Progress Line -->
-            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['household', 'experience', 'review']) ? 'bg-success' : 'bg-gray-200' ?> rounded"></div>
+            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['household', 'roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-200' ?> rounded"></div>
             
             <!-- Household Step -->
             <div class="flex flex-col items-center text-center relative">
-                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mb-2 transition-all duration-300 relative <?= $step == 'household' ? 'bg-primary' : (in_array($step, ['experience', 'review']) ? 'bg-success' : 'bg-gray-300') ?>">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'household' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-household">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'household' ? 'bg-green-500' : (in_array($step, ['roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-300') ?>">
                     <i class="fas fa-home text-sm text-white"></i>
                 </div>
-                <span class="text-xs font-medium <?= $step == 'household' ? 'text-primary' : (in_array($step, ['experience', 'review']) ? 'text-success' : 'text-gray-500') ?>">Household</span>
+                <span class="text-xs font-medium <?= $step == 'household' ? 'text-green-600' : (in_array($step, ['roommate', 'other_animals', 'review']) ? 'text-purple-600' : 'text-gray-500') ?>">Hogar</span>
             </div>
             
             <!-- Progress Line -->
-            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['experience', 'review']) ? 'bg-success' : 'bg-gray-200' ?> rounded"></div>
+            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['roommate', 'other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-200' ?> rounded"></div>
             
-            <!-- Experience Step -->
+            <!-- Roommate Step -->
             <div class="flex flex-col items-center text-center relative">
-                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mb-2 transition-all duration-300 relative <?= $step == 'experience' ? 'bg-primary' : ($step == 'review' ? 'bg-success' : 'bg-gray-300') ?>">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'roommate' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-roommate">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'roommate' ? 'bg-green-500' : (in_array($step, ['other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-300') ?>">
+                    <i class="fas fa-users text-sm text-white"></i>
+                </div>
+                <span class="text-xs font-medium <?= $step == 'roommate' ? 'text-green-600' : (in_array($step, ['other_animals', 'review']) ? 'text-purple-600' : 'text-gray-500') ?>">Compañeros</span>
+            </div>
+            
+            <!-- Progress Line -->
+            <div class="flex-1 h-1 mx-4 <?= in_array($step, ['other_animals', 'review']) ? 'bg-purple-500' : 'bg-gray-200' ?> rounded"></div>
+            
+            <!-- Other Animals Step -->
+            <div class="flex flex-col items-center text-center relative">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'other_animals' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-other_animals">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'other_animals' ? 'bg-green-500' : ($step == 'review' ? 'bg-purple-500' : 'bg-gray-300') ?>">
                     <i class="fas fa-paw text-sm text-white"></i>
                 </div>
-                <span class="text-xs font-medium <?= $step == 'experience' ? 'text-primary' : ($step == 'review' ? 'text-success' : 'text-gray-500') ?>">Experience</span>
+                <span class="text-xs font-medium <?= $step == 'other_animals' ? 'text-green-600' : ($step == 'review' ? 'text-purple-600' : 'text-gray-500') ?>">Otras Mascotas</span>
             </div>
             
             <!-- Progress Line -->
-            <div class="flex-1 h-1 mx-4 <?= $step == 'review' ? 'bg-success' : 'bg-gray-200' ?> rounded"></div>
+            <div class="flex-1 h-1 mx-4 <?= $step == 'review' ? 'bg-purple-500' : 'bg-gray-200' ?> rounded"></div>
             
             <!-- Review Step -->
             <div class="flex flex-col items-center text-center relative">
-                <div class="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center mb-2 transition-all duration-300 relative <?= $step == 'review' ? 'bg-primary' : 'bg-gray-300' ?>">
+                <img src="../assets/images/home/graydog.svg" alt="gray dog icon" 
+                     class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-8 h-8 transition-all duration-500 <?= $step == 'review' ? 'opacity-100' : 'opacity-0' ?>"
+                     id="dogIcon-review">
+                <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2 transition-all duration-300 relative 
+                     <?= $step == 'review' ? 'bg-green-500' : 'bg-gray-300' ?>">
                     <i class="fas fa-check text-sm text-white"></i>
                 </div>
-                <span class="text-xs font-medium <?= $step == 'review' ? 'text-primary' : 'text-gray-500' ?>">Review</span>
+                <span class="text-xs font-medium <?= $step == 'review' ? 'text-green-600' : 'text-gray-500' ?>">Confirmar</span>
             </div>
         </div>
     </div>
@@ -223,8 +257,9 @@
                 'start' => 'step1-start.php',
                 'address' => 'step2-address.php',
                 'household' => 'step3-household.php',
-                'experience' => 'step4-experience.php',
-                'review' => 'step5-review.php'
+                'roommate' => 'step4-roommate.php',
+                'other_animals' => 'step5-other-animals.php',
+                'review' => 'step6-review.php'
             ];
 
             // Include the appropriate step file
@@ -279,11 +314,53 @@ function previousStep(step) {
 }
 
 function submitApplication() {
-    // Here you would typically submit the form data
-    alert('Application submitted successfully! You will receive a confirmation email shortly.');
-    // Redirect to a success page or back to the pet listing
+    // Verificar que el checkbox de confirmación esté marcado si estamos en el paso de review
+    const finalConfirmation = document.getElementById('final-confirmation');
+    if (finalConfirmation && !finalConfirmation.checked) {
+        alert('Por favor confirma que la información proporcionada es correcta.');
+        return;
+    }
+    
+    // Aquí normalmente enviarías los datos del formulario
+    alert('¡Solicitud enviada exitosamente! Recibirás un correo de confirmación en breve.');
+    // Redirigir a una página de éxito o de vuelta al listado de mascotas
     window.location.href = '<?= BASE_URL ?>adoptar';
 }
+
+// Función para animar el progreso del perro
+function animateDogProgress() {
+    const currentStep = '<?= $step ?>';
+    const allDogs = document.querySelectorAll('[id^="dogIcon-"]');
+    
+    // Ocultar todos los perros primero
+    allDogs.forEach(dog => {
+        dog.style.opacity = '0';
+        dog.style.transform = 'translateX(-50%) scale(0.8)';
+    });
+    
+    // Mostrar el perro en el paso actual con animación
+    setTimeout(() => {
+        const currentDog = document.getElementById(`dogIcon-${currentStep}`);
+        if (currentDog) {
+            currentDog.style.opacity = '1';
+            currentDog.style.transform = 'translateX(-50%) scale(1)';
+            currentDog.style.transition = 'all 0.5s ease-in-out';
+            
+            // Agregar un pequeño rebote al perro
+            setTimeout(() => {
+                currentDog.style.transform = 'translateX(-50%) scale(1.1)';
+                setTimeout(() => {
+                    currentDog.style.transform = 'translateX(-50%) scale(1)';
+                }, 150);
+            }, 200);
+        }
+    }, 100);
+}
+
+// Ejecutar la animación cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+    animateDogProgress();
+});
 
 // Close modal on outside click
 document.addEventListener('click', function(event) {

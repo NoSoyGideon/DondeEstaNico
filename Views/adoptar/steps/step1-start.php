@@ -2,7 +2,7 @@
 // Step 1: Start - Initial step with pet info and user data
 $stepData = [
     'stepName' => 'start',
-    'stepTitle' => 'Start Your Adoption',
+    'stepTitle' => 'Inicia tu Adopción',
     'stepNumber' => 1
 ];
 ?>
@@ -28,27 +28,27 @@ $stepData = [
             <div class="text-center">
                 <h3 class="text-2xl font-bold text-gray-900 mb-2"><?= htmlspecialchars($mascota['nombre']) ?></h3>
                 <p class="text-gray-600 text-lg"><?= htmlspecialchars($mascota['nombre_raza']) ?></p>
-                <p class="text-gray-500"><?= ($mascota['genero'] == 1) ? 'Male' : 'Female' ?></p>
+                <p class="text-gray-500"><?= ($mascota['genero'] == 1) ? 'Macho' : 'Hembra' ?></p>
             </div>
         </div>
 
         <!-- Right Side - User Information -->
         <div class="space-y-6">
             <div>
-                <h4 class="text-xl font-semibold text-gray-900 mb-4">Your Information</h4>
+                <h4 class="text-xl font-semibold text-gray-900 mb-4">Tu Información</h4>
                 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Correo Electrónico</label>
                         <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-gray-900">
-                            <?= $usuario ? htmlspecialchars($usuario['correo']) : 'Not available' ?>
+                            <?= $usuario ? htmlspecialchars($usuario['correo']) : 'No disponible' ?>
                         </div>
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Nombre Completo</label>
                         <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 text-gray-900">
-                            <?= $usuario ? htmlspecialchars($usuario['nombre']) : 'Not available' ?>
+                            <?= $usuario ? htmlspecialchars($usuario['nombre']) : 'No disponible' ?>
                         </div>
                     </div>
                 </div>
@@ -58,9 +58,9 @@ $stepData = [
                 <div class="flex items-start space-x-3">
                     <i class="fas fa-info-circle text-blue-500 mt-1"></i>
                     <div>
-                        <p class="text-sm text-blue-800 font-medium mb-1">Ready to start?</p>
+                        <p class="text-sm text-blue-800 font-medium mb-1">¿Listo para empezar?</p>
                         <p class="text-sm text-blue-700">
-                            We'll guide you through a few simple steps to complete your adoption application.
+                            Te guiaremos a través de unos simples pasos para completar tu solicitud de adopción.
                         </p>
                     </div>
                 </div>
@@ -75,18 +75,18 @@ $stepData = [
                 <div class="flex items-start space-x-3 mb-4">
                     <input type="checkbox" id="terms-checkbox" required class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
                     <label for="terms-checkbox" class="text-sm text-gray-700 cursor-pointer">
-                        I have read and agree to the <a href="#" class="text-primary font-medium hover:underline">Terms and Privacy Policy</a>
+                        He leído y acepto los <a href="#" class="text-primary font-medium hover:underline">Términos y Política de Privacidad</a>
                     </label>
                 </div>
                 
                 <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                    To apply for <strong>adopting <?= htmlspecialchars($mascota['nombre']) ?></strong>, you need to complete some fields. This process helps us ensure the best match between pets and families.
+                    Para solicitar <strong>adoptar a <?= htmlspecialchars($mascota['nombre']) ?></strong>, necesitas completar algunos campos. Este proceso nos ayuda a asegurar la mejor combinación entre mascotas y familias.
                 </p>
                 
                 <div class="flex justify-center">
                     <button class="bg-primary hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 transform hover:scale-105" onclick="nextStep('address')">
                         <i class="fas fa-arrow-right mr-2"></i>
-                        Start Application
+                        Iniciar Solicitud
                     </button>
                 </div>
             </div>

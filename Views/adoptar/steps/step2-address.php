@@ -2,35 +2,35 @@
 // Step 2: Address - Address information
 $stepData = [
     'stepName' => 'address',
-    'stepTitle' => 'Address Information',
+    'stepTitle' => 'Información de Dirección',
     'stepNumber' => 2
 ];
 ?>
 
 <div class="space-y-6">
-    <h2 class="text-2xl font-bold text-gray-900 mb-6">Address Information</h2>
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Información de Dirección</h2>
     <form id="addressForm" class="space-y-6">
         <div>
-            <label for="street" class="block text-sm font-semibold text-gray-700 mb-2">Street Address *</label>
+            <label for="street" class="block text-sm font-semibold text-gray-700 mb-2">Dirección de la Calle *</label>
             <input type="text" id="street" name="street" required 
                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                    placeholder="Av. Francisco de Miranda, Torre Empresarial...">
-            <span class="text-red-500 text-sm hidden" id="street-error">Please enter your street address</span>
+            <span class="text-red-500 text-sm hidden" id="street-error">Por favor ingresa tu dirección</span>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+                <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">Ciudad *</label>
                 <input type="text" id="city" name="city" required 
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                        placeholder="Maracay, Maracaibo, Valencia...">
-                <span class="text-red-500 text-sm hidden" id="city-error">Please enter your city</span>
+                <span class="text-red-500 text-sm hidden" id="city-error">Por favor ingresa tu ciudad</span>
             </div>
             <div>
-                <label for="state" class="block text-sm font-semibold text-gray-700 mb-2">State *</label>
+                <label for="state" class="block text-sm font-semibold text-gray-700 mb-2">Estado *</label>
                 <select id="state" name="state" required 
                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-                    <option value="">Select your state</option>
+                    <option value="">Selecciona tu estado</option>
                     <option value="Amazonas">Amazonas</option>
                     <option value="Anzoátegui">Anzoátegui</option>
                     <option value="Apure">Apure</option>
@@ -56,20 +56,20 @@ $stepData = [
                     <option value="Yaracuy">Yaracuy</option>
                     <option value="Zulia">Zulia</option>
                 </select>
-                <span class="text-red-500 text-sm hidden" id="state-error">Please select your state</span>
+                <span class="text-red-500 text-sm hidden" id="state-error">Por favor selecciona tu estado</span>
             </div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <label for="zip" class="block text-sm font-semibold text-gray-700 mb-2">ZIP Code *</label>
+                <label for="zip" class="block text-sm font-semibold text-gray-700 mb-2">Código Postal *</label>
                 <input type="text" id="zip" name="zip" required 
                        pattern="[0-9]{4,5}" 
                        maxlength="5"
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                        placeholder="1010, 2001, 3001..."
                        oninput="validateZipCode(this)">
-                <span class="text-red-500 text-sm hidden" id="zip-error">Please enter a valid ZIP code (numbers only, 4-5 digits)</span>
+                <span class="text-red-500 text-sm hidden" id="zip-error">Por favor ingresa un código postal válido (solo números, 4-5 dígitos)</span>
             </div>
         </div>
     </form>
@@ -77,10 +77,10 @@ $stepData = [
     <div class="flex justify-between pt-6">
         <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-8 rounded-lg transition-colors duration-200" onclick="previousStep('start')">
             <i class="fas fa-arrow-left mr-2"></i>
-            Previous
+            Anterior
         </button>
         <button type="button" class="bg-primary hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 transform hover:scale-105" onclick="validateAndContinue()">
-            Continue
+            Continuar
             <i class="fas fa-arrow-right ml-2"></i>
         </button>
     </div>
@@ -183,7 +183,7 @@ function showSuccessMessage() {
     // Create a temporary success message
     const successDiv = document.createElement('div');
     successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300';
-    successDiv.innerHTML = '<i class="fas fa-check mr-2"></i>Address information saved successfully!';
+    successDiv.innerHTML = '<i class="fas fa-check mr-2"></i>Información de dirección guardada exitosamente!';
     document.body.appendChild(successDiv);
     
     // Remove after 3 seconds
@@ -196,7 +196,7 @@ function showErrorMessage() {
     // Create a temporary error message
     const errorDiv = document.createElement('div');
     errorDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300';
-    errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Please fill in all required fields correctly';
+    errorDiv.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Por favor completa todos los campos requeridos correctamente';
     document.body.appendChild(errorDiv);
     
     // Remove after 3 seconds
