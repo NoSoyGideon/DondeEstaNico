@@ -4,6 +4,9 @@ class admin_overview extends Controller
     public function __construct()
     {
         parent::__construct();
+          session_start();
+          require_once "Models/realojarModel.php";
+    $this->model = new admin_overviewModel();
     }
 
 

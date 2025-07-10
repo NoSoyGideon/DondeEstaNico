@@ -1,5 +1,5 @@
 <?php
-class HomeModel extends Query{
+class admin_overviewModel extends Query{
  
     public function __construct()
     {

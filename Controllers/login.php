@@ -51,6 +51,39 @@ class login extends Controller {
         echo json_encode(['success' => true]);
     }
 
+     public function validarAdmin() {
+        header('Content-Type: application/json');
+        $correo = $_POST['correo'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $errores = [];
+
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL))
+            $errores[] = "Correo no válido.";
+        if (empty($password))
+            $errores[] = "Ingresa tu contraseña.";
+
+        if ($user = $this->model->getUsuarioPorCorreo($correo)) {
+            if (!password_verify($password, $user['clave'])) {
+                $errores[] = "Contraseña incorrecta.";
+            }
+            if ($user['admin'] !== 1) {
+                $errores[] = "No tienes permisos de administrador.";
+            }
+        } else {
+            $errores[] = "El usuario no existe.";
+        }
+        
+
+        if ($errores) {
+            echo json_encode(['success' => false, 'errores' => $errores]);
+            return;
+        }
+
+        iniciarSesion($user);
+
+        echo json_encode(['success' => true]);
+    }
+
 
     public function guardar()
 {   

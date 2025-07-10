@@ -9,6 +9,9 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #FFFFFF;
   color: #0A453A;
+   background-image: url('../images/adoptar/fondo_adoptar.jpg');
+  background-repeat: repeat;
+  
 
 }
 
@@ -153,6 +156,7 @@ body {
 .dos {
  
   position: relative;
+  
 
 }
 

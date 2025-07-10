@@ -41,4 +41,3 @@ function obtenerRazasDeGatos(): array {
     }
     return $gatos;
 }
-

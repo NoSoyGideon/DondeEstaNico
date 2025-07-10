@@ -13,7 +13,13 @@ class Adoptar extends Controller {
   }
 
   public function index() {
-    $mascotas = $this->model->getMascotas();
+    if(!isset($_SESSION['id'])) {
+      $mascotas = $this->model->getMascotas();
+    }else {
+      $usuario_id = $_SESSION['id'];
+      $mascotas = $this->model->getMascotasConFavoritos($usuario_id);
+    }
+   
     $data['mascotas'] = $mascotas;
     // Carga las razas con colores al inicio
     $data['razasConColor'] = obtenerRazasConColor();
@@ -21,5 +27,17 @@ class Adoptar extends Controller {
 
     $data['title'] = 'Adoptar una mascota';
     $this->views->getView('adoptar', 'index', $data);
+  }
+
+  public function favoritos(){
+    if(!isset($_SESSION['id'])) {
+  
+      return;
+    }
+
+    $usuario_id = $_SESSION['id'];
+    echo $_POST['id'];
+
+    $this->model->toggleFavorito($usuario_id, $_POST['id']);
   }
 }

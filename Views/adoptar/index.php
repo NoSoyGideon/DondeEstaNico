@@ -74,17 +74,36 @@
         </div>
 
 
-<!-- Estrella FAVORITO -->
-<div class="absolute top-3 left-3 p-1 rounded cursor-pointer"
-     data-pet-id="123"
-     data-is-favorite="1"
-     onclick="toggleFavorite(this)">
-    <svg class="w-5 h-5 transition-colors duration-200"
-         fill="currentColor"
-         viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-    </svg>
+<!-- Corazón FAVORITO -->
+<div
+  id="favBtn"
+       <?php if (isset($_SESSION['nombre'])): ?>
+  
+  data-id="<?php echo $m['id']; ?>"
+  data-fav="<?php echo $m['es_favorita']; ?>"
+  onclick="toggleFavorite(this)"
+    <?php else: ?>
+        <?php endif; ?>
+  style="
+    position: absolute; top: 12px; left: 12px; padding: 4px; 
+    border-radius: 6px; cursor: pointer; 
+    background-color: white; /* fondo inicial */
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    transition: background-color 0.3s ease;
+  "
+>
+  <svg
+    id="favIcon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    style="width: 20px; height: 20px; color: #675BC8; transition: color 0.3s ease;"
+  >
+    <path d="M3.172 5.172a4.5 4.5 0 016.364 0l.464.464.464-.464a4.5 4.5 0 116.364 6.364L10 18.243l-6.828-6.707a4.5 4.5 0 010-6.364z" />
+  </svg>
 </div>
+
 
 
 
@@ -292,6 +311,58 @@ if (data.opciones && data.opciones.length > 0) {
     document.getElementById("chat").appendChild(contenedorBotones);
   }
     }
+
+
+
+ function toggleFavorite(el) {
+    // Leer el estado actual (0 o 1)
+    const current = el.getAttribute('data-fav');
+    const newState = current === '1' ? '0' : '1';
+    el.setAttribute('data-fav', newState);
+
+    // Cambiar colores según estado
+    if (newState === '1') {
+      el.style.backgroundColor = '#675BC8'; // morado fondo
+      el.querySelector('svg').style.color = 'white'; // svg blanco
+    } else {
+      el.style.backgroundColor = 'white'; // fondo blanco
+      el.querySelector('svg').style.color = '#675BC8'; // svg morado
+    }
+
+    // Aquí puedes usar el ID y el nuevo estado para guardar en BD o localStorage
+    const id = el.getAttribute('data-id');
+    console.log('ID:', id, 'Nuevo estado:', newState);
+
+    fetch('<?= BASE_URL ?>adoptar/favoritos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `id=${encodeURIComponent(id)}&fav=${encodeURIComponent(newState)}`
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log('Respuesta del servidor:', data);
+      // Aquí puedes agregar feedback visual o manejar errores
+    })
+    .catch(error => {
+      console.error('Error en la petición:', error);
+      // Opcional: revertir el estado si hubo error
+    });
+  }
+
+
+  
+  // Opcional: al cargar, aplicar colores según estado inicial
+  window.onload = () => {
+    const el = document.getElementById('favBtn');
+    const fav = el.getAttribute('data-fav');
+    if (fav === '1') {
+      el.style.backgroundColor = '#675BC8';
+      el.querySelector('svg').style.color = 'white';
+    }
+  };
+
 
     // function enviarMensaje() {
     //   const entrada = document.getElementById('entrada');

@@ -18,6 +18,7 @@ public function select(string $sql, array $datos = [])
     public function selectAll(string $sql,array $datos = [])
     {
         $this->sql = $sql;
+        $this->datos = $datos;
         $resul = $this->con->prepare($this->sql);
         $resul->execute($this->datos);
         $data = $resul->fetchAll(PDO::FETCH_ASSOC);
@@ -51,6 +52,20 @@ public function select(string $sql, array $datos = [])
     }
     public function lastInsertId() {
     return $this->con->lastInsertId();
+}
+
+
+public function eliminar(string $sql, array $datos)
+{
+    $this->sql = $sql;
+    $this->datos = $datos;
+    $delete = $this->con->prepare($this->sql);
+    $data = $delete->execute($this->datos);
+    if ($data) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 }
 ?>

@@ -21,21 +21,46 @@
   </div>
 
   <!-- Contraseña -->
-  <div class="relative">
-    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+<div class="relative">
+  <!-- Icono del candado a la izquierda -->
+  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+    </svg>
+  </div>
+
+  <!-- Campo de contraseña -->
+  <input id="passwordInput" type="password" name="password" placeholder="Contraseña"
+    class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
+
+  <!-- Botón para mostrar/ocultar contraseña -->
+  <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+    <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password" id="togglePasswordBtn">
+      <!-- Icono del ojo -->
+      <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
       </svg>
+    </button>
+  </div>
+</div>
+
+   <!-- Opción de organización/rescatista -->
+  <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 my-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-sm font-medium text-gray-800">Soy Administrador</h3>
+        <p class="text-xs text-gray-500 mt-1">Habilita esta opción si tiene derechos de admin y quiere entrar en el panel</p>
+      </div>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="rescueCenterToggle" class="sr-only peer">
+        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-purple-main rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-main"></div>
+      </label>
     </div>
-    <input type="password" name="password" placeholder="Contraseña" class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
-    <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-      <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-        </svg>
-      </button>
-    </div>
+
   </div>
 
   <!-- Olvidaste contraseña -->
@@ -43,11 +68,7 @@
     <a href="#" class="text-sm text-purple-main hover:underline">¿Olvidaste tu contraseña?</a>
   </div>
 
-  <!-- Recuérdame -->
-  <div class="flex items-center">
-    <input type="checkbox" id="rememberMe" class="w-4 h-4 text-purple-main border-gray-300 rounded focus:ring-purple-main">
-    <label for="rememberMe" class="ml-2 text-sm text-gray-600">Recuérdame</label>
-  </div>
+
 
   <!-- Botón de inicio de sesión -->
   <button type="submit" class="w-full bg-purple-main hover:bg-purple-dark text-white py-3 rounded-lg font-semibold transition-colors">
@@ -90,6 +111,7 @@ document.getElementById('formLogin').addEventListener('submit', function(e) {
   const correo = form.correo.value.trim();
   const password = form.password.value;
   const errorsDiv = document.getElementById('login-errors');
+  const checkbox = document.getElementById('rescueCenterToggle');
 
   let errores = [];
   if (!/\S+@\S+\.\S+/.test(correo)) errores.push("Correo no válido.");
@@ -101,12 +123,12 @@ document.getElementById('formLogin').addEventListener('submit', function(e) {
     return;
   }
   errorsDiv.classList.add('hidden');
-
-  fetch('<?= BASE_URL ?>login/validar', {
+  if (checkbox.checked) {
+fetch('<?= BASE_URL ?>login/validarAdmin', {
     method: 'POST',
     headers: {'Accept': 'application/json'},
     body: new FormData(form)
-  })
+    })
   .then(res => res.json())
   .then(data => {
     if (data.success) {
@@ -120,6 +142,43 @@ document.getElementById('formLogin').addEventListener('submit', function(e) {
     errorsDiv.innerHTML = "❌ Error al comunicarse con el servidor.";
     errorsDiv.classList.remove('hidden');
   });
+
+
+
+
+  }else{
+    fetch('<?= BASE_URL ?>login/validar', {
+    method: 'POST',
+    headers: {'Accept': 'application/json'},
+    body: new FormData(form)
+    })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      window.location.reload(); // recarga para actualizar header en la misma página
+    } else {
+      errorsDiv.innerHTML = `<ul class="list-disc pl-5">${data.errores.map(e => `<li>${e}</li>`).join('')}</ul>`;
+      errorsDiv.classList.remove('hidden');
+    }
+  })
+  .catch(() => {
+    errorsDiv.innerHTML = "❌ Error al comunicarse con el servidor.";
+    errorsDiv.classList.remove('hidden');
+  });
+}
 });
+
+  const toggleBtn = document.getElementById("togglePasswordBtn");
+  const passwordInput = document.getElementById("passwordInput");
+  const eyeIcon = document.getElementById("eyeIcon");
+
+  toggleBtn.addEventListener("click", () => {
+    const isPassword = passwordInput.type === "password";
+    passwordInput.type = isPassword ? "text" : "password";
+
+    // Cambiar el color del ícono como feedback visual (opcional)
+    eyeIcon.classList.toggle("text-purple-600", isPassword);
+    eyeIcon.classList.toggle("text-gray-400", !isPassword);
+  });
 </script>
 
