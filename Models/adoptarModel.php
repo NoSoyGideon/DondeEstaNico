@@ -89,6 +89,28 @@ WHERE m.estatus != 'adoptada';";
         }
     }
 
+    public function getMascotaById($id) {
+        $sql = "SELECT 
+          m.id,
+          m.nombre,
+          m.especie,
+          m.fecha_nacimiento, 
+          m.edad_maxima,
+          m.edad_minima,
+          m.descripcion,
+          m.color,
+          m.peso,
+          m.altura,
+          m.genero,
+          r.nombre_raza,
+          m.estado
+        FROM mascota AS m
+        JOIN razas AS r ON m.raza_id = r.id
+        WHERE m.id = ? AND m.estatus != 'adoptada'";
+        
+        return $this->select($sql, [$id]);
+    }
+
 
 }?>
 

@@ -7,6 +7,7 @@
   <title>Perfil Mascota - Magie</title>
   <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/descripcion.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
  <?php 
@@ -88,7 +89,11 @@
 
       <div class="adopt-box">
         <p>If you're interested to adopt</p>
-        <a href="#" class="btn-adopt">Get Started</a>
+        <?php if(isset($_SESSION['id'])): ?>
+          <a href="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota['id'] ?>" class="btn-adopt">Get Started</a>
+        <?php else: ?>
+          <button onclick="showLoginModal()" class="btn-adopt">Get Started</button>
+        <?php endif; ?>
       </div>
     </div>
 
@@ -115,12 +120,147 @@
     </div>
   </div>
 
+<!-- Login/Register Modal -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform transition-all scale-95 opacity-0" id="modalContent">
+        <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-heart text-white text-2xl"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Start Your Adoption Journey</h2>
+            <p class="text-gray-600">Please login or create an account to continue with adopting <strong><?= htmlspecialchars($mascota['nombre']) ?></strong></p>
+        </div>
+
+        <!-- Login/Register Tabs -->
+        <div class="flex border-b border-gray-200 mb-6">
+            <button class="flex-1 py-2 px-4 text-center font-medium text-purple-600 border-b-2 border-purple-600" id="loginTab" onclick="showLoginForm()">
+                Login
+            </button>
+            <button class="flex-1 py-2 px-4 text-center font-medium text-gray-500" id="registerTab" onclick="showRegisterForm()">
+                Register
+            </button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="space-y-4">
+            <form action="<?= BASE_URL ?>login/authenticate" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <input type="email" name="correo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <input type="password" name="clave" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors">
+                </div>
+                
+                <input type="hidden" name="redirect_url" value="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota['id'] ?>&step=start">
+                
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
+                    Login & Continue Adoption
+                </button>
+            </form>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerForm" class="space-y-4 hidden">
+            <form action="<?= BASE_URL ?>login/register" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
+                    <input type="text" name="nombre" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <input type="email" name="correo" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                    <input type="password" name="clave" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors">
+                </div>
+                
+                <input type="hidden" name="redirect_url" value="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota['id'] ?>&step=start">
+                
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition-colors duration-200">
+                    Create Account & Start Adoption
+                </button>
+            </form>
+        </div>
+
+        <div class="mt-6 text-center">
+            <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700 text-sm font-medium">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
 <?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
 
   <script>
     function changeImage(img) {
       document.getElementById('mainImage').src = img.src;
     }
+
+    // Modal functions
+    function showLoginModal() {
+      const modal = document.getElementById('loginModal');
+      const modalContent = document.getElementById('modalContent');
+      
+      modal.classList.remove('hidden');
+      
+      // Animate modal appearance
+      setTimeout(() => {
+        modalContent.classList.remove('scale-95', 'opacity-0');
+        modalContent.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeLoginModal() {
+      const modal = document.getElementById('loginModal');
+      const modalContent = document.getElementById('modalContent');
+      
+      // Animate modal disappearance
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    function showLoginForm() {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('registerForm').classList.add('hidden');
+      document.getElementById('loginTab').classList.add('text-purple-600', 'border-b-2', 'border-purple-600');
+      document.getElementById('loginTab').classList.remove('text-gray-500');
+      document.getElementById('registerTab').classList.remove('text-purple-600', 'border-b-2', 'border-purple-600');
+      document.getElementById('registerTab').classList.add('text-gray-500');
+    }
+
+    function showRegisterForm() {
+      document.getElementById('registerForm').classList.remove('hidden');
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('registerTab').classList.add('text-purple-600', 'border-b-2', 'border-purple-600');
+      document.getElementById('registerTab').classList.remove('text-gray-500');
+      document.getElementById('loginTab').classList.remove('text-purple-600', 'border-b-2', 'border-purple-600');
+      document.getElementById('loginTab').classList.add('text-gray-500');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('loginModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLoginModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLoginModal();
+      }
+    });
   </script>
 </body>
 </html>
