@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2025 at 11:37 PM
+-- Generation Time: Jul 10, 2025 at 04:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,6 +79,29 @@ INSERT INTO `etiquetas` (`id`, `etiqueta`) VALUES
 (13, 'sifrino'),
 (2, 'sociable'),
 (4, 'tranquilo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `usuario_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `mascota_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `fecha_agregado` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `favoritos`
+--
+
+INSERT INTO `favoritos` (`usuario_id`, `mascota_id`, `fecha_agregado`) VALUES
+(00001, 00117, '2025-07-09 18:46:32'),
+(00001, 00118, '2025-07-09 18:39:35'),
+(00001, 00122, '2025-07-09 18:45:39'),
+(00002, 00119, '2025-07-09 18:52:23'),
+(00002, 00120, '2025-07-09 18:52:24');
 
 -- --------------------------------------------------------
 
@@ -299,9 +322,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `telefono`, `correo`, `clave`, `admin`, `redes`, `fecha_registro`, `estado`, `descripcion`, `direccion`) VALUES
-(00001, 'Orlando Marcano', NULL, 'GedeonP2312@gmail.com', '$2y$10$ysze3eSAwztDrvv6WFzvsu.kVCFEusZI7Abbc7N1J5k49ZpbpGMiS', 0, NULL, '2025-07-04 12:51:57', NULL, NULL, NULL),
+(00001, 'Orlando Marcano', NULL, 'GedeonP2312@gmail.com', '$2y$10$ysze3eSAwztDrvv6WFzvsu.kVCFEusZI7Abbc7N1J5k49ZpbpGMiS', 1, NULL, '2025-07-04 12:51:57', NULL, NULL, NULL),
 (00002, 'Paola Reyes', NULL, 'pvrs400@gmail.com', '$2y$10$yyWFl9kPmEXOVu70k1zINevQM17WDjNteVbtPZrjZVmW2Cg89i1Je', 0, NULL, '2025-07-04 12:52:17', NULL, NULL, NULL),
-(00003, 'Gasperini', NULL, 'qwertyuiop@gmail.com', '$2y$10$gLWz6dKYcG9YdZ9olc6rWu6xgGysLxMWodvB8W2q3b6Bp9ssaQKBq', 0, NULL, '2025-07-04 12:52:38', NULL, NULL, NULL);
+(00003, 'Gasperini', NULL, 'qwertyuiop@gmail.com', '$2y$10$gLWz6dKYcG9YdZ9olc6rWu6xgGysLxMWodvB8W2q3b6Bp9ssaQKBq', 0, NULL, '2025-07-04 12:52:38', NULL, NULL, NULL),
+(00004, 'pingo', NULL, 'correoxd@gmail.com', '$2y$10$kgbA4QkUPqZEPeoA7INgxuvbidPMQ5l962CpR/8odfMx9Zvd6ADbW', 0, NULL, '2025-07-09 20:20:26', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -329,6 +353,13 @@ ALTER TABLE `donacion`
 ALTER TABLE `etiquetas`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `etiqueta` (`etiqueta`);
+
+--
+-- Indexes for table `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`usuario_id`,`mascota_id`),
+  ADD KEY `mascota_id` (`mascota_id`);
 
 --
 -- Indexes for table `mascota`
@@ -422,7 +453,7 @@ ALTER TABLE `rehome`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -440,6 +471,13 @@ ALTER TABLE `adopcion`
 --
 ALTER TABLE `donacion`
   ADD CONSTRAINT `fk_donacion_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
+
+--
+-- Constraints for table `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD CONSTRAINT `favoritos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `favoritos_ibfk_2` FOREIGN KEY (`mascota_id`) REFERENCES `mascota` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `mascota`
