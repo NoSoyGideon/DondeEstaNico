@@ -1,8 +1,8 @@
 <?php
 class LoginModel extends Query {
-    public function getUsuario($usuario) {
-        $sql = "SELECT * FROM usuario WHERE usuario = ?";
-        return $this->select($sql, [$usuario]);
+    public function getUsuario($id) {
+        $sql = "SELECT * FROM usuario WHERE id = ?";
+        return $this->select($sql, [$id]);
     }
 
     public function crearUsuario($usuario, $clave,$correo) {

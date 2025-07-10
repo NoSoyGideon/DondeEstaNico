@@ -40,4 +40,41 @@ class Adoptar extends Controller {
 
     $this->model->toggleFavorito($usuario_id, $_POST['id']);
   }
+
+  public function proceso($params) {
+    $mascota_id = isset($_GET['id']) ? (int)$_GET['id'] : null;
+    $step = isset($_GET['step']) ? $_GET['step'] : 'start';
+    
+    if (!$mascota_id) {
+      header('Location: ' . BASE_URL . 'adoptar');
+      exit;
+    }
+
+    // Obtener información de la mascota
+    $mascota = $this->model->getMascotaById($mascota_id);
+    if (!$mascota) {
+      header('Location: ' . BASE_URL . 'adoptar');
+      exit;
+    }
+
+    $data['mascota'] = $mascota;
+    $data['step'] = $step;
+    $data['mascota_id'] = $mascota_id;
+    $data['title'] = 'Proceso de Adopción - ' . $mascota['nombre'];
+    
+    // Verificar si el usuario está logueado
+    if(!isset($_SESSION['id'])) {
+      $data['show_login_modal'] = true;
+      $data['usuario'] = null;
+    } else {
+      // Obtener información del usuario
+      require_once "Models/LoginModel.php";
+      $loginModel = new LoginModel();
+      $usuario = $loginModel->getUsuario($_SESSION['id']);
+      $data['usuario'] = $usuario;
+      $data['show_login_modal'] = false;
+    }
+    
+    $this->views->getView('adoptar', 'proceso', $data);
+  }
 }
