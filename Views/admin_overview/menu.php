@@ -5,6 +5,8 @@ function isActive($page) {
     return $current === $page ? 'active' : '';
 }
 ?>
+
+
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="style.css">
 

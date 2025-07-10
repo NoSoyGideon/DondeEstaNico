@@ -1,8 +1,3 @@
-<?php
-
-require_once '../../Config/Config.php';
-?>
-<?php include_once '../Templates/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,16 +9,30 @@ require_once '../../Config/Config.php';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+ <?php 
+  
+    // 1. Get the pet ID from the URL
+    $petId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+    $mascota = $data['mascotas'] ?? null;
+    $foto = $data['fotos'][0]['url_foto'] ?? null;
+    $foto2 = $data['fotos'][1]['url_foto'] ?? null;
+    $foto3 = $data['fotos'][2]['url_foto'] ?? null;
+    $foto4 = $data['fotos'][3]['url_foto'] ?? null;
+
+    include_once(__DIR__ . '/../Templates/header.php');
+
+ 
+ ?>
   <div class="pet-profile">
     <!-- Header -->
     <div class="header-section">
       <div class="pet-header">
-        <img class="pet-avatar" src="<?php echo BASE_URL; ?>assets/images/shibalogo.png" alt="Magie">
+        <img class="pet-avatar" src="<?= BASE_URL . $foto ?>" alt="Magie">
         <div class="pet-data">
           <h1>Hi Human!</h1>
-          <h2>Magie</h2>
-          <p class="pet-id">Pet ID: <strong>80638810</strong></p>
-          <p class="pet-location"><i class="fa-solid fa-location-dot"></i> United States Of America - California (12 Km away)</p>
+          <h2><?= htmlspecialchars($mascota['nombre']) ?></h2>
+          <p class="pet-id">Pet ID: <strong><?= htmlspecialchars($mascota['id']) ?></strong></p>
+          <p class="pet-location"><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($mascota['estado']) ?> </p>
         </div>
       </div>
     </div>
@@ -31,56 +40,52 @@ require_once '../../Config/Config.php';
     <!-- Gallery + Story -->
     <div class="gallery-story">
       <div class="gallery">
-        <img id="mainImage" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Main image" style="width: 1000px; height: 400px;">
-        <div class="thumbnails">  
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba3.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba4.jpg" onclick="changeImage(this)">
-          <img src="<?php echo BASE_URL; ?>assets/images/shiba5.jpg" onclick="changeImage(this)">
+        <img id="mainImage" src="<?= BASE_URL . $foto ?>" alt="Main image">
+        <div class="thumbnails">
+          <img src="<?php echo BASE_URL. $foto; ?>" onclick="changeImage(this)">
+
+          <?php if ($foto2): ?>
+          <img src="<?php echo BASE_URL. $foto2; ?>" onclick="changeImage(this)">
+          <?php endif; ?>
+          <?php if ($foto3): ?>
+          <img src="<?php echo BASE_URL. $foto3; ?>" onclick="changeImage(this)">
+          <?php endif; ?>
+          <?php if ($foto4): ?>
+          <img src="<?php echo BASE_URL. $foto4; ?>" onclick="changeImage(this)">
+          <?php endif; ?>
         </div>
         <div class="pet-tags">
-          <div class="tag">Female</div>
-          <div class="tag">Shiba Inu</div>
+          <div class="tag"><?= ($mascota['genero'] == 1) ? 'Male' : 'Female'; ?></div>
+          <div class="tag"><?= htmlspecialchars($mascota['nombre_raza']) ?></div>
           <div class="tag">14 months</div>
-          <div class="tag">Red</div>
-          <div class="tag">12.1 kg</div>
-          <div class="tag">51 cm</div>
+          <div class="tag"><?= htmlspecialchars($mascota['color']) ?></div>
+          <div class="tag"><?= htmlspecialchars($mascota['peso']) ?></div>
+          <div class="tag"><?= htmlspecialchars($mascota['altura']) ?></div>
         </div>
       </div>
       <div class="story">
-        <h3>Magie Story</h3>
-        <p>We have had Magie since she was able to leave her mum as a puppy at 8 weeks old. She currently lives with children and other animals. Magie is playful, loving, and ready to meet her new family!</p>
+        <h3><?= htmlspecialchars($mascota['nombre']) ?> Story</h3>
+        <p><?= htmlspecialchars($mascota['descripcion']) ?></p>
         <ul>
-          <li><i class="fa-solid fa-child"></i> Can live with other children of any age</li>
-          <li><i class="fa-solid fa-syringe"></i> Vaccinated</li>
-          <li><i class="fa-solid fa-house"></i> House Trained</li>
-          <li><i class="fa-solid fa-scissors"></i> Neutered</li>
-          <li><i class="fa-solid fa-check"></i> Shots up to date</li>
-          <li><i class="fa-solid fa-microchip"></i> Microchipped</li>
+          <?php
+          if (!empty($data['etiquetas'])): 
+            foreach ($data['etiquetas'] as $etiqueta): ?>
+         <li class="inline-flex items-center justify-center gap-1 px-2 py-[2px] bg-[#EFECFF] text-[#5D4FC4] border border-[#5D4FC4] rounded-md text-sm w-fit">
+ 
+  <?= htmlspecialchars($etiqueta['etiqueta']) ?>
+</li>
+
+
+            <?php endforeach; ?>
+          <?php else: ?>
+            <li>No tags available</li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
 
     <!-- Vaccination Table -->
-    <div class="vaccination-section">
-      <table>
-        <thead>
-          <tr>
-            <th>Age</th>
-            <th>8th Week</th>
-            <th>14th Week</th>
-            <th>22nd Week</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Vaccinated</td>
-            <td>Bordetella<br>Match<br>Leptospirosis</td>
-            <td>Bordetella, Canine Antivirus<br>Match<br>Leptospirosis</td>
-            <td>Bordetella, Canine Antivirus<br>Match<br>Leptospirosis</td>
-          </tr>
-        </tbody>
-      </table>
+
       <div class="adopt-box">
         <p>If you're interested to adopt</p>
         <a href="#" class="btn-adopt">Get Started</a>
@@ -110,7 +115,7 @@ require_once '../../Config/Config.php';
     </div>
   </div>
 
-  <?php include_once '../Templates/footer.php'; ?>
+<?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
 
   <script>
     function changeImage(img) {

@@ -5,19 +5,22 @@ class Query extends Conexion{
         $this->pdo = new Conexion();
         $this->con = $this->pdo->conect();
     }
-    public function select(string $sql)
+public function select(string $sql, array $datos = [])
+{
+    $this->sql = $sql;
+    $this->datos = $datos;
+    $resul = $this->con->prepare($this->sql);
+    $resul->execute($this->datos);
+    $data = $resul->fetch(PDO::FETCH_ASSOC);
+    return $data;
+}
+
+    public function selectAll(string $sql,array $datos = [])
     {
         $this->sql = $sql;
+        $this->datos = $datos;
         $resul = $this->con->prepare($this->sql);
-        $resul->execute();
-        $data = $resul->fetch(PDO::FETCH_ASSOC);
-        return $data;
-    }
-    public function selectAll(string $sql)
-    {
-        $this->sql = $sql;
-        $resul = $this->con->prepare($this->sql);
-        $resul->execute();
+        $resul->execute($this->datos);
         $data = $resul->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
@@ -47,5 +50,22 @@ class Query extends Conexion{
         }
         return $res;
     }
+    public function lastInsertId() {
+    return $this->con->lastInsertId();
+}
+
+
+public function eliminar(string $sql, array $datos)
+{
+    $this->sql = $sql;
+    $this->datos = $datos;
+    $delete = $this->con->prepare($this->sql);
+    $data = $delete->execute($this->datos);
+    if ($data) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 }
 ?>

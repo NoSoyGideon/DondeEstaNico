@@ -1,0 +1,106 @@
+body {
+  font-family: sans-serif;
+  background: #f8f8f8;
+  margin: 0;
+}
+
+.side-panel {
+  width: 260px;
+  padding: 10px;
+  margin-left: 100px;
+  margin-top: 40px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 12px;
+  position: relative;
+}
+.menu li a {
+  display: flex;
+  flex-direction: row;        /* Orden natural: texto a la izquierda */
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: #675BC8;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu li .label {
+  font-size: 16px;
+  z-index: 2;
+  flex-grow: 1;              /* Se estira para alinear ícono a la derecha */
+}
+
+.menu li .icon {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 5px solid #D5D1F0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  z-index: 2;
+  color: #675BC8;
+}
+
+.menu li .icon svg {
+  stroke: currentColor;
+  width: 20px;
+  height: 20px;
+}
+
+/* 🌟 ESTILO ACTIVO */
+.menu li.active a {
+  background: #9990DA;
+  color: #fff;
+  border-radius: 0px 90px 90px 0px;
+}
+
+.menu li.active .icon svg{
+  background: #675BC8;
+  color: #fff; /* <- Cambia el color del ícono (stroke) */
+}
+.menu li.active .icon {
+  background: #675BC8;
+  color: #fff; /* <- Cambia el color del ícono (stroke) */
+}
+
+.menu li.active .ribbon {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: #9990DA;
+  border-radius: 12px 0 0 0px;
+  z-index: 0;
+}
+
+/* 🔻 Triangulito */
+.menu li.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -20.3px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-top: 10px solid #675BC8;
+  transform: translateY(90%);
+
+}

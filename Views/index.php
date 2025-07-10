@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>DEN Rescue</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/styles.css">
+       <!-- <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/styles.css"> -->
 
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
      <script src="https://cdn.tailwindcss.com"></script>
@@ -37,29 +37,39 @@
     <?php include_once 'Templates/header.php'; ?>
 
   
-    <!-- Hero Section -->
-    <section class="flex items-center justify-center w-full min-h-screen pt-16 pb-8 overflow-hidden">
-        <div class="flex-1 max-w-lg flex flex-col justify-center gap-6 px-8 ml-4 md:ml-12 z-10">
-            <div class="text-4xl text-green-800 font-semibold mb-2">XXXXXXXXXXXXXXX</div>
-            <div class="text-3xl font-extrabold mb-4">
-                <span class="text-purple-main">Adopt</span> <span class="text-purple-text">Buddies</span>
-            </div>
-            <div class="text-gray-800 text-lg leading-relaxed mb-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit saepe deleniti illo doloremque eius? Laborum dolores deleniti rem est dolorem
-            </div>
-            <div class="flex gap-5">
-                <button class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark">Adopta</button>
-                <button class="bg-white text-purple-main border-2 border-purple-main rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-light">Buscar nuevo hogar</button>
-            </div>
-        </div>
-        <div class="flex-1 flex items-center justify-left relative h-screen">
-            <!-- Imagen de fondo hero section -->
-            <div class="absolute inset-0 flex items-center justify-left z-0">
-                <img src="<?php echo BASE_URL; ?>assets/images/home/bg1Section.png" alt="Decoración" class="w-full h-auto object-contain max-w-3xl transform scale-140">
-            </div>
-        </div>
-    </section>
+<section class="relative flex flex-col md:flex-row items-center justify-center w-full min-h-screen pt-16 pb-8 overflow-hidden border-b-4 border-purple-main">
 
+    <div class="flex-1 flex flex-col justify-center gap-4 px-4 sm:px-8 md:ml-12 z-10 max-w-xl text-center md:text-left">
+        <h2 class="text-3xl sm:text-4xl text-green-800 font-semibold">
+            Tu nuevo mejor amigo te espera
+        </h2>
+        <h1 class="text-4xl sm:text-5xl font-extrabold">
+            <span class="text-purple-main">Adopt</span> <span class="text-purple-text">Buddies</span>
+        </h1>
+        <p class="text-gray-700 text-lg leading-relaxed">
+            Conectamos corazones peludos con hogares amorosos. Explora una variedad de mascotas listas para brindarte alegría y compañía.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-2">
+            <button class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark shadow-md">
+                Adopta
+            </button>
+            <button class="bg-white text-purple-main border-2 border-purple-main rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-light hover:text-purple-dark shadow-md">
+                Buscar nuevo hogar
+            </button>
+        </div>
+    </div>
+
+    <div class="flex-1 flex items-center justify-center relative h-full min-h-[400px] md:min-h-screen mt-8 md:mt-0">
+        <div class="absolute inset-0 flex items-center justify-center z-0">
+            <img 
+                src="<?php echo BASE_URL; ?>assets/images/home/bg1Section.png" 
+                alt="Un perro y un gato abrazándose, simbolizando la adopción" 
+                class="w-full h-auto object-contain max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl transform scale-125 md:scale-140 lg:scale-150"
+            >
+        </div>
+    </div>
+
+</section>
     <!-- section cartas mascota -->
     <section class="py-16 px-8 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,221 +82,112 @@
 
         <!-- grid de cartas mascotas-->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <!-- Card -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="relative">
-                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 text-sm">Pet Image Placeholder</span>
-                    </div>
-                    <div class="absolute top-3 left-3 bg-purple-main text-white p-1 rounded">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-gray-900">Pitter</h3>
-                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        California, USA</span>
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Gender:</span>
-                            <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Male</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Breed:</span>
-                            <span class="text-sm bg-red-100 text-red-800 px-2 py-1 rounded">Pit Bull</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Age:</span>
-                            <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded">5 years</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Size:</span>
-                            <span class="text-sm bg-orange-100 text-orange-800 px-2 py-1 rounded">Large</span>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4">
-                        Pitter is a friendly, playful, smart male dog. Only adopted to a ho...
-                    </p>
-                    <button class="w-full bg-white border border-purple-main text-purple-main py-2 px-4 rounded hover:bg-purple-light transition-colors">
-                        Más información
-                    </button>
-                </div>
-            </div>
+        
+            <?php 
+                foreach ($data['mascotas'] as $m): 
+            ?>
 
-            <!-- Card -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="relative">
-                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 text-sm">Pet Image Placeholder</span>
-                    </div>
-                    <div class="absolute top-3 left-3 bg-purple-main text-white p-1 rounded">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-gray-900">Hero</h3>
-                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        Texas, USA
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Gender:</span>
-                            <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Male</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Breed:</span>
-                            <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded">DLH</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Age:</span>
-                            <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded">2 years</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Size:</span>
-                            <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Small</span>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4">
-                        Hero is a playful, smart male cat. You can keep him in an apartme...
-                    </p>
-                    <button class="w-full bg-white border border-purple-main text-purple-main py-2 px-4 rounded hover:bg-purple-light transition-colors">
-                        Más información
-                    </button>
-                </div>
-            </div>
+<!-- CARD MASCOTA -->
 
-            <!-- Card -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="relative">
-                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 text-sm">Pet Image Placeholder</span>
-                    </div>
-                    <div class="absolute top-3 left-3 bg-purple-main text-white p-1 rounded">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-gray-900">Magie</h3>
-                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        Florida, USA
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Gender:</span>
-                            <span class="text-sm bg-pink-100 text-pink-800 px-2 py-1 rounded">Female</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Breed:</span>
-                            <span class="text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Shiba Inu</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Age:</span>
-                            <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded">37 months</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Size:</span>
-                            <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Medium</span>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4">
-                        Magie currently lives with two children age 7 and 13 and has m...
-                    </p>
-                    <button class="w-full bg-white border border-purple-main text-purple-main py-2 px-4 rounded hover:bg-purple-light transition-colors">
-                        Más información
-                    </button>
-                </div>
-            </div>
 
-            <!-- Card -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="relative">
-                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 text-sm">Pet Image Placeholder</span>
-                    </div>
-                    <div class="absolute top-3 left-3 bg-purple-main text-white p-1 rounded">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-gray-900">Felix</h3>
-                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-600 mb-3">
-                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+<script defer src="<?php echo BASE_URL; ?>Assets/js/cardMascota.js"></script>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="relative">
+        <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+            <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Shiba Inu">
+        </div>
+
+
+<!-- Estrella FAVORITO -->
+<div class="absolute top-3 left-3 p-1 rounded cursor-pointer"
+     data-pet-id="123"
+     data-is-favorite="1"
+     onclick="toggleFavorite(this)">
+    <svg class="w-5 h-5 transition-colors duration-200"
+         fill="currentColor"
+         viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+    </svg>
+</div>
+
+
+
+
+
+    </div>
+    <div class="p-4">
+
+    
+               <?php
+        $especie = strtolower(trim($m['especie']));
+        if ($especie === 'perro') {
+            // Icono de perro
+            echo '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dog-icon lucide-dog"><path d="M11.25 16.25h1.5L12 17z"/><path d="M16 14v.5"/><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/><path d="M8 14v.5"/><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/></svg>';
+        } elseif ($especie === 'gato') {
+            // Icono de gato
+            echo '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cat-icon lucide-cat"><path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/><path d="M8 14v.5"/><path d="M16 14v.5"/><path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/></svg>';
+        } else {
+            // Default o desconocido
+            echo '<svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 4v16m8-8H4" />
+            </svg>';
+        }
+        ?>
+     <h3 class="text-lg font-semibold text-gray-900"><?= htmlspecialchars($m['nombre']) ?></h3>
+        
+     
+     
+     <div class="flex items-center text-sm text-gray-600 mb-3">
+           <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        New York, USA
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Gender:</span>
-                            <span class="text-sm bg-pink-100 text-pink-800 px-2 py-1 rounded">Female</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Breed:</span>
-                            <span class="text-sm bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Scottish</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Age:</span>
-                            <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded">9 Months</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-sm text-gray-600">Size:</span>
-                            <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Small</span>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-4">
-                        Felix is a cute and playful female cat. She loves walking running a...
-                    </p>
-                    <button class="w-full bg-white border border-purple-main text-purple-main py-2 px-4 rounded hover:bg-purple-light transition-colors">
-                        Más información
-                    </button>
-                </div>
+            </svg>
+            <?= htmlspecialchars($m['estado']) ?>   , <?= htmlspecialchars($m['estado']) ?>  <!--  Aquí va el estado y direccion de la mascota -->
+        </div>
+
+        <div class="space-y-2 mb-4">
+            <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Gender:</span>
+                <span class="text-sm <?= getColorClass('gender', $m['genero']) ?> px-2 py-1 rounded"><?= ($m['genero'] == 1) ? 'Male' : 'Female'; ?></span>
             </div>
+            <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Breed:</span>
+                <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded"><?= $m['nombre_raza'] ?></span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Age:</span>
+                <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded"><?= procesarFechaYValores($m['fecha_nacimiento'], $m['edad_minima'], $m['edad_maxima']) ?></span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-sm text-gray-600">Size:</span>
+                <span class="text-sm <?= getColorClass('size', $m['altura']) ?> px-2 py-1 rounded"><?= $m['altura'] ?> cm</span>
+            </div>
+        </div>
+
+        <p class="text-sm text-gray-600 mb-4">
+            <?= htmlspecialchars(strlen($m['descripcion']) > 74 ? substr($m['descripcion'], 0, 74) . '...' : $m['descripcion']) ?>
+        </p>
+
+
+        <a href="<?php echo BASE_URL; ?>desc_mascota?id=<?php echo $m['id']; ?>" class=" items-center w-full bg-white border border-purple-main text-purple-main py-2 px-6 rounded hover:bg-purple-light transition-colors">
+            Más información
+        </a>
+    </div>
+</div>
+
+
+
+          
+      <?php endforeach; ?>
+
         </div>
 
         <!-- Ver mas boton -->
-        <div class="text-center">
-            <button class="bg-white border border-purple-main text-purple-main px-6 py-2 rounded hover:bg-purple-light transition-colors">
-                Ver más mascotas
-            </button>
-        </div>
+<div class="text-center">
+        <a href="<?php echo BASE_URL; ?>adoptar" class="bg-white border border-purple-main text-purple-main px-6 py-2 rounded hover:bg-purple-light transition-colors inline-block">
+        Ver más mascotas
+    </a>
+</div>
     </div>
     </section>
 
@@ -429,9 +330,9 @@
                             <p class="text-black">Programas de vacunación y esterilización</p>
                         </div>
                     </div>
-                    <button class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark">
+                    <a href="<?php echo BASE_URL; ?>donar" class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark">
                         Donar ahora
-                    </button>
+                    </a>
                 </div>
                 
                 <!-- Imagen -->

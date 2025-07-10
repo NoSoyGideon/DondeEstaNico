@@ -1,0 +1,72 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.upload-container {
+  position: relative;
+}
+
+.custom-upload-button {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #CBCBCB;
+  border-radius: 12px;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.upload-label {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 14px;
+  color: #DFDFDF;
+}
+
+.camera-icon {
+  color: #868686;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.custom-upload-button:hover {
+  border-color: #4F40BF;
+  background-color: #f0efff;
+}
+
+.custom-upload-button:hover .upload-label,
+.custom-upload-button:hover .camera-icon {
+  color: #4F40BF;
+}
+
+.custom-upload-button:active {
+  background-color: #e0ddff;
+  border-color: #3f30af;
+}
+
+.custom-upload-button:active .upload-label,
+.custom-upload-button:active .camera-icon {
+  color: #3f30af;
+}
+
+#preview-image {
+  position: absolute;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: cover;
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 0;
+  display: none;
+}
