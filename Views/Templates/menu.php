@@ -13,43 +13,23 @@ function isActive($page) {
 <div class="side-panel">
   <ul class="menu">
     <li class="<?php echo isActive(1); ?>">
-      <a href="index.php">
-        <span class="label">Overview</span>
+      <a href="<?php echo BASE_URL; ?>admin_overview">
+        <span class="label">Mi perfil</span>
         <span class="icon"><i data-lucide="home"></i></span>
         <span class="ribbon"></span>
       </a>
     </li>
     <li class="<?php echo isActive(2); ?>">
-      <a href="profile.php">
-        <span class="label">Profile</span>
+      <a href="<?php echo BASE_URL; ?>admin_adopcion">
+        <span class="label">Adoptadas</span>
         <span class="icon"><i data-lucide="user"></i></span>
         <span class="ribbon"></span>
       </a>
     </li>
-    <li class="<?php echo isActive(3); ?>">
-      <a href="pets.php">
-        <span class="label">Pets</span>
-        <span class="icon"><i data-lucide="paw-print"></i></span>
-        <span class="ribbon"></span>
-      </a>
-    </li>
-    <li class="<?php echo isActive(4); ?>">
-      <a href="requests.php">
-        <span class="label">Requests</span>
-        <span class="icon"><i data-lucide="mail"></i></span>
-        <span class="ribbon"></span>
-      </a>
-    </li>
-    <li class="<?php echo isActive(5); ?>">
-      <a href="donations.php">
-        <span class="label">Donations</span>
-        <span class="icon"><i data-lucide="gift"></i></span>
-        <span class="ribbon"></span>
-      </a>
-    </li>
+  
     <li class="<?php echo isActive(6); ?>">
-      <a href="historial.php">
-        <span class="label">Historial</span>
+      <a href="<?= BASE_URL ?>login/logout">
+        <span class="label">Cerrar sesión</span>
         <span class="icon"><i data-lucide="clock"></i></span>
         <span class="ribbon"></span>
       </a>

@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('donationAmount', selectedAmount);
         
         // Submit form to process_donation.php
-        fetch('process_donation.php', {
+        fetch('<?= BASE_URL ?>donar/donar', {
             method: 'POST',
             body: formData
         })

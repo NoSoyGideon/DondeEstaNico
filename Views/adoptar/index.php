@@ -291,7 +291,7 @@ if (data.opciones && data.opciones.length > 0) {
     const opciones = [
       "Quiero una mascota",
       "Quiero saber información",
-      "Quiero tener 20"
+      "Quiero Sacar 20 con Uribe"
     ];
 
     const contenedorBotones = document.createElement("div");

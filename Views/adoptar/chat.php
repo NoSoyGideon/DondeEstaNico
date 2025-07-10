@@ -29,7 +29,7 @@ if (strpos($mensaje, 'cancelar') !== false) {
         responder(
             "Avisame si necesitas algo más. ¡Aquí estaré! 😊",
             [],
-            ["Quiero una mascota", "Quiero saber información", "Quiero tener 20"]
+            ["Quiero una mascota", "Quiero saber información", "Quiero Sacar 20 con Uribe"]
         );
     }
 
@@ -55,12 +55,12 @@ if ($_SESSION['paso'] === 0) {
         );
     }
 
-    elseif (strpos($mensaje, 'tener 20') !== false) {
+    elseif (strpos($mensaje, '20') !== false) {
         session_destroy();
         responder(
-            "🤣 Jajaja, ¡con una es suficiente para empezar! Pero si quieres 20, ojalá tengas espacio y croquetas.",
+            "Imposible, pide otra cosa mejor",
             [],
-            []
+            ["Quiero una mascota", "Quiero saber información"]
         );
     }
   
@@ -102,7 +102,7 @@ if ($_SESSION['paso'] === 1  && $_SESSION['ruta'] === 'mascota') {
             [],
             ["Pequeño", "Mediano", "Grande","¡Cualquier opción está bien para mí!",]
         );
-    echo json_encode(["respuesta" => "¿Qué tamaño prefieres? (pequeño, mediano, grande)"]);
+   
     exit;
 } 
 
@@ -168,7 +168,7 @@ if ($_SESSION['paso'] === 3) {
     strpos($mensaje, 'cualquier opción') !== false
 ) {
    
-    $_SESSION['filtros']['especie'] = null;
+    $_SESSION['filtros']['tamaño'] = null;
     $_SESSION['paso'] = 4;
         responder(
             "¡Excelente! Para afinar la búsqueda, ¿qué rasgos de personalidad te atraen? Puedes decirme si prefieres algo divertido, sereno, mimoso o tal vez con un espíritu aventurero",

@@ -1,22 +1,4 @@
-<?php
-// admin.php - Panel de administración de donaciones
-require_once __DIR__ . 'config.php';
-require_once __DIR__ . 'database.php';
 
-// Inicializar la base de datos
-$db = new DonationDatabase();
-
-// Obtener estadísticas
-$stats = $db->getDonationStats();
-$recentDonations = $db->getAllDonations(20, 0);
-$recentIpnLogs = $db->getIpnLogs(10, 0);
-
-// Paginación
-$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-$limit = 10;
-$offset = ($page - 1) * $limit;
-$donations = $db->getAllDonations($limit, $offset);
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

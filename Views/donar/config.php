@@ -14,9 +14,9 @@ return [
         'currency' => 'USD',
         
         // Return URLs - URLs a las que PayPal redirige después del pago
-        'return_url' => 'http://localhost:3000/donation-success.php',     // Pago exitoso
-        'cancel_return_url' => 'http://localhost:3000/donation-cancel.php', // Pago cancelado
-        'notify_url' => 'http://localhost:3000/paypal-ipn.php',             // IPN notifications
+        'return_url' => 'http://localhost/DondeEstaNico/donation-success.php',     // Pago exitoso
+        'cancel_return_url' => 'http://localhost/DondeEstaNico/donation-cancel.php', // Pago cancelado
+        'notify_url' => 'http://localhost/DondeEstaNico/paypal-ipn.php',             // IPN notifications
         
         // Test accounts for PayPal Sandbox
         'test_accounts' => [
@@ -29,7 +29,7 @@ return [
     // Site Configuration
     'site' => [
         'name' => 'AdoptBuddies',
-        'url' => 'http://localhost:3000', // Updated to correct port
+        'url' => 'http://localhost/DondeEstaNico', // Updated to correct port
         'email' => 'info@adoptbuddies.com',
         'phone' => '(555) 123-4567',
     ],

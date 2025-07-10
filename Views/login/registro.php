@@ -35,12 +35,12 @@
   </div>
 
   <!-- Campo de contraseña -->
-  <input id="passwordInput" type="password" name="clave" placeholder="Contraseña"
+  <input id="passwordInput2" type="password" name="clave" placeholder="Contraseña"
     class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-main focus:border-transparent outline-none password-input">
 
   <!-- Botón para mostrar/ocultar contraseña -->
   <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-    <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password" id="togglePasswordBtn">
+    <button type="button" class="text-gray-400 hover:text-gray-600 toggle-password" id="togglePasswordBtn2">
       <!-- Icono del ojo -->
       <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -168,8 +168,8 @@ if (!termsCheckbox.checked) {
   });
 });
 
-  const toggleBtn = document.getElementById("togglePasswordBtn");
-  const passwordInput = document.getElementById("passwordInput");
+  const toggleBtn = document.getElementById("togglePasswordBtn2");
+  const passwordInput = document.getElementById("passwordInput2");
   const eyeIcon = document.getElementById("eyeIcon");
 
   toggleBtn.addEventListener("click", () => {

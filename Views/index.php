@@ -94,7 +94,7 @@
 <div class="bg-white rounded-lg shadow-md overflow-hidden">
     <div class="relative">
         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-            <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?>assets/images/shiba.jpg" alt="Shiba Inu">
+           <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?><?php echo $m['url_foto']; ?>" alt="Shiba Inu">
         </div>
 
 
@@ -142,7 +142,7 @@
            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
             </svg>
-            <?= htmlspecialchars($m['estado']) ?>   , <?= htmlspecialchars($m['estado']) ?>  <!--  Aquí va el estado y direccion de la mascota -->
+            <?= htmlspecialchars($m['estado']) ?>   , <?= htmlspecialchars(strlen($m['direccion']) > 25 ? substr($m['direccion'], 0, 25) . '...' : $m['direccion']) ?>  <!--  Aquí va el estado y direccion de la mascota -->
         </div>
 
         <div class="space-y-2 mb-4">

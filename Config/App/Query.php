@@ -67,5 +67,14 @@ public function eliminar(string $sql, array $datos)
         return 0;
     }
 }
+public function update(string $sql, array $datos)
+{
+    $this->sql = $sql;
+    $this->datos = $datos;
+    $update = $this->con->prepare($this->sql);
+    $data = $update->execute($this->datos);
+    return $data ? 1 : 0;
+}
+
 }
 ?>

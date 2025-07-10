@@ -128,3 +128,20 @@
 .btn-send:hover {
   background-color: #4b3ab1;
 }
+.form-errors {
+  background: #ffe5e5;
+  border: 1px solid #ff6666;
+  color: #b10000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.form-success {
+  background: #e0ffe0;
+  border: 1px solid #66cc66;
+  color: #006600;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}

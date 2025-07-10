@@ -31,22 +31,40 @@
   </div>
 
   <div class="contact-right">
-    <form class="contact-form">
+    <form class="contact-form" action="<?php echo BASE_URL; ?>contacto/send" method="POST">
+<?php if (isset($_SESSION['form_errors'])): ?>
+  <div class="form-errors">
+    <ul>
+      <?php foreach ($_SESSION['form_errors'] as $error): ?>
+        <li><?php echo htmlspecialchars($error); ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+  <?php unset($_SESSION['form_errors']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['form_success'])): ?>
+  <div class="form-success">
+    <?php echo htmlspecialchars($_SESSION['form_success']); ?>
+  </div>
+  <?php unset($_SESSION['form_success']); ?>
+<?php endif; ?>
+
       <h3 class="form-title">
         Ready to help you <i class="fas fa-paw paw-icon"></i>
       </h3>
 
       <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Enter your name" required>
+      <input type="text" id="name" placeholder="Enter your name" name="name" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="email" id="email" placeholder="Enter your email" name="email" required>
 
       <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="Enter your phone number">
+      <input type="tel" id="phone" placeholder="Enter your phone number" name="phone" required>
 
       <label for="message">Message</label>
-      <textarea id="message" rows="5" placeholder="Write your message..."></textarea>
+      <textarea id="message" rows="5" placeholder="Write your message..." name="message" required></textarea>
 
       <button type="submit" class="btn-send">Send</button>
     </form>

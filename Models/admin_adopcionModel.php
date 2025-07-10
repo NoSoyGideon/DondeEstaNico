@@ -1,0 +1,12 @@
+<?php
+class admin_adopcionModel extends Query{
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
+
+}?>
+

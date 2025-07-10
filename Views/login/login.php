@@ -168,17 +168,17 @@ fetch('<?= BASE_URL ?>login/validarAdmin', {
 }
 });
 
-  const toggleBtn = document.getElementById("togglePasswordBtn");
-  const passwordInput = document.getElementById("passwordInput");
-  const eyeIcon = document.getElementById("eyeIcon");
+  const toggleBtn1 = document.getElementById("togglePasswordBtn");
+  const passwordInput2 = document.getElementById("passwordInput");
+  const eyeIcon3 = document.getElementById("eyeIcon");
 
-  toggleBtn.addEventListener("click", () => {
-    const isPassword = passwordInput.type === "password";
-    passwordInput.type = isPassword ? "text" : "password";
+  toggleBtn1.addEventListener("click", () => {
+    const isPassword = passwordInput2.type === "password";
+    passwordInput2.type = isPassword ? "text" : "password";
 
     // Cambiar el color del ícono como feedback visual (opcional)
-    eyeIcon.classList.toggle("text-purple-600", isPassword);
-    eyeIcon.classList.toggle("text-gray-400", !isPassword);
+    eyeIcon3.classList.toggle("text-purple-600", isPassword);
+    eyeIcon3.classList.toggle("text-gray-400", !isPassword);
   });
 </script>
 

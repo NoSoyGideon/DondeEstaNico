@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/hero2.css">
+     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/hero.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<div id="mensaje1" class="mensaje" style="display: none;"></div>
 
 
 <?php include_once(__DIR__ . '/../Templates/header.php'); ?>
@@ -83,14 +83,7 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
       <!-- FORMULARIO DE REALOJAMIENTO DE MASCOTA -->
   <form id="formulario-mascota" >
   <!-- Checkbox de términos -->
-  <div class="terminos">
-    <label>
-      <input type="checkbox" id="check-terminos">
-      <span>
-        He leído y acepto los <a href="#" class="enlace-primario">Términos y Política de Privacidad</a>
-      </span>
-    </label>
-  </div>
+
 
   <!-- Texto descriptivo -->
   <h3 class="texto-descriptivo">
@@ -319,10 +312,20 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
     <label><span class="asterisco">*</span>Descripción</label>
     <textarea name="descripcion" rows="4" placeholder="Cuéntanos más sobre tu mascota..." required></textarea>
   </div>
+
+
+
 </form>
 
     </div>
-
+  <div class="terminos">
+    <label>
+      <input type="checkbox" id="check-terminos">
+      <span>
+        He leído y acepto los <a href="#" class="enlace-primario">Términos y Política de Privacidad</a>
+      </span>
+    </label>
+  </div>
     <div class="botones-navegacion">
       <button class="volver" onclick="cambiarVista()">← Volver</button>
       <button class="siguiente" onclick="success_pantalla()">Siguiente →</button>
@@ -366,6 +369,18 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
   <script>
 
+
+function mostrarMensaje(texto, color = '#5D4FC4') {
+  const mensaje = document.getElementById('mensaje1');
+  mensaje.style.backgroundColor = color;
+  mensaje.textContent = texto;
+  mensaje.style.display = 'block';
+
+  setTimeout(() => {
+    mensaje.style.display = 'none';
+  }, 3500);
+}
+
   const input = document.getElementById('fileInput');
   const preview = document.getElementById('preview-image');
 const input2 = document.getElementById('fileInput-2');
@@ -376,7 +391,7 @@ const input4 = document.getElementById('fileInput-4');
 const preview4 = document.getElementById('preview-image-4');
 
 
-const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
 const minSize = 240 * 1024; // 240 KB
 const maxSize = 1024 * 1024; // 1024 KB
 
@@ -390,10 +405,15 @@ input2.addEventListener('change', function () {
         preview2.style.display = 'block';
       };
       reader.readAsDataURL(file);
+     if(!validarInputImagen("fileInput-2")){
+        preview2.style.display = 'none';
+        preview2.src = '';
+     }
     } else {
       preview2.style.display = 'none';
       preview2.src = '';
     }
+    
   });
   input3.addEventListener('change', function () {
     const file = this.files[0];
@@ -404,6 +424,10 @@ input2.addEventListener('change', function () {
         preview3.style.display = 'block';
       };
       reader.readAsDataURL(file);
+      if(!validarInputImagen("fileInput-3")){
+preview3.style.display = 'none';
+      preview3.src = '';
+      }
     } else {
       preview3.style.display = 'none';
       preview3.src = '';
@@ -418,6 +442,10 @@ input2.addEventListener('change', function () {
         preview4.style.display = 'block';
       };
       reader.readAsDataURL(file);
+      if(!validarInputImagen("fileInput-4")){
+preview4.style.display = 'none';
+      preview4.src = '';
+      }
     } else {
       preview4.style.display = 'none';
       preview4.src = '';
@@ -433,6 +461,10 @@ input2.addEventListener('change', function () {
         preview.style.display = 'block';
       };
       reader.readAsDataURL(file);
+      if(!validarInputImagen("fileInput")){
+        preview.style.display = 'none';
+        preview.src = '';
+      }
     } else {
       preview.style.display = 'none';
       preview.src = '';
@@ -506,12 +538,13 @@ fechaInput.addEventListener("input", () => {
     const etiquetasSeleccionadas = Array.from(document.querySelectorAll('.etiqueta.seleccionada'));
 const ids = etiquetasSeleccionadas.map(et => et.dataset.id);
 document.getElementById('etiquetasInput').value = ids.join(',');
+
     const formData = new FormData(formElement);
 
 
     // Validar si se aceptaron los términos
     if (!checkTerminos.checked) {
-        alert("Debes aceptar los términos y condiciones para continuar.");
+        mostrarMensaje("Debes aceptar los términos y condiciones para continuar.");
         return;
     }
 
@@ -658,6 +691,7 @@ function validarCampos() {
         mensaje += "Por favor ingresa una altura válida (entre 0.1 y 100 cm).\n";
     }
 
+
   const inputImagen = document.getElementById('fileInput');
     if (!inputImagen.files || inputImagen.files.length === 0) {
         esValido = false;
@@ -665,10 +699,12 @@ function validarCampos() {
     }
 
 
+
+
     // Puedes añadir más validaciones aquí para otros campos si los necesitas
 
     if (!esValido) {
-        alert(mensaje); // Puedes reemplazar esto con un sistema de notificaciones si lo tienes
+        mostrarMensaje(mensaje); // Puedes reemplazar esto con un sistema de notificaciones si lo tienes
     }
 
     return esValido;
@@ -678,6 +714,52 @@ function validarNombreMascota() {
     const inputNombre = document.getElementById('nombre');
     const regex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{2,30}$/;
     return regex.test(inputNombre.value.trim());
+}
+
+function validarInputImagen(idDelInput) {
+  const validExtensions = ['jpg', 'jpeg', 'png'];
+  const minSizeKB = 240;
+  const maxSizeKB = 1024;
+  const requiredWidth = 600;
+  const requiredHeight = 600;
+
+  const input = document.getElementById(idDelInput);
+  const file = input.files[0];
+
+  if (!file) return; // si no hay archivo, salir
+
+  const extension = file.name.split('.').pop().toLowerCase();
+  const fileSizeKB = file.size / 1024;
+
+  if (!validExtensions.includes(extension)) {
+    mostrarMensaje(`El archivo en "${idDelInput}" no es válido (.jpg, .jpeg, .png).`);
+    input.value = '';
+    return false;
+  }
+
+  if (fileSizeKB < minSizeKB || fileSizeKB > maxSizeKB) {
+    mostrarMensaje(`El archivo en "${idDelInput}" debe pesar entre 240 KB y 1024 KB.`);
+    input.value = '';
+    return false;
+  }
+
+  const img = new Image();
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    img.src = e.target.result;
+
+    img.onload = function () {
+      if (img.width !== requiredWidth || img.height !== requiredHeight) {
+        mostrarMensaje(`La imagen en "${idDelInput}" debe tener 600x600 píxeles.`);
+        input.value = '';
+        return false;
+      }
+    };
+  };
+
+  reader.readAsDataURL(file);
+  return true;
 }
 
 
