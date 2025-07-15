@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>Assets/css/adopcion.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>Assets/css/adopcion copy.css">
     <script defer src="<?php echo BASE_URL; ?>Assets/js/adopcion.js"></script>
 
 </head>
@@ -33,23 +33,28 @@
 
 
  
-  <section class="seccion-chat">
- <div class="chat-info">
-  <img src="<?php echo BASE_URL; ?>Assets/images/adoptar/meowth.png" alt="Mascota chat">
-  <h2>¿Qué mascota estás buscando?</h2>
-  <button onclick="mostrarChat()">Hablar con el asistente</button>
+ <section class="seccion-chat">
+  <div class="chat-info">
+    <div class="chat-avatar-info">
+      <img src="<?php echo BASE_URL; ?>Assets/images/adoptar/meowth.png" alt="Mascota MeowthBot">
+      <div>
+        <h2>Hola, soy <span class="highlight">MeowthBot</span> 🧠</h2>
+        <p>Tu asistente inteligente para encontrar la mascota ideal 🐶🐱</p>
+      </div>
+    </div>
+    <button id="btn-hablar" onclick="mostrarChat()">Hablar con MeowthBot</button>
+  </div>
 
-  <div id="chat-container" class="hidden">
-    <button id="cerrar-chat" onclick="cerrarChat()" style="align-self: flex-end; margin-bottom: 0.5rem;">Cerrar ✖️</button>
+  <div id="chat-container" class="hidden chat-container">
+    <button id="cerrar-chat" onclick="cerrarChat()">✖️</button>
     <div id="chat" class="chat-box"></div>
-    <div style="display: flex; align-items: center;">
+    <div class="chat-input-container">
       <input type="text" id="entrada" placeholder="Escribe tu mensaje..." />
       <button id="enviar" onclick="enviarMensaje()">Enviar</button>
     </div>
   </div>
-</div>
+</section>
 
-  </section>
 
 
 <section class="max-w-7xl mx-auto mt-20 px-4">
@@ -67,7 +72,7 @@
    <div class="p-4">
 
 <script defer src="<?php echo BASE_URL; ?>Assets/js/cardMascota.js"></script>
-<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="bg-white rounded-lg shadow-md overflow-hidden w-[300px] h-[580px] flex flex-col"> 
     <div class="relative">
         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
             <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?><?php echo $m['url_foto']; ?>" alt="Shiba Inu">
@@ -142,33 +147,34 @@
 
         <div class="space-y-2 mb-4">
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Gender:</span>
-                <span class="text-sm <?= getColorClass('gender', $m['genero']) ?> px-2 py-1 rounded"><?= ($m['genero'] == 1) ? 'Male' : 'Female'; ?></span>
+                <span class="text-sm text-gray-600">Genero:</span>
+                <span class="text-sm <?= getColorClass('gender', $m['genero']) ?> px-2 py-1 rounded"><?= ($m['genero'] == 1) ? 'Macho' : 'Hembra'; ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Breed:</span>
+                <span class="text-sm text-gray-600">Raza:</span>
                 <span class="text-sm <?= buscarColorPorRaza($data['razasConColor'], $m['nombre_raza']) ?> px-2 py-1 rounded"><?= $m['nombre_raza'] ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Age:</span>
+                <span class="text-sm text-gray-600">Edad:</span>
                 <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded"><?= procesarFechaYValores($m['fecha_nacimiento'], $m['edad_minima'], $m['edad_maxima']) ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Size:</span>
+                <span class="text-sm text-gray-600">Tamaño:</span>
                 <span class="text-sm <?= getColorClass('size', $m['altura']) ?> px-2 py-1 rounded"><?= $m['altura'] ?> cm</span>
             </div>
         </div>
 
-        <p class="text-sm text-gray-600 mb-4">
+        <p class="text-sm text-gray-600 mb-4 overflow-hidden h-[72px]">
             <?= htmlspecialchars(strlen($m['descripcion']) > 74 ? substr($m['descripcion'], 0, 74) . '...' : $m['descripcion']) ?>
         </p>
 
 
-        <a href="<?php echo BASE_URL; ?>desc_mascota?id=<?php echo $m['id']; ?>" class=" items-center w-full bg-white border border-purple-main text-purple-main py-2 px-6 rounded hover:bg-purple-light transition-colors">
-            Más información
-        </a>
-        <p class="text-sm text-gray-600 mb-4">
-               
+    <a href="<?php echo BASE_URL; ?>desc_mascota?id=<?php echo $m['id']; ?>" 
+   class="items-center bg-white border border-purple-main text-purple-main py-2 px-6 rounded hover:bg-purple-main hover:text-white transform hover:scale-105 transition-all duration-300 ease-in-out text-center">
+   Más información
+</a>
+        <p class="text-sm text-gray-600 mb-4 overflow-hidden h-[72px]">
+
         </p>
     </div>
 
@@ -225,16 +231,27 @@ function renderizarMascotas(lista) {
 
 function cerrarChat() {
   document.getElementById('chat-container').style.display = 'none';
+  document.getElementById('btn-hablar').style.display = 'inline-block';
 }
 
 
 function agregarMensaje(texto, clase) {
-  const div = document.createElement("div");
+ const div = document.createElement("div");
   div.className = "msg " + clase;
-  div.textContent = texto;
-  document.getElementById("chat").appendChild(div);
 
-  
+  if (clase === "bot") {
+    div.innerHTML = `
+       <div class="bot-container">
+        <img src="<?php echo BASE_URL; ?>Assets/images/adoptar/meowth.png" alt="Bot" class="bot-avatar">
+        <div class="bot-message">${texto}</div>
+      </div>
+    `;
+  } else {
+    div.textContent = texto;
+  }
+
+  document.getElementById("chat").appendChild(div);
+  document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
 }
 
 async function enviarMensaje() {
@@ -278,39 +295,22 @@ if (data.opciones && data.opciones.length > 0) {
 }
 
 
-    function mostrarChat() {
+function mostrarChat() {
+  document.getElementById('chat-container').style.display = 'flex';
+  document.getElementById('btn-hablar').style.display = 'none';
 
-      
-      document.getElementById('chat-container').style.display = 'flex';
-
-      
-  // Solo mostrar bienvenida si es la primera vez
   if (!document.querySelector("#chat .msg")) {
-    agregarMensaje("¡Hola! 👋 Soy tu asistente virtual. ¿Con qué te puedo ayudar hoy?", "bot");
+    agregarMensaje("¡Hola! Soy MeowthBot 🤖🐾 ¿En qué puedo ayudarte hoy?", "bot");
 
-    const opciones = [
-      "Quiero una mascota",
-      "Quiero saber información",
-      "Quiero Sacar 20 con Uribe"
-    ];
-
+    
     const contenedorBotones = document.createElement("div");
     contenedorBotones.className = "msg bot opciones flex flex-wrap gap-2 mt-2";
 
-    opciones.forEach(opcion => {
-      const btn = document.createElement("button");
-      btn.textContent = opcion;
-      btn.className = "m-1 px-3 py-1 border border-[#0A453A] text-[#0A453A] rounded hover:bg-[#0A453A]/10 text-sm transition";
-      btn.addEventListener("click", () => {
-        document.getElementById("entrada").value = opcion;
-        enviarMensaje();
-      });
-      contenedorBotones.appendChild(btn);
-    });
+
 
     document.getElementById("chat").appendChild(contenedorBotones);
   }
-    }
+}
 
 
 

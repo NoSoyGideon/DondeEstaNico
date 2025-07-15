@@ -6,35 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/hero copy 2.css">
+     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/edit.css">
+      <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="mensaje1" class="mensaje" style="display: none;"></div>
+  
+    <?php include_once(__DIR__ . '/../Templates/header.php'); ?>
+  <div id="mensaje1" class="mensaje" style="display: none;"></div>
+   <?php 
+  
+    // 1. Get the pet ID from the URL
+    $petId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+    $mascota = $data['mascotas'] ?? null;
+    $foto = $data['fotos'][0]['url_foto'] ?? null;
+    $foto2 = $data['fotos'][1]['url_foto'] ?? null;
+    $foto3 = $data['fotos'][2]['url_foto'] ?? null;
+    $foto4 = $data['fotos'][3]['url_foto'] ?? null;
+    $soloNombres = array_column($data['etiquetasSelecionadas'], 'etiqueta');
 
+    include_once(__DIR__ . '/../Templates/header.php');
 
-<?php include_once(__DIR__ . '/../Templates/header.php'); ?>
-  <div id="app">
-    <!-- Vista Hero -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">¿Ya no puedes cuidar a tu mascota?</h1>
-        <p class="hero-subtitle">Te ayudamos a encontrarle un nuevo hogar lleno de amor y cuidado.</p>
-        <?php if (isset($_SESSION['nombre'])): ?>
-        <button class="btn-primary" onclick="cambiarVista()">Iniciar proceso de realojamiento</button>
-        <?php else: ?>
-        <p>Por favor, inicia sesión para continuar.</p>
-        <?php endif; ?>
-      </div>
-      <div class="hero-image">
-        <img src="<?php echo BASE_URL; ?>assets/images/realojar/main.jpeg" alt="Ilustración de mascota feliz">
-      </div>
-    </section>
-  </div>
-
-  <div id="form">
-    <?php 
 function formatRazasForJs($razasArray) {
     $formattedRazas = [];
     foreach ($razasArray as $raza) {
@@ -55,26 +48,43 @@ $razas_gatos_formateadas = formatRazasForJs($data['razasGato']);
 $raza_perros_json = json_encode($razas_perros_formateadas);
 $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
-      ?>
+      
 
+ 
+ ?>
+  <?php include_once(__DIR__ . '/../Templates/header.php');
+    $_SESSION['setting'] = 2;
+    $usuario = $data['usuario'] ?? [];
+  ?>  
+  <div class="admin">
+    <div class="sidebar">
+    <?php include_once(__DIR__ . '/../Templates/menu.php'); ?>
+    </div>
+    <div class="main-content">
+
+
+
+
+
+
+    
   <section class="seccion uno">
+     <button class="volver" onclick="cancelar()">← Cancelar </button>
     <div class="encabezado">
       <div class="texto">
-        <h1>Cuéntanos sobre tu mascota 🐾</h1>
-        <p class="subtexto">“Queremos conocerla bien para encontrarle el hogar que se merece. No te tomará mucho tiempo.”</p>
-
+                <h1>Datos de tu mascota registrada 🐾</h1>
+        <p class="subtexto">"Estos son los detalles de tu compañero peludo. Revisa que todo esté correcto o edita si es necesario."
         <div class="datos-usuario">
-          <p><strong>Nombre:</strong> <?= $_SESSION['nombre'] ?? 'No disponible' ?></p>
-          <p><strong>Teléfono:</strong> <?= $_SESSION['telefono'] ?? 'No disponible' ?></p>
-          <p><strong>Correo:</strong> <?= $_SESSION['correo'] ?? 'No disponible' ?></p>
-          <p><strong>ID:</strong> <?= $_SESSION['id_usuario'] ?? 'No disponible' ?></p>
+         <p><strong>Estado:</strong> <span class="estado-adopcion"><?= $mascota['estado_adopcion'] ?? 'En proceso' ?></span></p>
         </div>
       </div>
 
-      <div class="foto-usuario">
-        <img src="<?php echo BASE_URL; ?>assets/images/dieta.jpg" alt="Foto del usuario">
+     <div class="foto-mascota">
+        <img src="<?= $foto ?? BASE_URL.$foto ?>" alt="Foto de la mascota">
+        <div class="badge-adopcion">En adopción</div>
       </div>
     </div>
+
   </section>
 
   <!-- SECCIÓN 2 -->
@@ -87,27 +97,39 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
   <!-- Texto descriptivo -->
   <h3 class="texto-descriptivo">
-    Para postular a <a href="#" class="enlace-primario">Adoptar una mascota</a> necesitas completar algunos campos
-  </h3>
+    Edita algo no c  
+    </h3>
 
   <!-- Primera fila: nombre, tipo, género -->
   <div class="fila-inputs">
     <div class="input-group">
       <label><span class="asterisco">*</span>Nombre de la mascota</label>
-      <input type="text" name="nombre" id="nombre" required>
+      <input type="text" name="nombre" id="nombre" value="<?= htmlspecialchars($mascota['nombre']) ?>" required>
+       <input type="text" name="id_mascota" id="id_mascota" value="<?= htmlspecialchars($petId) ?>" required hidden>
     </div>
     <div class="input-group">
       <label><span class="asterisco">*</span>Tipo</label>
       <select name="tipo" id="tipoSelect">
-        <option value="perro">Perro</option>
-        <option value="gato">Gato</option>
+      
+        <?php if ($mascota['especie'] === 'perro'): ?>
+          <option selected value="perro">Perro</option>
+          <option value="gato">Gato</option>
+          <?php else: ?>
+          <option  value="perro">Perro</option>
+          <option selected value="gato">Gato</option>
+          <?php endif; ?>
       </select>
     </div>
     <div class="input-group">
       <label><span class="asterisco">*</span>Género</label>
       <select name="genero">
-        <option value=1>Macho</option>
-        <option value=0>Hembra</option>
+          <?php if ($mascota['genero'] == 1): ?>
+          <option selected value="1">Macho</option>
+          <option value="0">Hembra</option>
+          <?php else: ?>
+          <option  value="1">Macho</option>
+          <option selected value="0">Hembra</option>
+          <?php endif; ?>
       </select>
     </div>
   </div>
@@ -118,49 +140,45 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
   <div class="fila-inputs">
     <div class="input-group">
       <label><span class="asterisco">*</span>Peso (kg)</label>
-      <input type="number" id="peso" name="peso" step="0.1" min="0.1" max="120.0" required>
+      <input type="number" id="peso" name="peso" value="<?= htmlspecialchars($mascota['peso']) ?>" step="0.1" min="0.1" max="120.0" required>
     </div>
     <div class="input-group">
       <label><span class="asterisco">*</span>Altura (cm)</label>
-      <input type="number" id="altura" name="altura" step="0.1" min="0.1" max="100.0" required>
+      <input type="number" id="altura" name="altura" value="<?= htmlspecialchars($mascota['altura']) ?>" step="0.1" min="0.1" max="100.0" required>
     </div>
     <div class="input-group">
       <label><span class="asterisco">*</span>Color</label>
       <select name="color">
-  <option value="Negro">⚫ Negro</option>
-  <option value="Blanco">⚪ Blanco</option>
-  <option value="Marrón">🟤 Marrón</option>
-  <option value="Gris">⚙️ Gris</option>
-  <option value="Beige">🟡 Beige</option>
-  <option value="Dorado">🟠 Dorado</option>
-  <option value="Canela">🟫 Canela</option>
-  <option value="Crema">🤍 Crema</option>
-  <option value="Rojizo">🔴 Rojizo</option>
-  <option value="Atigrado">🟤⚫ Atigrado</option>
-  <option value="Blanco con Negro">⚪⚫ Blanco con Negro</option>
-  <option value="Blanco con Marrón">⚪🟤 Blanco con Marrón</option>
-  <option value="Negro con Marrón">⚫🟤 Negro con Marrón</option>
-  <option value="Gris con Blanco">⚙️⚪ Gris con Blanco</option>
-  <option value="Manchado">🔳 Manchado</option>
-  <option value="Tricolor">⚪⚫🟤 Tricolor</option>
+        <option value="Negro">⚫ Negro</option>
+        <option value="Blanco">⚪ Blanco</option>
+        <option value="Marrón">🟤 Marrón</option>
+        <option value="Gris">⚙️ Gris</option>
+        <option value="Beige">🟡 Beige</option>
+        <option value="Dorado">🟠 Dorado</option>
+        <option value="Canela">🟫 Canela</option>
+        <option value="Crema">🤍 Crema</option>
+        <option value="Rojizo">🔴 Rojizo</option>
+        <option value="Atigrado">🟤⚫ Atigrado</option>
+        <option value="Blanco con Negro">⚪⚫ Blanco con Negro</option>
+        <option value="Blanco con Marrón">⚪🟤 Blanco con Marrón</option>
+        <option value="Negro con Marrón">⚫🟤 Negro con Marrón</option>
+        <option value="Gris con Blanco">⚙️⚪ Gris con Blanco</option>
+        <option value="Manchado">🔳 Manchado</option>
+        <option value="Tricolor">⚪⚫🟤 Tricolor</option>
+        <option selected value="<?= htmlspecialchars($mascota['color']) ?>"><?= htmlspecialchars($mascota['color']) ?></option>
       </select>
     </div>
 
-    
+
+
 <div class="input-group">
       <label><span class="asterisco">*</span>Raza</label>
       <select name="Raza" id="razaSelect">
-        <option value="">Selecciona una raza</option>
+        <option value="<?= htmlspecialchars($mascota['nombre_raza']) ?>"><?= htmlspecialchars($mascota['nombre_raza']) ?></option>
       </select>
     </div>
 
   </div>
-
-
-  <h3 class="titulo-etiquetas">  Fecha de nacimiento de tu mascota <span class="asterisco">*</span></h3>
-  <p class="descripcion-etiquetas">
-   Si no estás seguro de la fecha exacta, no te preocupes: ingresa una aproximada.
-  </p>
 
 
 
@@ -171,19 +189,28 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
   <div class="componente">
     <div class="input-group">
       <label>Fecha de nacimiento</label>
-      <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+<?php
+$fechaFormateada = '';
+if (!empty($mascota['fecha_nacimiento'])) {
+    $fecha = DateTime::createFromFormat('Y-m-d', $mascota['fecha_nacimiento']);
+    if ($fecha) {
+        $fechaFormateada = $fecha->format('Y-m-d');
+    }
+}
+?>
+<input type="date" id="fecha-nacimiento" name="fecha-nacimiento" value="<?= htmlspecialchars($fechaFormateada) ?>">
+
 </div>
 </div>
 <div class="componente">
     <div class="input-group">
 
         <label>Edad mínima</label>
-        <input type="number" id="edad-min" name="edad-min"   max="12">
-       
+        <input type="number" id="edad-min" name="edad-min" value="<?= isset($mascota['edad_minima']) ? htmlspecialchars($mascota['edad_minima']) : '' ?>" max="12">
 
 
         <label>Edad máxima</label>
-        <input type="number" id="edad-max" name="edad-max"   max="12">
+        <input type="number" id="edad-max" name="edad-max" value="<?= isset($mascota['edad_maxima']) ? htmlspecialchars($mascota['edad_maxima']) : '' ?>" max="12">
       </div>
       </div>
       
@@ -191,6 +218,8 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
   </div>
 
 
+
+  
 
 
 <section class="seccion-ubicacion">
@@ -230,19 +259,15 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
     <option value="Trujillo">Trujillo</option>
     <option value="Yaracuy">Yaracuy</option>
     <option value="Zulia">Zulia</option>
+     <option selected value="<?= htmlspecialchars($mascota['estado']) ?>"><?= htmlspecialchars($mascota['estado']) ?></option>
 </select>
   </div>
 
   <div class="input-group">
     <label><span class="asterisco">*</span>Dirección</label>
-    <textarea name="direccion" rows="4" placeholder="Cuéntanos donde se encuentra tu mascota..." required></textarea>
+    <textarea name="direccion" rows="4" placeholder="Cuéntanos donde se encuentra tu mascota..." required><?= htmlspecialchars($mascota['direccion']) ?></textarea>
   </div>
 </section>
-
-
-
-
-
 
 
 
@@ -262,10 +287,13 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
  <div class="etiquetas-select">
   <?php foreach ($data['etiquetas'] as $nombreEtiqueta => $idEtiqueta):?>
-    <span class="etiqueta" data-id="<?= $idEtiqueta ?>">
-      <?= htmlspecialchars($nombreEtiqueta) ?>
-    </span>
+       <span class="<?php echo in_array($nombreEtiqueta,$soloNombres) ? 'etiqueta seleccionada' : 'etiqueta'; ?>" data-id="<?= $idEtiqueta ?>">
+          <?= htmlspecialchars($nombreEtiqueta) ?>
+          </span>
+        
+
   <?php endforeach; ?>
+
   <input type="hidden" name="etiquetas" id="etiquetasInput">
 </div>
 </section>
@@ -273,15 +301,13 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
 
 
+
+
 <section class="seccion-explicativa">
-
-
-
- <h3 class="titulo-etiquetas">Fotos<span class="asterisco">*</span></h3>
-  <p class="descripcion-etiquetas">Esto nunca será visible para el público y solo se compartirá con el adoptante cuando completes el proceso de realojamiento. Por tu seguridad, te recomendamos tachar cualquier información personal en los documentos.
+  <label >Fotos</label>
+  <p class="texto-gris">
+    Esto nunca será visible para el público y solo se compartirá con el adoptante cuando completes el proceso de realojamiento. Por tu seguridad, te recomendamos tachar cualquier información personal en los documentos.
   </p>
-
-
 
   <p class="texto-verde">
     El formato de imagen debe ser (.jpg, .png, .jpeg).<br>
@@ -301,7 +327,7 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/>
         <circle cx="12" cy="13" r="4"/>
       </svg>
-      <img id="preview-image" alt="Preview" style="display: none;" />
+      <img id="preview-image" alt="Preview" src="<?= $foto ?? BASE_URL.$foto ?>" style="display:block;" />
     </label>
     <input type="file" id="fileInput" name="main" accept="image/*" hidden>
   </div>
@@ -313,7 +339,12 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/>
         <circle cx="12" cy="13" r="4"/>
       </svg>
-      <img id="preview-image-2" alt="Preview" style="display: none;" />
+      <?php if ($foto2): ?>
+        <img id="preview-image-2" alt="Preview" src="<?= BASE_URL.$foto2 ?>" style="display:block;" />
+      <?php else: ?>
+        <img id="preview-image-2" alt="Preview" style="display: none;" />
+      <?php endif; ?>
+    
     </label>
     <input type="file" id="fileInput-2" name="file-2" accept="image/*" hidden>
   </div>
@@ -326,10 +357,17 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/>
         <circle cx="12" cy="13" r="4"/>
       </svg>
-      <img id="preview-image-3" alt="Preview" style="display: none;" />
+         <?php if ($foto3): ?>
+        <img id="preview-image-3" alt="Preview" src="<?= BASE_URL.$foto3 ?>" style="display:block;" />
+      <?php else: ?>
+        <img id="preview-image-3" alt="Preview" style="display: none;" />
+      <?php endif; ?>
     </label>
     <input type="file" id="fileInput-3" name="file-3" accept="image/*" hidden>
   </div>
+
+
+
   <div class="upload-container">
     <label for="fileInput-4" class="custom-upload-button">
       <span class="upload-label">4.Otra</span>
@@ -337,10 +375,13 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/>
         <circle cx="12" cy="13" r="4"/>
       </svg>
-      <img id="preview-image-4" alt="Preview" style="display: none;" />
+      <?php if ($foto4): ?>
+        <img id="preview-image-4" alt="Preview" src="<?= BASE_URL.$foto4 ?>" style="display:block;" />
+      <?php else: ?>
+        <img id="preview-image-4" alt="Preview" style="display: none;" />
+      <?php endif; ?>
     </label>
     <input type="file" id="fileInput-4" name="file-4" accept="image/*" hidden>
-
 
 
 
@@ -353,11 +394,7 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
   <!-- Descripción -->
   <div class="input-group">
     <label><span class="asterisco">*</span>Descripción</label>
-      <p class="descripcion-etiquetas">Cuéntanos cómo es tu mascota: su personalidad, hábitos, lo que le gusta o no, si se lleva bien con niños u otros animales, y cualquier detalle especial que debamos saber. Esto ayudará a encontrarle un hogar ideal.
-  </p>
-
-
-    <textarea name="descripcion" rows="4" placeholder="Cuéntanos más sobre tu mascota..." required></textarea>
+    <textarea name="descripcion" rows="4" placeholder="Cuéntanos más sobre tu mascota..." required><?= htmlspecialchars($mascota['descripcion']) ?></textarea>
   </div>
 
 
@@ -365,85 +402,49 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 </form>
 
     </div>
-  <div class="terminos">
-    <label>
-      <input type="checkbox" id="check-terminos">
-      <span>
-        He leído y acepto los <a href="#" class="enlace-primario">Términos y Política de Privacidad</a>
-      </span>
-    </label>
-  </div>
+
     <div class="botones-navegacion">
-      <button class="volver" onclick="cambiarVista()">← Volver</button>
-      <button class="siguiente" onclick="success_pantalla()">Siguiente →</button>
+     
+      <button class="siguiente" onclick="success_pantalla()"> Guardar Cambios</button>
     </div>
   </section>
 
-</div>
 
-
-<div id="success" >
-
-<section class="pagina-exito">
-  <h1 class="titulo-exito">Thanks for submitting! 🎉</h1>
-
-  <p class="mensaje-exito">¡Gracias por confiar en nosotros!</p>
-  <p class="detalle-exito">
-    Hemos recibido tu solicitud. Nuestro equipo se pondrá en contacto contigo en las próximas horas para coordinar la recogida.
-  </p>
-
-  <div class="imagen-exito">
-    <img src="<?php echo BASE_URL; ?>assets/images/realojar/success.svg" alt="Mascota feliz con su nueva familia">
-  </div>
-
-
-    <div class="botones-navegacion">
-      <button class="siguiente" onclick="cambiarVista()">Ver Perfil→</button>
-    </div>
-</section>
 
 </div>
 
 
-
-
-
-
-
-
-<?php include_once(__DIR__ . '/../Templates/footer.php'); ?>
-
-
+  
   <script>
 
 
-function mostrarMensaje(texto, color = '#5D4FC4') {
-  const mensaje = document.getElementById('mensaje1');
-  mensaje.style.backgroundColor = color;
-  mensaje.textContent = texto;
-  mensaje.style.display = 'block';
+  function mostrarMensaje(texto, color = '#5D4FC4') {
+    const mensaje = document.getElementById('mensaje1');
+    mensaje.style.backgroundColor = color;
+    mensaje.textContent = texto;
+    mensaje.style.display = 'block';
 
-  setTimeout(() => {
-    mensaje.style.display = 'none';
-  }, 3500);
-}
+    setTimeout(() => {
+      mensaje.style.display = 'none';
+    }, 3500);
+  }
 
   const input = document.getElementById('fileInput');
   const preview = document.getElementById('preview-image');
-const input2 = document.getElementById('fileInput-2');
-const preview2 = document.getElementById('preview-image-2');
-const input3 = document.getElementById('fileInput-3');
-const preview3 = document.getElementById('preview-image-3');
-const input4 = document.getElementById('fileInput-4');
-const preview4 = document.getElementById('preview-image-4');
+  const input2 = document.getElementById('fileInput-2');
+  const preview2 = document.getElementById('preview-image-2');
+  const input3 = document.getElementById('fileInput-3');
+  const preview3 = document.getElementById('preview-image-3');
+  const input4 = document.getElementById('fileInput-4');
+  const preview4 = document.getElementById('preview-image-4');
 
 
   const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-const minSize = 240 * 1024; // 240 KB
-const maxSize = 1024 * 1024; // 1024 KB
+  const minSize = 240 * 1024; // 240 KB
+  const maxSize = 1024 * 1024; // 1024 KB
 
 
-input2.addEventListener('change', function () {
+  input2.addEventListener('change', function () {
     const file = this.files[0];
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
@@ -453,12 +454,13 @@ input2.addEventListener('change', function () {
       };
       reader.readAsDataURL(file);
 
-    } else {
+      } else {
       preview2.style.display = 'none';
       preview2.src = '';
     }
     
   });
+  
   input3.addEventListener('change', function () {
     const file = this.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -474,7 +476,11 @@ input2.addEventListener('change', function () {
       preview3.src = '';
     }
   });
+
+
+
   input4.addEventListener('change', function () {
+    console.log("Cambiando archivo de entrada 4");
     const file = this.files[0];
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
@@ -489,6 +495,7 @@ input2.addEventListener('change', function () {
       preview4.src = '';
     }
 
+// Actualiza el input de imagen con el archivo seleccionado
     console.log("Archivo de entrada 4 actualizado:", this.files);
   });
 
@@ -506,103 +513,67 @@ input2.addEventListener('change', function () {
       preview.style.display = 'none';
       preview.src = '';
     }
-
     console.log("Archivo de entrada 1 actualizado:", this.files);
   });
 
 
 
-fileInput.addEventListener("change", function () {
-  const file = this.files[0];
-  if (!file) return;
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    previewImg.src = e.target.result;
-    previewImg.style.display = "block";
-  };
-  reader.readAsDataURL(file);
-});
+    const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImg.src = e.target.result;
+        previewImg.style.display = "block";
+      };
+    reader.readAsDataURL(file);
+  });
+
 // Comportamiento de limpieza entre fecha y edad
-const fechaInput = document.getElementById("fecha-nacimiento");
-const edadMin = document.getElementById("edad-min");
-const edadMax = document.getElementById("edad-max");
+  const fechaInput = document.getElementById("fecha-nacimiento");
+  const edadMin = document.getElementById("edad-min");
+  const edadMax = document.getElementById("edad-max");
 
-fechaInput.addEventListener("input", () => {
-  if (fechaInput.value) {
-    edadMin.value = "";
-    edadMax.value = "";
-  }
-});
-
-[edadMin, edadMax].forEach(el => {
-  el.addEventListener("input", () => {
-    if (el.value) {
-      fechaInput.value = "";
+  fechaInput.addEventListener("input", () => {
+    if (fechaInput.value) {
+      edadMin.value = "";
+      edadMax.value = "";
     }
   });
-});
+
+  [edadMin, edadMax].forEach(el => {
+    el.addEventListener("input", () => {
+      if (el.value) {
+        fechaInput.value = "";
+      }
+    });
+  });
 
 
-    function cambiarVista() {
-            const seccionVisible = document.getElementById('app');
-            const seccionOculta = document.getElementById('form');
-
-
-
-            // Verifica el estado actual de la sección visible
-            if (seccionVisible.style.display === 'none') {
-                // Si está oculta, la mostramos y ocultamos la otra
-                seccionVisible.style.display = 'block'; // O 'flex', 'grid', dependiendo de cómo la quieras mostrar
-                seccionOculta.style.display = 'none';
-            } else {
-                // Si está visible, la ocultamos y mostramos la otra
-                seccionVisible.style.display = 'none';
-                seccionOculta.style.display = 'block'; // O 'flex', 'grid'
-            }
+    function cancelar() {
+          window.location.href = '<?= BASE_URL ?>admin_adopcion'; // Cambia esto por tu ruta
         }
 
     function success_pantalla() {
 
-
-      
-    const checkTerminos = document.getElementById('check-terminos');
-    const seccionVisible = document.getElementById('success');
     const seccionOculta = document.getElementById('form');
-        const formElement = document.getElementById('formulario-mascota'); // Make sure this ID matches your form
+    const formElement = document.getElementById('formulario-mascota'); // Make sure this ID matches your form
     if (!formElement) {
         console.error("Error: The form element with ID 'formulario-mascota' was not found.");
         return;
     }  
     const etiquetasSeleccionadas = Array.from(document.querySelectorAll('.etiqueta.seleccionada'));
-  const ids = etiquetasSeleccionadas.map(et => et.dataset.id);
-  document.getElementById('etiquetasInput').value = ids.join(',');
+    const ids = etiquetasSeleccionadas.map(et => et.dataset.id);
+    document.getElementById('etiquetasInput').value = ids.join(',');
 
     const formData = new FormData(formElement);
 
-
-    // Validar si se aceptaron los términos
-    if (!checkTerminos.checked) {
-        mostrarMensaje("Debes aceptar los términos y condiciones para continuar.");
-        return;
-    }
-
-    // Validar campos del formulario
     if (!validarCampos()) {
         return;
     }
 
-
-
-
-  
-    // --- END OF MISSING PART ---
-
-    // Mostrar/ocultar pantallas según estado
-    if (seccionVisible.style.display === 'none') {
-
-
-        fetch('<?= BASE_URL ?>realojar/cargar', {
+        fetch('<?= BASE_URL ?>editar/editar', {
             method: 'POST',
             body: formData
         })
@@ -618,11 +589,7 @@ fechaInput.addEventListener("input", () => {
             return response.text(); // Or response.text() if your server sends plain text
         })
         .then(data => {
-            // Handle successful response from the server
-            console.log("Success:", data);
-            // Assuming the upload was successful, then switch screens
-            seccionVisible.style.display = 'block';
-            seccionOculta.style.display = 'none';
+         window.location.href = '<?= BASE_URL ?>admin_adopcion';
         })
         .catch(err => {
             console.error("Fetch Error:", err);
@@ -632,12 +599,6 @@ fechaInput.addEventListener("input", () => {
             }
         });
 
-    } else {
-      
-
-        seccionVisible.style.display = 'none';
-        seccionOculta.style.display = 'block';
-    }
 }
 
 
@@ -731,14 +692,6 @@ function validarCampos() {
     }
 
 
-  const inputImagen = document.getElementById('fileInput');
-    if (!inputImagen.files || inputImagen.files.length === 0) {
-        esValido = false;
-        mensaje += "Debes subir al menos una imagen principal de la mascota.\n";
-    }
-
-
-
 
     // Puedes añadir más validaciones aquí para otros campos si los necesitas
 
@@ -785,17 +738,17 @@ function validarInputImagen(idDelInput) {
   const img = new Image();
   const reader = new FileReader();
 
-  reader.onload = function (e) {
-    img.src = e.target.result;
+    reader.onload = function (e) {
+        img.src = e.target.result;
 
-    img.onload = function () {
-      if (img.width !== requiredWidth || img.height !== requiredHeight) {
-        mostrarMensaje(`La imagen en "${idDelInput}" debe tener 600x600 píxeles.`);
-        input.value = '';
-        return false;
-      }
+        img.onload = function () {
+            if (img.width !== requiredWidth || img.height !== requiredHeight) {
+                mostrarMensaje(`La imagen en "${idDelInput}" debe tener 600x600 píxeles.`);
+                input.value = '';
+                return false;
+            }
+        };
     };
-  };
 
   reader.readAsDataURL(file);
   return true;
@@ -806,6 +759,6 @@ function validarInputImagen(idDelInput) {
 
 
     </script>
+    </div>
+   
 </body>
-
-</html>

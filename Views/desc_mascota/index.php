@@ -30,9 +30,9 @@
       <div class="pet-header">
         <img class="pet-avatar" src="<?= BASE_URL . $foto ?>" alt="Magie">
         <div class="pet-data">
-          <h1>Hi Human!</h1>
+          <h1>HOLA humano!</h1>
           <h2><?= htmlspecialchars($mascota['nombre']) ?></h2>
-          <p class="pet-id">Pet ID: <strong><?= htmlspecialchars($mascota['id']) ?></strong></p>
+          <p class="pet-id">ID de la mascota: <strong><?= htmlspecialchars($mascota['id']) ?></strong></p>
           <p class="pet-location"><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($mascota['estado']) ?> </p>
         </div>
       </div>
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="story">
-        <h3><?= htmlspecialchars($mascota['nombre']) ?> Story</h3>
+        <h3>Un poco de <?= htmlspecialchars($mascota['nombre']) ?> </h3>
         <p><?= htmlspecialchars($mascota['descripcion']) ?></p>
         <ul>
           <?php
@@ -88,11 +88,11 @@
     <!-- Vaccination Table -->
 
       <div class="adopt-box">
-        <p>If you're interested to adopt</p>
+        <p>Si estás interesado en adoptar</p>
         <?php if(isset($_SESSION['id'])): ?>
-          <a href="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota['id'] ?>" class="btn-adopt">Get Started</a>
+          <a href="<?= BASE_URL ?>adoptar/proceso?id=<?= $mascota['id'] ?>" class="btn-adopt">Comenzar</a>
         <?php else: ?>
-          <button onclick="showLoginModal()" class="btn-adopt">Get Started</button>
+          <a onclick="openLoginModal()" class="btn-adopt">Comenzar</a>
         <?php endif; ?>
       </div>
     </div>
@@ -113,7 +113,7 @@
             <img src="<?php echo BASE_URL; ?>assets/images/<?php echo $pet['img']; ?>" alt="<?php echo $pet['name']; ?>">
             <h4><?php echo $pet['name']; ?></h4>
             <p><?php echo $pet['gender']; ?></p>
-            <a href="#" class="btn-more">More Info</a>
+            <a href="#" class="btn-more">Más información</a>
           </div>
         <?php endforeach; ?>
       </div>
@@ -127,8 +127,8 @@
             <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i class="fas fa-heart text-white text-2xl"></i>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">Start Your Adoption Journey</h2>
-            <p class="text-gray-600">Please login or create an account to continue with adopting <strong><?= htmlspecialchars($mascota['nombre']) ?></strong></p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Comienza tu viaje de adopción</h2>
+            <p class="text-gray-600">Por favor inicia sesión o crea una cuenta para continuar con la adopción de <strong><?= htmlspecialchars($mascota['nombre']) ?></strong></p>
         </div>
 
         <!-- Login/Register Tabs -->

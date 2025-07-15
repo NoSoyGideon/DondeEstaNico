@@ -17,9 +17,10 @@ class admin_adopcion extends Controller {
   }
 
   public function index() {
- 
+       $mascotas = $this->model->getMascotas($_SESSION['id_usuario']);
 
     $data['title'] = 'admin';
+    $data['mascotas'] = $mascotas;
     $this->views->getView('admin_adopcion', 'index', $data);
   }
 }

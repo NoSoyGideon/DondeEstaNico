@@ -1,0 +1,131 @@
+:root {
+            --primario: #675BC8;
+            --gris: #888;
+            --fondo: #F4F4F4;
+            --gris-divider: #CCC;
+            --secundario: #D5D1F0;
+            --verde: #0A453A;
+        }
+        .titulo-seccion {
+            background-color: var(--secundario);
+            color: var(--primario);
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+         .main-content {
+     margin-left: 200px;
+    }
+
+        .filtros-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .filtro-input {
+            padding: 10px 15px;
+            border: 1px solid var(--gris-divider);
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .filtro-input:focus {
+            border-color: var(--primario);
+        }
+
+        .filtro-boton {
+            background-color: var(--primario);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .filtro-boton:hover {
+            background-color: #5549b8;
+        }
+
+        .lista-mascotas {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mascota-card {
+            background-color: white;
+            border-radius: 15px;
+            border: 1px solid var(--gris-divider);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mascota-imagen {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primario);
+        }
+
+        .mascota-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .mascota-dato {
+            background-color: var(--secundario);
+            color: var(--primario);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mascota-dato svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--primario);
+        }
+
+        .ver-mas-btn {
+            background-color: var(--primario);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .mascota-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .ver-mas-btn {
+                margin-left: 0;
+                align-self: flex-end;
+            }
+        }

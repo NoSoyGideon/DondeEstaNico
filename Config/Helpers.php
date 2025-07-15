@@ -20,6 +20,7 @@ function iniciarSesion(array $usuario) {
     $_SESSION['estado']         = $usuario['estado'] ?? null;
     $_SESSION['descripcion']    = $usuario['descripcion'] ?? null;
     $_SESSION['direccion']      = $usuario['direccion'] ?? null;
+ 
 }
 
 function cerrarSesion() {

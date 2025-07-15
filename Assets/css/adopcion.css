@@ -95,18 +95,21 @@
     
       
     .seccion-chat {
-      position: relative;
-      top: -80px; /* controla cuánto "sube" sobre la anterior */
-      margin: 0 auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      max-width: 900px;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      z-index: 10;
+    position: relative;
+  top: -80px;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 900px;
+
+  background: linear-gradient(to bottom, white, #ffffffcc); /* Degradado superior */
+  border-bottom: 8px solid #5D4FC4; /* Borde inferior */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
     }
 
 .chat-info {

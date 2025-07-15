@@ -50,12 +50,12 @@
             Conectamos corazones peludos con hogares amorosos. Explora una variedad de mascotas listas para brindarte alegría y compañía.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mt-2">
-            <button class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark shadow-md">
+            <a href="<?php echo BASE_URL; ?>adoptar" class="bg-purple-main text-white rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-dark shadow-md">
                 Adopta
-            </button>
-            <button class="bg-white text-purple-main border-2 border-purple-main rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-light hover:text-purple-dark shadow-md">
+            </a>
+            <a href="<?php echo BASE_URL; ?>realojar" class="bg-white text-purple-main border-2 border-purple-main rounded-lg px-8 py-3 text-base font-medium transition hover:bg-purple-light hover:text-purple-dark shadow-md">
                 Buscar nuevo hogar
-            </button>
+            </a>
         </div>
     </div>
 
@@ -91,7 +91,7 @@
 
 
 <script defer src="<?php echo BASE_URL; ?>Assets/js/cardMascota.js"></script>
-<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="bg-white rounded-lg shadow-md overflow-hidden w-[300px] h-[580px] flex flex-col"> 
     <div class="relative">
         <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
            <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?><?php echo $m['url_foto']; ?>" alt="Shiba Inu">
@@ -147,19 +147,19 @@
 
         <div class="space-y-2 mb-4">
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Gender:</span>
+                <span class="text-sm text-gray-600">Genero:</span>
                 <span class="text-sm <?= getColorClass('gender', $m['genero']) ?> px-2 py-1 rounded"><?= ($m['genero'] == 1) ? 'Male' : 'Female'; ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Breed:</span>
+                <span class="text-sm text-gray-600">Raza:</span>
                 <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded"><?= $m['nombre_raza'] ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Age:</span>
+                <span class="text-sm text-gray-600">Edad:</span>
                 <span class="text-sm bg-purple-light text-purple-dark px-2 py-1 rounded"><?= procesarFechaYValores($m['fecha_nacimiento'], $m['edad_minima'], $m['edad_maxima']) ?></span>
             </div>
             <div class="flex justify-between">
-                <span class="text-sm text-gray-600">Size:</span>
+                <span class="text-sm text-gray-600">Tamaño:</span>
                 <span class="text-sm <?= getColorClass('size', $m['altura']) ?> px-2 py-1 rounded"><?= $m['altura'] ?> cm</span>
             </div>
         </div>

@@ -105,6 +105,7 @@ body {
         .seccion {
   padding: 30px 20px;
   margin: 0 auto;
+  margin-left: 200px;
   max-width: 1400px;
 }
 
@@ -476,12 +477,12 @@ textarea {
 }
 
 .etiqueta:hover {
-  background-color: #9990DA;
+  background-color: #f0efff;
   border-color: #675BC8;
 }
 
 .etiqueta.seleccionada {
-  background-color: #f0efff;
+  background-color: #675BC8;
   color: white;
   border-color: #675BC8;
 }
@@ -564,7 +565,7 @@ textarea {
 }
 
 .input-group input:focus {
-  outline: 2px solid #007BFF;
+  outline: 2px solid #675BC8;
 }
 
     .seccion-chat {
@@ -700,16 +701,53 @@ textarea {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-  .componente {
-    padding: 12px;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    flex: 1; /* Opcional: hace que todos ocupen el mismo ancho */
-    text-align: center;
-  }
-    .componente:focus-within {
-    background-color: #dfe4ff;
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  .contenedor-horizontal {
+    display: flex;
+    padding: 16px;
+    gap: 5px; /* Espacio entre componentes */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; /* Incluye el padding en el tamaño total */
   }
 
+
+  .componente {
+     width: 50%;
+    padding: 16px;
+    background-color: #ffffff;
+    border: 2px dashed #cbcbcb;
+    border-radius: 10px;
+    transition: 
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+        box-sizing: border-box; /* Asegura que padding no rompa el 50% */
+  }
+
+  /* Hover y Focus: fondo, borde, escala */
+  .componente:hover,
+  .componente:focus-within {
+    background-color: #f0efff;
+    border-color: #675BC8;
+    transform: scale(1.01);
+    box-shadow: 0 4px 10px rgba(103, 91, 200, 0.2);
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333333;
+    transition: color 0.3s ease;
+  }
+
+  /* Cambia color del label si hay focus o hover en el componente */
+  .componente:hover label,
+  .componente:focus-within label {
+    color: #675BC8;
+  }

@@ -132,7 +132,7 @@ $usuario = $data['usuario'] ?? [];
         <div class="grid-2col">
           <div class="form-group">
             <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" value=" <?php echo $usuario['nombre'] ?>" name="usuario">
+            <input type="text" id="usuario" value="<?php echo $usuario['nombre'] ?>" name="usuario">
           </div>
           <div class="form-group">
             <label for="correo">Correo electrónico</label>

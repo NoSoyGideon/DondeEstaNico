@@ -14,9 +14,8 @@
 
 <main class="contact-container">
   <div class="contact-left">
-    <h3 class="contact-title">Contact Us</h3>
-    <p class="contact-text">
-      Get in touch with our team by choosing what kind of our services you are looking for.
+    <h3 class="contact-title">Contactanos</h3>
+    Ponte en contacto con nuestro equipo eligiendo el tipo de servicio que estás buscando.
     </p>
     
     <img src="<?php echo BASE_URL; ?>assets/images/contacto.avif" alt="Contacto" class="contact-img">
@@ -51,22 +50,22 @@
 <?php endif; ?>
 
       <h3 class="form-title">
-        Ready to help you <i class="fas fa-paw paw-icon"></i>
+        Listos para ayudarte <i class="fas fa-paw paw-icon"></i>
       </h3>
 
-      <label for="name">Name</label>
-      <input type="text" id="name" placeholder="Enter your name" name="name" required>
+      <label for="name">Nombre</label>
+      <input type="text" id="name" placeholder="Ingresa tu nombre" name="name" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" name="email" required>
+      <input type="email" id="email" placeholder="Ingresa tu email" name="email" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="Enter your phone number" name="phone" required>
+      <label for="phone">Número de Teléfono</label>
+      <input type="tel" id="phone" placeholder="Ingresa tu número de teléfono" name="phone" required>
 
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" placeholder="Write your message..." name="message" required></textarea>
+      <label for="message">Mensaje</label>
+      <textarea id="message" rows="5" placeholder="Escribe tu mensaje..." name="message" required></textarea>
 
-      <button type="submit" class="btn-send">Send</button>
+      <button type="submit" class="btn-send">Enviar</button>
     </form>
   </div>
 </main>

@@ -9,9 +9,9 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
 
     $sql = "
         SELECT 
-            m.id, m.nombre, m.especie,m.fecha_nacimiento,  m.descripcion, m.estatus, m.color,
+            m.id, m.nombre, m.especie, m.fecha_nacimiento, m.descripcion, m.estatus, m.color,
             m.peso, m.altura, m.genero, m.edad_minima, m.edad_maxima,
-            r.nombre_raza,  m.estado, f.url_foto,
+            r.nombre_raza, m.estado, f.url_foto,
             COUNT(me.etiqueta_id) AS coincidencias
         FROM mascota m
         LEFT JOIN razas r ON m.raza_id = r.id
@@ -29,7 +29,6 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
         $condiciones[] = "m.especie = ?";
         $tipos .= "s";
         $parametros[] = $filtros['especie'];
-
     }
 
     if (!empty($filtros['tamaño'])) {
@@ -63,6 +62,36 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
         $parametros[] = $filtros['estatus'];
     }
 
+    if (isset($filtros['genero']) && $filtros['genero'] !== '') {
+        $condiciones[] = "m.genero = ?";
+        $tipos .= "i";
+        $parametros[] = (int)$filtros['genero']; // 1: macho, 0: hembra
+    }
+
+    if (!empty($filtros['estado'])) {
+        $condiciones[] = "m.estado = ?";
+        $tipos .= "s";
+        $parametros[] = $filtros['estado'];
+    }
+
+    if (!empty($filtros['raza'])) {
+        $condiciones[] = "r.nombre_raza = ?";
+        $tipos .= "s";
+        $parametros[] = (string)$filtros['raza'];
+    }
+
+    if (!empty($filtros['edad_min'])) {
+        $condiciones[] = "m.edad_minima >= ?";
+        $tipos .= "i";
+        $parametros[] = (int)$filtros['edad_min'];
+    }
+
+    if (!empty($filtros['edad_max'])) {
+        $condiciones[] = "m.edad_maxima <= ?";
+        $tipos .= "i";
+        $parametros[] = (int)$filtros['edad_max'];
+    }
+
     if (!empty($condiciones)) {
         $sql .= " WHERE " . implode(" AND ", $condiciones);
     }
@@ -81,7 +110,6 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
     } else {
         $sql .= " ORDER BY m.id DESC";
     }
-    
 
     $stmt = $mysqli->prepare($sql);
     if (!$stmt) return [];
@@ -99,7 +127,6 @@ function buscar_mascotas(array $etiquetas = [], array $filtros = []): array {
 
     return $mascotas;
 }
-
 
 
 // header("Content-Type: application/json");

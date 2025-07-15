@@ -63,9 +63,9 @@ WHERE m.estatus != 'adoptada';";
     JOIN razas AS r ON m.raza_id = r.id
     JOIN fotos_ordenadas AS mf ON m.id = mf.mascota_id AND mf.rn = 1
     LEFT JOIN favoritos AS f ON f.mascota_id = m.id AND f.usuario_id = ?
-    WHERE m.estatus != 'adoptada';";
+    WHERE m.estatus != 'adoptada' and m.usuario_origen_id != ?;";
 
-    return $this->selectAll($sql, [$usuario_id]);
+    return $this->selectAll($sql, [$usuario_id, $usuario_id]);
 }
 
    public function toggleFavorito($usuario_id, $mascota_id) {

@@ -28,11 +28,13 @@
 <nav class="flex items-center justify-between py-2 px-8 bg-white border-b border-gray-100">
     <div class="flex items-center gap-2 relative ml-10">
         <div class="w-12 h-12 rounded-full flex items-center justify-center">
-            <img src="<?php echo BASE_URL; ?>assets/images/home/iconWeb.svg" alt="Logo" class="w-8 h-8">
+            <a href="<?php echo BASE_URL; ?>home">
+            <img  src="<?php echo BASE_URL; ?>assets/images/home/iconWeb.svg" alt="Logo" class="w-8 h-8">
+        </a>
         </div>
-        <div class="text-purple-main font-bold text-xl leading-tight">
+        <a href="<?php echo BASE_URL; ?>home" class="text-purple-main font-bold text-xl leading-tight">
             Adopt Buddies
-        </div>
+        </a>
         <div class="flex items-center ml-3">
             <img src="<?php echo BASE_URL; ?>assets/images/home/HuellaNav.png" class="w-7 h-7 transition-opacity duration-200 opacity-80" alt="huella">
             <img src="<?php echo BASE_URL; ?>assets/images/home/HuellaNav.png" class="w-7 h-7 transition-opacity duration-200 opacity-60 -ml-2" alt="huella">
@@ -45,8 +47,8 @@
         <a href="<?php echo BASE_URL; ?>adoptar" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Adoptar</a>
           <a href="<?php echo BASE_URL; ?>realojar" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Realojar</a>
         <a href="<?php echo BASE_URL; ?>donar" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Donar</a>
-        <a href="<?php echo BASE_URL; ?>contacto" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Contact us</a>
-      
+        <a href="<?php echo BASE_URL; ?>contacto" class="text-purple-text font-medium text-base hover:text-purple-main transition-colors duration-200">Contactanos</a>
+
     </div>
 <div class="flex items-center gap-4 relative">
 
