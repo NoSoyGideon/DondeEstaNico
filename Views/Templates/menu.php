@@ -26,13 +26,7 @@ function isActive($page) {
         <span class="ribbon"></span>
       </a>
     </li>
-    <li class="<?php echo isActive(3); ?>">
-      <a href="<?php echo BASE_URL; ?>perfil_solicitudes">
-        <span class="label">Solicitudes</span>
-        <span class="icon"><i data-lucide="user"></i></span>
-        <span class="ribbon"></span>
-      </a>
-    </li>    
+ 
   
     <li class="<?php echo isActive(6); ?>">
       <a href="<?= BASE_URL ?>login/logout">
