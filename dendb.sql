@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2025 at 08:33 PM
+-- Generation Time: Jul 17, 2025 at 09:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,8 +33,18 @@ CREATE TABLE `adopcion` (
   `id` int(10) UNSIGNED ZEROFILL NOT NULL,
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
   `usuario_id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `mascota_id` int(5) UNSIGNED ZEROFILL NOT NULL
+  `mascota_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `confirmar` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `adopcion`
+--
+
+INSERT INTO `adopcion` (`id`, `fecha`, `usuario_id`, `mascota_id`, `confirmar`) VALUES
+(0000000001, '2025-07-17 15:45:26', 00002, 00120, 0),
+(0000000002, '2025-07-17 15:45:41', 00002, 00120, 0),
+(0000000004, '2025-07-17 15:47:39', 00002, 00120, 0);
 
 -- --------------------------------------------------------
 
@@ -446,7 +456,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `adopcion`
 --
 ALTER TABLE `adopcion`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `donacion`

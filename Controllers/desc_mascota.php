@@ -22,4 +22,16 @@ class Desc_Mascota extends Controller {
     $data['title'] = 'Descripción de la mascota';
     $this->views->getView('desc_mascota', 'index', $data);
   }
+
+  public function adoptar(){
+
+        $datos = json_decode(file_get_contents("php://input"), true);
+
+    $usuario_id = $datos['usuario_id'] ?? null;
+    $mascota_id = $datos['mascota_id'] ?? null;
+    $confirmar = $datos['confirmar'] ?? 0;
+    $this->model->registrarAdopcion($usuario_id, $mascota_id);
+   echo json_encode(['success' => true]);
+
+  }
 }

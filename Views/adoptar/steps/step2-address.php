@@ -171,7 +171,7 @@ function validateAndContinue() {
         
         // Continue to next step
         setTimeout(() => {
-            nextStep('household');
+            nextStep('review');
         }, 1000);
     } else {
         // Show error message

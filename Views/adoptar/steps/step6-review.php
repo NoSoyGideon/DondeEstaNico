@@ -81,3 +81,8 @@ $stepData = [
         </button>
     </div>
 </div>
+<script>
+    function submitApplication() {
+
+}
+</script>

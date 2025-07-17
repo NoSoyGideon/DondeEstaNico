@@ -1,4 +1,4 @@
-<?php
+    <?php
 // crear.php - Registrar Nueva Mascota
 include_once '../../Config/Config.php';
 include_once '../template/sidebar.php';
