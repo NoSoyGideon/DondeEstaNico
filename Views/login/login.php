@@ -132,7 +132,7 @@ fetch('<?= BASE_URL ?>login/validarAdmin', {
   .then(res => res.json())
   .then(data => {
     if (data.success) {
-      window.location.reload(); // recarga para actualizar header en la misma página
+      window.location.href = "<?php echo BASE_URL; ?>admin"; // redirige al panel de administrador
     } else {
       errorsDiv.innerHTML = `<ul class="list-disc pl-5">${data.errores.map(e => `<li>${e}</li>`).join('')}</ul>`;
       errorsDiv.classList.remove('hidden');

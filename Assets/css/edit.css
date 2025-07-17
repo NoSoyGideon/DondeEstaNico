@@ -102,30 +102,28 @@ body {
         }
 
 
-        .seccion {
+  .seccion {
   padding: 30px 20px;
   margin: 0 auto;
   margin-left: 200px;
   max-width: 1400px;
-}
+  }
 
-.uno {
+      .uno {
+        position: relative;
+      }
 
-  border-radius: 20px;
-  position: relative;
-}
-
-.encabezado {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background: #D5D1F0;
-  border: 2px solid #9990DA;
-  border-radius: 16px;
-  padding: 40px;
-  gap: 30px;
-  position: relative;
-}
+  .encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #D5D1F0;
+    border: 2px solid #9990DA;
+    border-radius: 16px;
+    padding: 40px;
+    gap: 30px;
+    position: relative;
+  }
 
 .texto h1 {
   color: #675BC8;

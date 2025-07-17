@@ -1,5 +1,5 @@
 <?php
-class admin_overviewModel extends Query{
+class perfilModel extends Query{
  
     public function __construct()
     {

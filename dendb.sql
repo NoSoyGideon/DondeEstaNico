@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2025 at 10:18 PM
+-- Generation Time: Jul 17, 2025 at 08:33 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -165,7 +165,8 @@ INSERT INTO `mascota` (`id`, `nombre`, `especie`, `genero`, `fecha_nacimiento`, 
 (00119, 'Ken', 'gato', 1, '2023-09-10', NULL, NULL, 'Permítanme presentarles a Ken, el felino que domina el arte de la distinción. Con su pelaje siempre impecable y ese aire de \"aquí mando yo\" que solo un gato puede poseer, Ken es el epítome de la elegancia. Es el \"sifrino\" por excelencia del hogar: se pasea con una gracia innata, elige los lugares más altos y cómodos para sus siestas de realeza, y no te regalará afecto a la primera de cambio. Él decide cuándo y cómo, y rara vez es con efusividad ruidosa.', 'adopcion', '2025-07-08 16:25:41', 0, 'Zulia', 20.00, 10.00, 'blanco', 00001, 27, 'AV.40'),
 (00120, 'Sifrina', 'gato', 0, NULL, 5, 6, 'Permítanme presentarles a Sifrina, la gatita que lleva su nombre con total distinción y que ha perfeccionado el arte de la vida de lujo y la alta exigencia. Ella no camina; desfila. Cada movimiento de Sifrina es una declaración de su nobleza, y su mirada, a menudo un poco altiva, te hace saber que el mundo entero gira en torno a sus necesidades y deseos. Es la \"sifrina\" por excelencia, la que espera que su comida sea servida en el momento justo, que su cama esté siempre impecable y que las caricias se le ofrezcan solo cuando ella lo decida.', 'adopcion', '2025-07-08 16:28:18', 0, 'Miranda', 20.00, 20.00, 'gris', 00001, 28, 'Alola'),
 (00121, 'Luna', 'perro', 0, NULL, 3, 4, 'Permítanme presentarles a Luna, una perrita de tamaño mediano, con un pelaje suave que invita a las caricias y unos ojos grandes y expresivos que parecen guardar mil historias. Luna es una perrita con un alma un poco soñadora y un espíritu aventurero, pero siempre en su propio ritmo.', 'adopcion', '2025-07-08 16:32:04', 0, 'Amazonas', 45.00, 31.00, 'marron', 00001, 17, 'Valle colocolo'),
-(00122, 'Tumbarranchos', 'gato', 1, '2025-01-20', NULL, NULL, 'Tumbarranchos,', 'adopcion', '2025-07-08 16:35:15', 0, 'Monagas', 30.00, 7.00, 'gris', 00001, 34, 'en la casa del profesor Escalona');
+(00122, 'Tumbarranchos', 'gato', 1, NULL, 1, 2, 'Tumbarranchos,', 'adopcion', '2025-07-08 16:35:15', 0, 'Monagas', 30.00, 7.00, 'gris', 00001, 28, 'en la casa del profesor Escalona'),
+(00123, 'kosobo', 'gato', 1, NULL, 3, 4, 'sadasd', 'rescatada', '2025-07-17 12:48:39', 0, 'Mérida', 23.00, 12.00, 'Negro', NULL, 28, 'dfs');
 
 -- --------------------------------------------------------
 
@@ -211,6 +212,7 @@ INSERT INTO `mascota_etiquetas` (`mascota_id`, `etiqueta_id`) VALUES
 (0000000120, 12),
 (0000000120, 13),
 (0000000120, 14),
+(0000000120, 17),
 (0000000121, 1),
 (0000000121, 2),
 (0000000121, 3),
@@ -224,7 +226,13 @@ INSERT INTO `mascota_etiquetas` (`mascota_id`, `etiqueta_id`) VALUES
 (0000000122, 4),
 (0000000122, 7),
 (0000000122, 13),
-(0000000122, 14);
+(0000000122, 14),
+(0000000123, 2),
+(0000000123, 3),
+(0000000123, 10),
+(0000000123, 11),
+(0000000123, 17),
+(0000000123, 18);
 
 -- --------------------------------------------------------
 
@@ -248,11 +256,12 @@ INSERT INTO `mascota_fotos` (`id`, `mascota_id`, `url_foto`, `orden`) VALUES
 (1030, 00119, 'Assets/images/mascotas/686d7ec59b06b-WhatsApp Image 2025-07-08 at 10.34.07_eefec6b1.jpg', 2),
 (1031, 00119, 'Assets/images/mascotas/686d7ec59b40a-WhatsApp Image 2025-07-08 at 10.33.17_5983cac2.jpg', 3),
 (1035, 00121, 'Assets/images/mascotas/686d804443523-Georgie-web.jpg', 1),
-(1036, 00122, 'Assets/images/mascotas/686d810313675-photo-1689871404673-cc43adec4ae8.jpeg', 1),
-(1106, 00120, 'Assets/images/mascotas/686d7f62b8e40-a8dc00d41c2a6882d693721e8c5ccfe7.jpg', 1),
-(1107, 00120, 'Assets/images/mascotas/686d7f62b9304-800px-Persian_de_Alola.png', 2),
-(1108, 00120, 'Assets/images/mascotas/686d7f62b97ef-EP1020_Persian_de_Denio.png', 3),
-(1109, 00120, 'Assets/images/mascotas/68768cd2c1cb7-photo-1689871404673-cc43adec4ae8.jpeg', 4);
+(1111, 00122, 'Assets/images/mascotas/686d810313675-photo-1689871404673-cc43adec4ae8.jpeg', 1),
+(1112, 00120, 'Assets/images/mascotas/686d7f62b8e40-a8dc00d41c2a6882d693721e8c5ccfe7.jpg', 1),
+(1113, 00120, 'Assets/images/mascotas/686d7f62b9304-800px-Persian_de_Alola.png', 2),
+(1114, 00120, 'Assets/images/mascotas/686d7f62b97ef-EP1020_Persian_de_Denio.png', 3),
+(1115, 00120, 'Assets/images/mascotas/68768cd2c1cb7-photo-1689871404673-cc43adec4ae8.jpeg', 4),
+(1116, 00123, 'Assets/images/mascotas/687929670be54-d3a193f64546e1127c911bb5c8ddda81.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -338,19 +347,20 @@ CREATE TABLE `usuario` (
   `fecha_registro` datetime NOT NULL DEFAULT current_timestamp(),
   `estado` varchar(12) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
-  `direccion` text DEFAULT NULL
+  `direccion` text DEFAULT NULL,
+  `bloqueado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `telefono`, `correo`, `clave`, `admin`, `redes`, `fecha_registro`, `estado`, `descripcion`, `direccion`) VALUES
-(00001, '      Orlando marcano', '123', 'GedeonP2312@gmail.com', '$2y$10$dKPyyqXrnMK6VYkVSm94aOqqYj1BNt1e4tFxjySRMug791B1I0dwW', 1, NULL, '2025-07-04 12:51:57', 'Amazonas', NULL, 'sadsa'),
-(00002, 'Paola Reyes', NULL, 'pvrs400@gmail.com', '$2y$10$yyWFl9kPmEXOVu70k1zINevQM17WDjNteVbtPZrjZVmW2Cg89i1Je', 0, NULL, '2025-07-04 12:52:17', NULL, NULL, NULL),
-(00003, 'Gasperini', NULL, 'qwertyuiop@gmail.com', '$2y$10$gLWz6dKYcG9YdZ9olc6rWu6xgGysLxMWodvB8W2q3b6Bp9ssaQKBq', 0, NULL, '2025-07-04 12:52:38', NULL, NULL, NULL),
-(00004, 'pingo', NULL, 'correoxd@gmail.com', '$2y$10$kgbA4QkUPqZEPeoA7INgxuvbidPMQ5l962CpR/8odfMx9Zvd6ADbW', 0, NULL, '2025-07-09 20:20:26', NULL, NULL, NULL),
-(00005, 'pingo', NULL, 'dsadsad@gmail.com', '$2y$10$sP8KxJHh6Atm60LS1CXN2.opaJ4JOQjTA0xke9jAOnPYExf30KNwK', 0, NULL, '2025-07-09 22:54:04', NULL, NULL, NULL);
+INSERT INTO `usuario` (`id`, `nombre`, `telefono`, `correo`, `clave`, `admin`, `redes`, `fecha_registro`, `estado`, `descripcion`, `direccion`, `bloqueado`) VALUES
+(00001, '      Orlando marcano', '123', 'GedeonP2312@gmail.com', '$2y$10$dKPyyqXrnMK6VYkVSm94aOqqYj1BNt1e4tFxjySRMug791B1I0dwW', 1, NULL, '2025-07-04 12:51:57', 'Amazonas', NULL, 'sadsa', 0),
+(00002, 'Paola Reyes', NULL, 'pvrs400@gmail.com', '$2y$10$yyWFl9kPmEXOVu70k1zINevQM17WDjNteVbtPZrjZVmW2Cg89i1Je', 0, NULL, '2025-07-04 12:52:17', NULL, NULL, NULL, 0),
+(00003, 'Gasperini', NULL, 'qwertyuiop@gmail.com', '$2y$10$gLWz6dKYcG9YdZ9olc6rWu6xgGysLxMWodvB8W2q3b6Bp9ssaQKBq', 0, NULL, '2025-07-04 12:52:38', NULL, NULL, NULL, 0),
+(00004, 'pingo', NULL, 'correoxd@gmail.com', '$2y$10$kgbA4QkUPqZEPeoA7INgxuvbidPMQ5l962CpR/8odfMx9Zvd6ADbW', 0, NULL, '2025-07-09 20:20:26', NULL, NULL, NULL, 0),
+(00005, 'pingo', NULL, 'dsadsad@gmail.com', '$2y$10$sP8KxJHh6Atm60LS1CXN2.opaJ4JOQjTA0xke9jAOnPYExf30KNwK', 0, NULL, '2025-07-09 22:54:04', NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -454,13 +464,13 @@ ALTER TABLE `etiquetas`
 -- AUTO_INCREMENT for table `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `mascota_fotos`
 --
 ALTER TABLE `mascota_fotos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1117;
 
 --
 -- AUTO_INCREMENT for table `razas`

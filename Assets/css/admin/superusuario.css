@@ -1,0 +1,18 @@
+body {
+    background-color: #f3f0ff;
+}
+
+/* Personaliza aún más si quieres */
+table th {
+    color: #675BC8;
+}
+
+.shadow {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+  .btn-active {
+    cursor: default;
+  }
+  .btn-inactive {
+    cursor: pointer;
+  }

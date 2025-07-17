@@ -589,7 +589,7 @@ if (!empty($mascota['fecha_nacimiento'])) {
             return response.text(); // Or response.text() if your server sends plain text
         })
         .then(data => {
-         window.location.href = '<?= BASE_URL ?>admin_adopcion';
+          window.location.href = '<?= BASE_URL ?>perfil_adopcion';
         })
         .catch(err => {
             console.error("Fetch Error:", err);

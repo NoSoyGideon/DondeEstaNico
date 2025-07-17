@@ -273,22 +273,22 @@ $raza_gatos_json = json_encode($razas_gatos_formateadas);
 
 
 
-<section class="seccion-explicativa">
+    <section class="seccion-explicativa">
 
 
 
- <h3 class="titulo-etiquetas">Fotos<span class="asterisco">*</span></h3>
-  <p class="descripcion-etiquetas">Esto nunca será visible para el público y solo se compartirá con el adoptante cuando completes el proceso de realojamiento. Por tu seguridad, te recomendamos tachar cualquier información personal en los documentos.
-  </p>
+    <h3 class="titulo-etiquetas">Fotos<span class="asterisco">*</span></h3>
+      <p class="descripcion-etiquetas">Esto nunca será visible para el público y solo se compartirá con el adoptante cuando completes el proceso de realojamiento. Por tu seguridad, te recomendamos tachar cualquier información personal en los documentos.
+      </p>
 
 
 
-  <p class="texto-verde">
-    El formato de imagen debe ser (.jpg, .png, .jpeg).<br>
-    Las dimensiones deben ser cuadradas, con 600 x 600 píxeles.<br>
-    El tamaño máximo y mínimo de la imagen es 1024 KB y 240 KB respectivamente.
-  </p>
-</section>
+      <p class="texto-verde">
+        El formato de imagen debe ser (.jpg, .png, .jpeg).<br>
+        Las dimensiones deben ser cuadradas, con 600 x 600 píxeles.<br>
+        El tamaño máximo y mínimo de la imagen es 1024 KB y 240 KB respectivamente.
+      </p>
+    </section>
 
 
 

@@ -97,23 +97,6 @@
            <img class="w-full h-full object-cover" src="<?php echo BASE_URL; ?><?php echo $m['url_foto']; ?>" alt="Shiba Inu">
         </div>
 
-
-<!-- Estrella FAVORITO -->
-<div class="absolute top-3 left-3 p-1 rounded cursor-pointer"
-     data-pet-id="123"
-     data-is-favorite="1"
-     onclick="toggleFavorite(this)">
-    <svg class="w-5 h-5 transition-colors duration-200"
-         fill="currentColor"
-         viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-    </svg>
-</div>
-
-
-
-
-
     </div>
     <div class="p-4">
 
@@ -384,7 +367,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        The emotional bond between cats and humans is deeply rooted in felines' unconditional love and companionship.
+                        El vínculo emocional entre gatos y humanos está profundamente arraigado en el amor incondicional y la compañía que ofrecen los felinos.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -406,7 +389,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Animals can communicate better with people in such conditions, as verbal communication is replaced by non-verbal.
+                        Los animales pueden comunicarse mejor con las personas en estas condiciones, ya que la comunicación verbal es reemplazada por la no verbal.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -428,7 +411,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Pets establish emotional attachments to children, and the relationship turns out positive in terms of affective aspects, in reinforcement of the child's personality.
+                        Las mascotas establecen vínculos emocionales con los niños, y la relación resulta positiva en aspectos afectivos, reforzando la personalidad del niño.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">
@@ -451,7 +434,7 @@
                         </div>
                     </div>
                     <p class="text-sm text-gray-600 mb-4">
-                        Some studies suggest that owning a pet can lower blood pressure and improve heart health.
+                        Diversos estudios sugieren que tener una mascota puede ayudar a reducir la presión arterial y mejorar la salud cardiovascular.
                     </p>
                     <div class="absolute bottom-4 right-4">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center">

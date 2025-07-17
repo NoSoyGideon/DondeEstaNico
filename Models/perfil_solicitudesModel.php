@@ -1,5 +1,5 @@
 <?php
-class admin_adopcionModel extends Query{
+class perfil_solicitudesModel extends Query{
 
     public function __construct()
     {

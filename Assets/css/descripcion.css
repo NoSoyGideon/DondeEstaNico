@@ -179,12 +179,13 @@ body {
 .similar-section h2 {
   color: #5D4FC4;
   margin-bottom: 30px;
+  margin-left: 200px;
 }
 
 .similar-pets {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 5px;
 }
 
 .pet-card {

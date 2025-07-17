@@ -78,7 +78,7 @@
                 <ul class="flex flex-col">
                  
                     <li>
-                        <a href="<?php echo BASE_URL; ?>admin_overview" class="flex items-center gap-2 px-4 py-2 text-[#675BC8] hover:bg-purple-light1 cursor-pointer">
+                        <a href="<?php echo BASE_URL; ?>perfil" class="flex items-center gap-2 px-4 py-2 text-[#675BC8] hover:bg-purple-light1 cursor-pointer">
                             <!-- Icono Profile (ejemplo: usuario) -->
                             <svg class="w-5 h-5" fill="none" stroke="#675BC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                 <circle cx="12" cy="7" r="4"/>

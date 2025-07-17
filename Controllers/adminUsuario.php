@@ -1,12 +1,12 @@
 <?php
-class admin_overview extends Controller
+class adminUsuario extends Controller
 {
     public function __construct()
     {
         parent::__construct();
           session_start();
-          require_once "Models/realojarModel.php";
-    $this->model = new admin_overviewModel();
+          require_once "Models/perfilModel.php";
+    $this->model = new perfilModel();
     }
 
 
@@ -20,7 +20,7 @@ class admin_overview extends Controller
         $data['usuario'] = $this->model->getUser($_SESSION['id']);
         $data['title'] = 'Mi perfil';
 
-        $this->views->getView('admin_overview', "index", $data );
+        $this->views->getView('adminUsuario', "index", $data );
     }
     public function cambiar()
     {

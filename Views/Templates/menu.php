@@ -13,19 +13,26 @@ function isActive($page) {
 <div class="side-panel">
   <ul class="menu">
     <li class="<?php echo isActive(1); ?>">
-      <a href="<?php echo BASE_URL; ?>admin_overview">
+      <a href="<?php echo BASE_URL; ?>perfil">
         <span class="label">Mi perfil</span>
         <span class="icon"><i data-lucide="home"></i></span>
         <span class="ribbon"></span>
       </a>
     </li>
     <li class="<?php echo isActive(2); ?>">
-      <a href="<?php echo BASE_URL; ?>admin_adopcion">
+      <a href="<?php echo BASE_URL; ?>perfil_adopcion">
         <span class="label">Adoptadas</span>
         <span class="icon"><i data-lucide="user"></i></span>
         <span class="ribbon"></span>
       </a>
     </li>
+    <li class="<?php echo isActive(3); ?>">
+      <a href="<?php echo BASE_URL; ?>perfil_solicitudes">
+        <span class="label">Solicitudes</span>
+        <span class="icon"><i data-lucide="user"></i></span>
+        <span class="ribbon"></span>
+      </a>
+    </li>    
   
     <li class="<?php echo isActive(6); ?>">
       <a href="<?= BASE_URL ?>login/logout">

@@ -1,7 +1,7 @@
 <?php
 
 
-class admin_adopcion extends Controller {
+class perfil_adopcion extends Controller {
   protected $model;
 
   public function __construct() {
@@ -12,15 +12,15 @@ class admin_adopcion extends Controller {
     exit();
 }
     // Carga tu modelo
-    require_once "Models/admin_adopcionModel.php";
-    $this->model = new admin_adopcionModel();
+    require_once "Models/perfil_adopcionModel.php";
+    $this->model = new perfil_adopcionModel();
   }
 
   public function index() {
        $mascotas = $this->model->getMascotas($_SESSION['id_usuario']);
 
-    $data['title'] = 'admin';
+    $data['title'] = 'Perfil';
     $data['mascotas'] = $mascotas;
-    $this->views->getView('admin_adopcion', 'index', $data);
+    $this->views->getView('perfil_adopcion', 'index', $data);
   }
 }
