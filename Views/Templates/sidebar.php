@@ -13,7 +13,9 @@
         <a href="<?= BASE_URL ?>adminUsuario" class="hover:bg-purple-dark p-2 rounded flex items-center gap-2">
             <i class="fa-solid fa-users"></i> <span>Usuarios</span>
         </a>
-   
+        <a href="/ADMIN//Usuarios/index.php" class="hover:bg-purple-dark p-2 rounded flex items-center gap-2">
+            <i class="fa-solid fa-heart"></i> <span>Adopciones</span>
+        </a>
         <a href="<?= BASE_URL ?>home" class="hover:bg-purple-dark p-2 rounded flex items-center gap-2 text-red-300">
             <i class="fa-solid fa-right-from-bracket"></i> <span>Salir</span>
         </a>
